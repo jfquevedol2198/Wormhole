@@ -1,0 +1,13 @@
+@import '../../../styles/variables/variables';
+
+.app-connect-wallet {
+    &__source {
+        border: 1px solid;
+        border-radius: $spacer;
+        padding: 0.5 * $spacer $spacer;
+        &__icon {
+            width: 3 * $spacer;
+            height: 3 * $spacer;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Connect Wallet</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div class="app-d-f app-jc-c">
+            <div class="app-connect-wallet__source app-c-p app-d-f">
+                <div class="app-d-f app-ai-c">
+                    <img
+                        class="app-connect-wallet__source__icon"
+                        src="assets/img/metamask.png"
+                        alt="Metamask"
+                    />
+                </div>
+
+                <div
+                    class="app-f-s-16 app-d-f app-jc-c app-ai-c app-ml-2"
+                    (click)="connectToMetamask()"
+                >
+                    Metamask
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

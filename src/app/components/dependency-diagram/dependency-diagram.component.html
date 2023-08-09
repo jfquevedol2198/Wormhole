@@ -1,0 +1,83 @@
+<div class="diagram">
+    <div
+        class="app-d-f app-fd-c"
+    >
+        <div
+            *ngFor="let row of dependency"
+            class="row app-d-f app-jc-c"
+        >
+            <div
+                *ngFor="let d of row"
+                [ngStyle]="{
+                    'max-width': (row.length > 3 ? 100 / row.length : 100 / 3) + '%',
+                    'flex': '1 1 ' + (row.length > 3 ? 100 / row.length : 100 / 3) + '%'
+                }"
+                class="col"
+            >
+                <div class="diagram__block app-bg-c-e02-lg" id="block-{{d.id}}">
+                    <div
+                        class="diagram__block__header app-pl-1 app-pr-1"
+                        [ngClass]="{
+                            'app-bg-c-e04-lg': d.type === 'default',
+                            'app-bg-c-purple': d.type === 'purple',
+                            'app-bg-c-blue-01': d.type === 'blue'
+                        }"
+                    >
+                        <span class="app-lh-2">{{ d.name }}</span>
+                    </div>
+                    <div class="diagram__block__content app-p-1">
+                        <div class="app-d-f app-jc-sb app-mb-1 app-fw-w">
+                            <div>
+                                <span class="app-c-hde"><span>Exchange rate pair Id: </span><span class="app-c-hde">{{ d.id }}</span></span>
+                            </div>
+                            <div class="app-d-f">
+                                <div
+                                    class="app-d-f app-mr-1"
+                                    [ngClass]="{
+                                        'app-c-green': d.dataQuality === 'Completed',
+                                        'app-c-yellow': d.dataQuality === 'Scheduled',
+                                        'app-c-blue': d.dataQuality === 'Running',
+                                        'app-c-red': d.dataQuality === 'Failed'
+                                    }"
+                                >
+                                    <span class="app-mr-025">Data quality</span>
+                                    <mat-icon class="material-icon-20">{{ currencyIcon[d.dataQuality] }}</mat-icon>
+                                </div>
+                                <div
+                                    class="app-d-f"
+                                    [ngClass]="{
+                                        'app-c-green': d.dataProvider === 'Completed',
+                                        'app-c-yellow': d.dataProvider === 'Scheduled',
+                                        'app-c-blue': d.dataProvider === 'Running',
+                                        'app-c-red': d.dataProvider === 'Failed'
+                                    }"
+                                >
+                                    <span class="app-mr-025">Data provider</span>
+                                    <mat-icon class="material-icon-20">{{ currencyIcon[d.dataProvider] }}</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-mb-1 app-t-ov-e app-ov-h">
+                            <span class="app-c-hde"><span class="app-pr-2">Base token: </span><span class="app-c-hde">{{ d.baseToken }}</span></span>
+                        </div>
+                        <div class="app-mb-1 app-t-ov-e app-ov-h">
+                            <span class="app-c-hde"><span class="app-pr-2">Quote token: </span><span class="app-c-hde">{{ d.quoteToken }}</span></span>
+                        </div>
+                        <div>
+                            <span class="app-c-hde"><span class="app-pr-2">Provider: </span><span class="app-c-hde">{{ d.provider }}</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg class="diagram__lines">
+        <path
+            *ngFor="let line of lines"
+            [attr.d]="line.path"
+            [attr.stroke]="line.color"
+            stroke-width="2"
+            [attr.fill]="line.fill"
+        />
+    </svg>
+</div>

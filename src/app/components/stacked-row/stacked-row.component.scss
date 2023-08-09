@@ -1,0 +1,27 @@
+@import '../../../styles/variables/variables.scss';
+
+.app-stacked-row {
+    &__percentages {
+        margin: auto $spacer auto 0;
+
+        &__element {
+            margin-left: 0.1rem;
+            &--transparent {
+                opacity: 0.3;
+            }
+            &--first {
+                border-radius: 0.5 * $spacer 0 0 0.5 * $spacer;
+            }
+            &--last {
+                border-radius: 0 0.5 * $spacer 0.5 * $spacer 0;
+            }
+            &--one-element {
+                border-radius: 0.5 * $spacer;
+            }
+        }
+
+        &__element:hover {
+            transform: scaleY(2);
+        }
+    }
+}

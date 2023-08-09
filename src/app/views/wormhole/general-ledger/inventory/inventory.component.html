@@ -1,0 +1,210 @@
+<div class="app-d-f app-jc-c" *ngIf="generalLedgerService.isInventoryLoading">
+    <mat-progress-spinner class="app-m-3-a" color="accent" mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<app-no-data-communicate
+    *ngIf="
+        !generalLedgerService.isInventoryLoading &&
+        inventoryPerformance.length === 0 &&
+        !isToolbarVisible
+    "
+    [data]="'inventory'"
+>
+</app-no-data-communicate>
+
+<section
+    *ngIf="
+        !generalLedgerService.isInventoryLoading &&
+        (inventoryPerformance.length !== 0 || isToolbarVisible)
+    "
+    class="app-pnl-asset-positions app-h-100"
+>
+    <ng-scrollbar track="all">
+        <mat-toolbar
+            class="
+                app-pnl-asset-positions__toolbar
+                app-d-f app-important app-jc-sb
+            "
+        >
+            <div class="app-pnl-asset-positions__toolbar__title app-fw-400">
+                Asset Inventory
+            </div>
+            <mat-tab-group
+                mat-align-tabs="start"
+                animationDuration="0ms"
+                (selectedTabChange)="onViewChangeClick($event.index)"
+                [selectedIndex]="inventoryView === 'platform' ? 0 : 1"
+            >
+                <mat-tab label="Platform View" [tabIndex]="0"></mat-tab>
+                <mat-tab label="Asset View" [tabIndex]="1"></mat-tab>
+            </mat-tab-group>
+            <div class="app-f-s-11 app-d-f app-ai-c app-fw-400">
+                <mat-slide-toggle
+                    labelPosition="before"
+                    [checked]="inventoryLowBalances === 'hidden'"
+                    (change)="onHideLowBalancesClick()"
+                    class="app-c-dde app-mr-1"
+                    >Low Balances</mat-slide-toggle
+                >
+                <form [formGroup]="formGroup" class="app-d-f">
+                    <mat-form-field
+                        *ngIf="isSearchInputOpen"
+                        appearance="fill"
+                        class="
+                            app-form-select
+                            app-form-select--search
+                            app-form-select--search--small
+                            app-mr-1
+                        "
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            formControlName="searchInput"
+                            placeholder="Search"
+                            (keyup)="handleKeyUp($event)"
+                        />
+                        <button matSuffix mat-icon-button (click)="onSearch()">
+                            <mat-icon>done</mat-icon>
+                        </button>
+                        <button
+                            matSuffix
+                            mat-icon-button
+                            (click)="onCloseSearchClick()"
+                        >
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <button
+                        *ngIf="!isSearchInputOpen"
+                        mat-icon-button
+                        class="app-button app-button--small app-d-f"
+                        (click)="onSearchButtonClick()"
+                    >
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </form>
+                <button
+                    mat-icon-button
+                    class="app-button app-button--small app-d-f"
+                    matTooltip="View in full screen"
+                    (click)="openFullscreen()"
+                >
+                    <mat-icon>fullscreen</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+
+        <ng-template #noSearchResults>
+            <app-no-data-communicate [data]="'inventory'">
+            </app-no-data-communicate>
+        </ng-template>
+
+        <mat-accordion
+            *ngIf="inventoryPerformance.length !== 0; else noSearchResults"
+            displayMode="flat"
+            multi="true"
+            hideToggle="true"
+        >
+            <mat-expansion-panel
+                class="mat-elevation-z0"
+                *ngFor="let inventory of inventoryPerformance"
+                [expanded]="inventory.expanded"
+                (click)="expandInventory(inventory)"
+            >
+                <mat-expansion-panel-header
+                    class="
+                        app-pnl-asset-positions__expansion-panel__header
+                        app-pl-05 app-important
+                    "
+                >
+                    <div class="app-d-f app-ai-c app-p-05 app-mr-05">
+                        <mat-icon>{{
+                            inventory.expanded
+                                ? 'keyboard_arrow_down'
+                                : 'keyboard_arrow_right'
+                        }}</mat-icon>
+                    </div>
+                    <div class="app-d-f app-jc-sb app-w-100 app-ai-c">
+                        <div
+                            class="
+                                app-pnl-asset-positions__expansion-panel__header__platform
+                                app-d-f
+                            "
+                        >
+                            <app-logo-icon
+                                class="app-mt-05 app-mr-05"
+                                [logo]="
+                                    inventory.platformLogoUri ||
+                                    inventory.assetLogoUri
+                                "
+                                [name]="inventory.name"
+                            ></app-logo-icon>
+                            <div
+                                class="app-t-ov-e app-w-s-n app-ov-h"
+                                [matTooltip]="
+                                    inventory.name.length > 20
+                                        ? inventory.name
+                                        : null
+                                "
+                                [matTooltipPosition]="'above'"
+                            >
+                                <span class="app-fw-n app-f-s-9">
+                                    {{
+                                        inventory.name === '-'
+                                            ? 'Native'
+                                            : inventory.name
+                                    }}
+                                </span>
+                                <small
+                                    class="
+                                        app-pnl-asset-positions__expansion-panel__header__platform__balance
+                                        app-d-b app-f-s-9
+                                    "
+                                >
+                                    {{
+                                        formatValue(inventory.totalBalance, '$')
+                                    }}
+                                </small>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                app-pnl-asset-positions__expansion-panel__header__bar-chart
+                                app-h-15
+                            "
+                        >
+                            <app-stacked-row
+                                [data]="inventory"
+                                [namesWithColors]="propertiesWithColors"
+                                (highlightColumn)="
+                                    inventory.highlightColumn = $event
+                                "
+                            ></app-stacked-row>
+                        </div>
+                    </div>
+                </mat-expansion-panel-header>
+
+                <div
+                    class="
+                        app-pnl-asset-positions__expansion-panel__body
+                        app-ov-a
+                    "
+                >
+                    <app-inventory-performance-table
+                        [inventoryPerformance]="inventory"
+                        [propertiesWithColors]="propertiesWithColors"
+                        (sort)="
+                            sort(
+                                $event.isButtonPressed,
+                                $event.columnDef,
+                                $event.inventoryPerformance
+                            )
+                        "
+                    ></app-inventory-performance-table>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </ng-scrollbar>
+</section>

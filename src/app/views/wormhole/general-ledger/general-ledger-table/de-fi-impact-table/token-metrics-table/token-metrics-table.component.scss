@@ -1,0 +1,46 @@
+@import '../../../../../../../styles/variables/variables.scss';
+@import '../../../../../../../styles/colors/colors.scss';
+
+.app-token-metrics {
+    .line-link-to-parent {
+        margin-left: 1.35 * $spacer;
+        background-color: $tableLinkLineColor;
+        width: $tableLinkLineSize;
+        bottom: $spacer + (1.2 * $spacer);
+        position: relative;
+    }
+
+    .app-token-metrics-table {
+        background-color: $background;
+        margin-top: $spacer;
+        margin-bottom: $spacer;
+
+        th,
+        td:not(:first-child) {
+            background-color: $tableBg1;
+        }
+
+        .mat-row:nth-last-child(2) {
+            td:first-child {
+                border-left: 0;
+            }
+        }
+
+        .mat-column-parent-link {
+            background-color: $background;
+            border-top: 0;
+            border-bottom: 0;
+            display: flex;
+            align-items: center;
+            height: 2.5 * $spacer;
+            padding: 0 !important;
+            min-width: 1.5 * $spacer;
+
+            .link {
+                width: 100%;
+                height: $tableLinkLineSize;
+                background-color: $tableLinkLineColor;
+            }
+        }
+    }
+}

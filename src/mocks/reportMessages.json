@@ -1,0 +1,18 @@
+{
+    "responseTimestamp": "2021-03-04T09:31:13.036Z",
+    "recordCount": 0,
+    "reportMessages": [
+        {
+            "reportMessageId": 0,
+            "workerTaskId": 0,
+            "ledgerAccountId": 0,
+            "transactionId": 0,
+            "reportMessageType": "Generic",
+            "severity": "Information",
+            "message": "string",
+            "notes": "string",
+            "dismissed": true,
+            "blockNumber": 0
+        }
+    ]
+}

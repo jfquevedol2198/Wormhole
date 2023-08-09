@@ -1,0 +1,39 @@
+@import '../../../../../styles/mixins/toolbar';
+@import '../../../../../styles/colors/colors';
+@import '../../../../../styles/variables/variables';
+
+.app-general-ledger-toolbar {
+    &__summary {
+        width: calc(100vw - 30rem);
+    }
+
+    &__button {
+        color: $disabledDarkEmphasis !important;
+        font-weight: 400 !important;
+        padding: 0.5 * $spacer !important;
+
+        mat-icon.mat-icon {
+            margin-top: -3px;
+            margin-right: 0.25 * $spacer;
+        }
+
+        &--lighter {
+            color: $highDarkEmphasis !important;
+            opacity: 1;
+        }
+    }
+
+    &__date-input {
+        width: 8 * $spacer;
+    }
+
+    &__form-field {
+        &__selector {
+            width: 6.5 * $spacer;
+        }
+    }
+
+    .app-mat-date-input-wrapper mat-datepicker-toggle {
+        color: $disabledDarkEmphasis !important;
+    }
+}

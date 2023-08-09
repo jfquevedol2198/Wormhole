@@ -1,0 +1,33 @@
+<div class="app-general-ledger__container">
+    <div class="app-d-f">
+        <div class="app-w-15 app-mt-05">
+            <app-pie-chart [pieRadius]="50"></app-pie-chart>
+        </div>
+
+        <div class="app-w-35 app-mt-05 app-d-f app-fd-c">
+            <div class="app-ml-1 app-mb-05">
+                <app-line-chart
+                    [fields]="lineChartFields"
+                    [data$]="generalLedgerService.pnlEssentialData$"
+                    [loading$]="generalLedgerService.pnlEssentialDataLoading$"
+                    [selectedDate$]="generalLedgerService.selectedDate$"
+                    [selectedRange$]="generalLedgerService.selectedRange$"
+                    (fullscreen)="
+                        router.navigate(['/app/fullscreen/chart'], {
+                            queryParamsHandling: 'merge'
+                        })
+                    "
+                ></app-line-chart>
+            </div>
+            <div class="app-ml-1 app-mr-1 app-mb-1">
+                <app-calendar-heatmap></app-calendar-heatmap>
+            </div>
+        </div>
+
+        <div class="app-w-50 app-ml-05">
+            <app-inventory></app-inventory>
+        </div>
+    </div>
+
+    <app-general-ledger-table></app-general-ledger-table>
+</div>

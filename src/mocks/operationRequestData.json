@@ -1,0 +1,21 @@
+{
+    "fromAddress": "fromAddress",
+    "toAddress": "toAddress",
+    "amount": "amount",
+    "blockchainName": "blockchainName",
+    "assetAddress": "assetAddress",
+    "tokenId": "tokenId",
+    "sent": true,
+    "supply": true,
+    "stake": true,
+    "collateral": false,
+    "borrow": false,
+    "liquidation": false,
+    "funding": false,
+    "reward": false,
+    "fee": false,
+    "change": false,
+    "swap": false,
+    "received": false,
+    "internalTransfer": false
+}

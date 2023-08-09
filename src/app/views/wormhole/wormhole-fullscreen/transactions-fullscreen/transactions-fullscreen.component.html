@@ -1,0 +1,49 @@
+<div class="app-w-100">
+    <div class="app-d-f app-jc-sb">
+        <div class="app-mb-05 app-mt-05">
+            <app-date-range-inputs></app-date-range-inputs>
+        </div>
+        <div class="app-d-f app-ai-c">
+            <div>
+                <mat-slide-toggle
+                    labelPosition="before"
+                    [checked]="isEditMode"
+                    (change)="onEditModeToggleClick($event)"
+                    [disabled]="generalLedgerService.isTransactionsDataLoading"
+                    class="
+                        app-general-ledger-table__toolbar__buttons__toggle
+                        app-f-s-10 app-m-05
+                    "
+                    *ngIf="authenticationService.isDataValidator()"
+                    >Edit Mode</mat-slide-toggle
+                >
+                <button
+                    mat-button
+                    class="
+                        app-transactions-fullscreen__buttons
+                        main-toolbar-button
+                    "
+                    *ngIf="reportPresetId"
+                    (click)="resetReportPresetId()"
+                >
+                    Reset Filters
+                </button>
+                <button
+                    mat-button
+                    class="
+                        app-transactions-fullscreen__buttons
+                        main-toolbar-button
+                    "
+                    (click)="openDialog()"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                >
+                    <mat-icon class="mat-toolbar-icon">manage_search</mat-icon>
+                    Advanced Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <app-transactions-table></app-transactions-table>
+</div>

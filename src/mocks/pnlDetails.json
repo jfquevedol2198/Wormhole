@@ -1,0 +1,34 @@
+{
+    "responseTimestamp": "2021-07-05T08:48:05.666Z",
+    "recordCount": 0,
+    "records": [
+        {
+            "ledgerAddress": "string",
+            "timestamp": "2021-03-01T20:54:48.989Z",
+            "platformName": "string",
+            "platformLogoUri": "string",
+            "assetName": "string",
+            "assetSymbol": "string",
+            "assetAddress": "string",
+            "tokenId": "string",
+            "assetLogoUri": "string",
+            "fundingToken": 10,
+            "floatingFundingUsd": 1,
+            "fixedFundingUsd": 1,
+            "netWorth": 0.5,
+            "tokenBasedPnL": 0.5,
+            "dollarBasedPnL": 0.5,
+            "walletToken": 20,
+            "walletUsd": 2,
+            "supplyToken": 30,
+            "supplyUsd": 3,
+            "stakeToken": 40,
+            "stakeUsd": 4,
+            "collateralToken": 50,
+            "collateralUsd": 5,
+            "borrowToken": 60,
+            "borrowUsd": 6,
+            "portfolioId": 5
+        }
+    ]
+}

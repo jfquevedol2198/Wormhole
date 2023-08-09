@@ -1,0 +1,30 @@
+{
+    "responseTimestamp": "2021-07-08T19:00:43.9047623+00:00",
+    "recordCount": 3,
+    "records": [
+        {
+            "ledgerName": "None",
+            "platformId": 64,
+            "name": "Private",
+            "platformIcon": null,
+            "score": 0,
+            "scam": true
+        },
+        {
+            "ledgerName": "None",
+            "platformId": 11,
+            "name": "Disperse",
+            "platformIcon": null,
+            "score": 0,
+            "scam": true
+        },
+        {
+            "ledgerName": "None",
+            "platformId": 61,
+            "name": "KeyFi",
+            "platformIcon": null,
+            "score": 0,
+            "scam": true
+        }
+    ]
+}

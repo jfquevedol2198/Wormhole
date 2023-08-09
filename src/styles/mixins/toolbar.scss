@@ -1,0 +1,25 @@
+@mixin toolbar {
+    &__toolbar {
+        padding: 1rem 0rem;
+    }
+
+    &__toolbar-spacer {
+        flex: 1 1 auto;
+    }
+
+    &__toolbar-row {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    &__toolbar-label {
+        margin-left: 0.5rem;
+    }
+}
+
+@mixin fullWidthToolbar {
+    @include toolbar;
+    &__toolbar {
+        width: 100%;
+    }
+}

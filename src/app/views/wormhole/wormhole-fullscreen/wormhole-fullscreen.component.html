@@ -1,0 +1,30 @@
+<mat-toolbar class="app-fullscreen-toolbar app-p-0 app-important app-d-f">
+    <nav mat-tab-nav-bar class="app-menu app-bb-n">
+        <a
+            mat-tab-link
+            *ngFor="let item of tabs"
+            [routerLink]="[item.link]"
+            [active]="linkActive(item)"
+            [queryParams]="item.queryParams"
+            [queryParamsHandling]="item.queryParamsStrategy"
+            class="app-menu__button app-tt-u app-fw-n app-f-s-10 app-important"
+        >
+            {{ item.name }}
+        </a>
+    </nav>
+
+    <div class="app-fg-1"></div>
+
+    <button
+        mat-button
+        class="app-button app-button--faded"
+        (click)="exitFullscreen()"
+    >
+        Exit Fullscreen
+        <mat-icon class="app-ml-05 app-important">fullscreen_exit</mat-icon>
+    </button>
+</mat-toolbar>
+
+<div class="app-fullscreen">
+    <router-outlet></router-outlet>
+</div>

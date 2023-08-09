@@ -1,0 +1,35 @@
+<div class="app-dialog import-address-dialog">
+    <div mat-dialog-title class="app-d-f app-ai-c app-jc-sb">
+        <h3 class="app-mb-0 app-important">Update Platform Logo</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <form [formGroup]="form" class="import-address-dialog__form">
+            <div class="app-d-f app-jc-sb app-ai-c">
+                <div class="app-f-1">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">
+                        Logo</p>
+                    <mat-form-field class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-f
+                            app-d-f app-fd-c
+                        " appearance="fill">
+                        <input matInput type="text" data-lpignore="true" formControlName="platformIcon" />
+                        <mat-icon (click)="form.controls.platformIcon.setValue('')"
+                            *ngIf="form.controls.platformIcon.value" matSuffix class="cursor-pointer">close
+                        </mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions class="app-jc-sb app-important action-content">
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button mat-button color="accent" mat-raised-button (click)="handleUpdate()">Update</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,34 @@
+{
+    "responseTimestamp": "2021-05-28T07:41:38.439Z",
+    "recordCount": 0,
+    "records": [
+        {
+            "date": "string",
+            "transactionCount": 0,
+            "nftCount": 0,
+            "depositCount": 0,
+            "withdrawCount": 0,
+            "stakeCount": 0,
+            "unStakeCount": 0,
+            "borrowCount": 0,
+            "repayCount": 0,
+            "liquidationCount": 0,
+            "swapCount": 0,
+            "rewardCount": 0
+        },
+        {
+            "date": "string",
+            "transactionCount": 1,
+            "nftCount": 1,
+            "depositCount": 1,
+            "withdrawCount": 1,
+            "stakeCount": 1,
+            "unStakeCount": 1,
+            "borrowCount": 1,
+            "repayCount": 1,
+            "liquidationCount": 1,
+            "swapCount": 1,
+            "rewardCount": 1
+        }
+    ]
+}

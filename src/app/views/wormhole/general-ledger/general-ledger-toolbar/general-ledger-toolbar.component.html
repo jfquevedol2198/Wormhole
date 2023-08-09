@@ -1,0 +1,126 @@
+<mat-toolbar class="app-general-ledger-toolbar app-w-100">
+    <mat-toolbar-row class="app-p-0 app-important">
+        <div class="app-d-f">
+            <app-select-date></app-select-date>
+            <app-select-portfolio></app-select-portfolio>
+        </div>
+
+        <div class="app-fg-1"></div>
+
+        <div>
+            <button
+                mat-button
+                *ngIf="
+                    (
+                        generalLedgerService.pnlPositionDetailsForInventory$
+                        | async
+                    )?.length > 0
+                "
+                (click)="redirectToReportHistoryCreator()"
+                class="app-general-ledger-toolbar__button"
+            >
+                <mat-icon class="material-icons-outlined">assignment</mat-icon>
+                Create Report
+            </button>
+        </div>
+
+        <ng-container *ngIf="!alignCenter">
+            <div
+                class="app-general-ledger-toolbar__summary app-h-100"
+                *ngIf="!(generalLedgerService.pnlEssentialDataLoading$ | async)"
+            >
+                <ng-scrollbar track="horizontal">
+                    <app-pnl-summary></app-pnl-summary>
+                </ng-scrollbar>
+            </div>
+
+            <div
+                class="app-fg-1"
+                [class.app-w-100]="
+                    generalLedgerService.pnlEssentialDataLoading$ | async
+                "
+            ></div>
+
+            <div class="app-d-f app-ai-c app-mr-05">
+                <span class="app-ml-05 app-f-s-10 app-fw-400 app-c-dde"
+                    >VIEW:</span
+                >
+
+                <button
+                    mat-icon-button
+                    [class.app-general-ledger-toolbar__button--lighter]="
+                        generalLedgerService.view == 0
+                    "
+                    (click)="generalLedgerService.setView(0)"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                    class="
+                        app-general-ledger-toolbar__button
+                        app-ai-c app-d-f app-op-06 app-important
+                    "
+                >
+                    <div class="app-d-f app-ai-c">
+                        <mat-icon class="material-icons-outlined"
+                            >view_compact</mat-icon
+                        >
+                    </div>
+                </button>
+
+                <button
+                    mat-icon-button
+                    [class.app-general-ledger-toolbar__button--lighter]="
+                        generalLedgerService.view == 1
+                    "
+                    (click)="generalLedgerService.setView(1)"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                    class="
+                        app-general-ledger-toolbar__button
+                        app-ai-c app-d-f app-op-06 app-important
+                    "
+                >
+                    <div class="app-d-f app-ai-c">
+                        <mat-icon class="material-icons-outlined"
+                            >view_day</mat-icon
+                        >
+                    </div>
+                </button>
+
+                <button
+                    mat-icon-button
+                    [class.app-general-ledger-toolbar__button--lighter]="
+                        generalLedgerService.view == 2
+                    "
+                    (click)="generalLedgerService.setView(2)"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                    class="
+                        app-general-ledger-toolbar__button
+                        app-ai-c app-d-f app-op-06 app-important
+                    "
+                >
+                    <div class="app-d-f app-ai-c">
+                        <mat-icon class="material-icons-outlined"
+                            >dashboard</mat-icon
+                        >
+                    </div>
+                </button>
+            </div>
+        </ng-container>
+    </mat-toolbar-row>
+    <mat-toolbar-row
+        class="app-general-ledger-toolbar__toolbar-row"
+        *ngIf="
+            alignCenter &&
+            !(generalLedgerService.pnlEssentialDataLoading$ | async)
+        "
+    >
+        <app-pnl-summary
+            class="app-w-100"
+            [alignCenter]="true"
+        ></app-pnl-summary>
+    </mat-toolbar-row>
+</mat-toolbar>

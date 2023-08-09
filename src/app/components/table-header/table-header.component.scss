@@ -1,0 +1,13 @@
+@import '../../../styles/variables/variables';
+@import '../../../styles/colors/colors';
+
+.table-header__container {
+    letter-spacing: normal;
+    outline: 0;
+
+    &__column-order {
+        padding: 0 0.3 * $spacer;
+        background-color: $tableBg2;
+        margin-left: 0.3 * $spacer;
+    }
+}

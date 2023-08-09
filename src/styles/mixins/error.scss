@@ -1,0 +1,14 @@
+@import '../colors/colors';
+
+@mixin error {
+    display: block;
+    font-size: 12pt;
+    margin-top: 1rem;
+    width: 100%;
+    color: $errorRed;
+    text-align: center;
+    &__close-button {
+        top: 0;
+        right: 0;
+    }
+}

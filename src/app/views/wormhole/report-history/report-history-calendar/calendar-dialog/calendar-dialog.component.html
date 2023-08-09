@@ -1,0 +1,54 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Reports</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div mat-dialog-content>
+        <table
+            mat-table
+            [dataSource]="data.properData"
+            class="
+                app-table app-table__striped app-table__expand-column
+                app-w-100 app-report-history-table
+            "
+        >
+            <ng-container
+                matColumnDef="date"
+                class="app-report-history-table__column"
+            >
+                <th mat-header-cell *matHeaderCellDef>Date and Time</th>
+                <td
+                    mat-cell
+                    *matCellDef="let row"
+                    class="app-pr-1 app-important"
+                >
+                    {{ row.fullDate | momentDate }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                    <button
+                        aria-label="Download csv"
+                        (click)="
+                            $event.stopPropagation();
+                            generateReportFile(row.reportId)
+                        "
+                        mat-button
+                        mat-icon-button
+                    >
+                        <mat-icon class="material-icons-outlined"
+                            >save_alt</mat-icon
+                        >
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+@import '../../../styles/colors/colors.scss';
+@import '../../../styles/variables/variables.scss';
+
+.app-style-guide {
+    &__nav {
+        min-width: 6.25 * $spacer !important;
+    }
+    &__content {
+        background-color: $dark-02;
+
+        &--container {
+            margin-left: 1 * $spacer;
+            margin-bottom: 4 * $spacer;
+        }
+    }
+
+    &__color {
+        border: 1px solid rgba($white, 0.2);
+        width: 100px;
+        height: 100px;
+        margin-right: $spacer;
+        border-radius: $border-radius;
+
+        &--secondary {
+            background-color: $light-03;
+        }
+
+        &--success {
+            background-color: $primarySuccess;
+        }
+
+        &--info {
+            background-color: $primaryInfo;
+        }
+
+        &--warning {
+            background-color: $primaryWarning;
+        }
+
+        &--error {
+            background-color: $primaryError;
+        }
+        &--process {
+            background-color: $primaryProcess;
+        }
+    }
+
+    .app-style-guide-progress-bar-container {
+        max-width: 45 * $spacer;
+
+        mat-progress-bar:not(:last-child) {
+            margin-bottom: $spacer;
+        }
+    }
+
+    .app-style-guide-paginator-container {
+        max-width: 45 * $spacer;
+    }
+}

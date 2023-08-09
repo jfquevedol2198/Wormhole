@@ -1,0 +1,376 @@
+<app-main>
+    <mat-card class="app-release app-m-1">
+        <mat-card-title class="app-ta-c">
+            Release 2.0.3 Red Army
+        </mat-card-title>
+
+        <mat-card-content class="app-d-f">
+            <div class="app-w-50">
+                <ul>
+                    <li>Report history tab changed naming to Analytics</li>
+                    <li>
+                        Reports view has changed to calendar with list of
+                        reports in dialog
+                    </li>
+                    <li>Analysis table changed naming to DeFi impact</li>
+                    <li>
+                        Added source column for transactions table and few other
+                        minor tweaks
+                    </li>
+                    <li>Major refactoring settings page</li>
+                    <li>
+                        State management works now across all pages, it should
+                        improve loading data performance significantly
+                    </li>
+                    <li>
+                        Advanced search - renaming "by" to "start by" and "end
+                        by"
+                    </li>
+                    <li>
+                        Adding foundations for Style Guide where we keep all
+                        components together in order to validate consistency
+                        across the whole project
+                    </li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="app-release app-m-1">
+        <mat-card-title class="app-ta-c">
+            Release 2.0.2 Red Army
+        </mat-card-title>
+
+        <mat-card-content class="app-d-f">
+            <div class="app-w-50">
+                <h3>Fixed:</h3>
+
+                <ul>
+                    <li>
+                        Fixed when switching views sometimes line chart was
+                        rendered before it got data
+                    </li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="app-release app-m-1">
+        <mat-card-title class="app-ta-c">
+            Release 2.0.1 Red Army
+        </mat-card-title>
+
+        <mat-card-content class="app-d-f">
+            <div class="app-w-50">
+                <h2>Features implemented</h2>
+
+                <h3>1. Transactions:</h3>
+
+                <ul>
+                    <li>Added sorting for transaction table</li>
+                    <li>Added new column with treatment</li>
+                    <li>Changing address label name from and to</li>
+                    <li>Added ability to reset filters</li>
+                    <li>Minor bugs fixed</li>
+                    <li>The same changes for full-screen view</li>
+                </ul>
+
+                <h3>2. Inventory</h3>
+
+                <ul>
+                    <li>Added search by asset name</li>
+                    <li>Added asset view of inventory</li>
+                    <li>The same changes for full-screen view</li>
+                </ul>
+
+                <h3>3. Manage portfolio dialog</h3>
+
+                <ul>
+                    <li>Blocked the possibility of duplicating addresses</li>
+                </ul>
+
+                <h3>4. Visual changes</h3>
+
+                <ul>
+                    <li>
+                        Advanced search dialog styling improvements and bug
+                        fixes
+                    </li>
+                    <li>Line chart styling improvements and bug fixes</li>
+                    <li>Improved view when loading data</li>
+                    <li>Improved view when no available data</li>
+                    <li>
+                        Added platform and asset icons for inventory table and
+                        transaction table
+                    </li>
+                    <li>Snackbar styling improvements</li>
+                </ul>
+                <h3>5. General improvements</h3>
+
+                <ul>
+                    <li>Downloading a report in csv format</li>
+                    <li>
+                        Sub ledger tab with specific transactions and messages
+                        tables
+                    </li>
+                    <li>
+                        Requests and response bodies adjusted to new Wormhole's
+                        endpoints structure
+                    </li>
+                    <li>
+                        Analysis table with different metrics for all tokens
+                    </li>
+                    <li>
+                        Added application state management which allows for
+                        smooth transitions between various pages
+                    </li>
+                    <li>Interactive tooltip</li>
+                </ul>
+
+                <h3>6. Doc</h3>
+
+                <ul>
+                    <li>Added link to wormhole doc in footer</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Features incomplete</h2>
+
+                <ul>
+                    <li>Authentication / authorisation</li>
+                    <li>No roles, everyone has access to everything</li>
+                    <li>Display classes for portfolio view</li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="app-release app-m-1">
+        <mat-card-title class="app-ta-c">
+            Release 2.0.0 Red Army
+        </mat-card-title>
+
+        <mat-card-content class="app-d-f">
+            <div class="app-w-50">
+                <h2>Features implemented</h2>
+
+                <h3>1. Inventory:</h3>
+
+                <ul>
+                    <li>New design for inventory</li>
+                    <li>Added balance for each platform</li>
+                    <li>
+                        Added bar-chart for representation data for each
+                        platform.
+                    </li>
+                    <li>Added sorting by column for inventory table</li>
+                    <li>
+                        Added the ability to hide platforms with a small balance
+                    </li>
+                    <li>Added full screen view for inventory</li>
+                </ul>
+
+                <h3>2. Transactions</h3>
+
+                <ul>
+                    <li>New design for transactions table</li>
+                    <li>Added full screen view for transactions table</li>
+                    <li>Added more information to transactions table</li>
+                    <li>
+                        Advanced search dialog with saving, modifying and
+                        deleting presets functionality added
+                    </li>
+                </ul>
+
+                <h3>3. Charts</h3>
+
+                <ul>
+                    <li>
+                        Line chart for PNL display redesigned and improved with
+                        extra controls like showing min/max and moving
+                        median/averages
+                    </li>
+                    <li>Full screen mode for line chart</li>
+                    <li>Pie chart with platform allocation</li>
+                    <li>Gas price chart</li>
+                    <li>Bar chart</li>
+                    <li>Trader stamina chart</li>
+                </ul>
+
+                <h3>4. General Ledger</h3>
+
+                <ul>
+                    <li>
+                        Renamed dashboard into general ledger and vastly
+                        improved its primary layout
+                    </li>
+                    <li>Added multiple views / layouts for general ledger</li>
+                    <li>
+                        Added new features for table displays, like: subtitles,
+                        dynamic filtering, sorting, actions
+                    </li>
+                    <li>Added more fields for PNL summary</li>
+                    <li>Moved settings from separate tab into user menu</li>
+                    <li>Reworded navigation</li>
+                    <li>New design for navigation</li>
+                    <li>Date picker changed for that enables time selection</li>
+                    <li>Expanded library of asset icons</li>
+                    <li>
+                        Improved reactivity between inputs, line chart actions
+                        and transactions table
+                    </li>
+                    <li>
+                        Overhauled styling, defaulting to dark mode, dark mode
+                        design improved
+                    </li>
+                </ul>
+                <h3>5. Portfolios</h3>
+
+                <ul>
+                    <li>Added support for multiple portfolios</li>
+                    <li>New design for manage portfolio dialog</li>
+                </ul>
+
+                <h3>6. Report history</h3>
+
+                <ul>
+                    <li>
+                        Report history tab added with option to create new
+                        reports based on saved presets
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Features incomplete</h2>
+
+                <ul>
+                    <li>Authentication / authorisation</li>
+                    <li>No roles, everyone has access to everything</li>
+                    <li>Display classes for portfolio view</li>
+                    <li>Sub Ledgers view</li>
+                    <li>Downloading report</li>
+                    <li>Asset inventory table - asset view</li>
+                </ul>
+
+                <h2>Known issues</h2>
+
+                <ul>
+                    <li>Sorting transaction table is not working</li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="app-release app-m-1">
+        <mat-card-title class="app-ta-c">
+            Release 1.0.0 Red Dwarf
+        </mat-card-title>
+
+        <mat-card-content class="app-d-f">
+            <div class="app-w-50">
+                <h2>Features implemented</h2>
+
+                <h3>1. Profit and loss dashboard</h3>
+
+                <ul>
+                    <li>Retrieving PnL data by selected portfolio</li>
+                    <li>
+                        Visualising PnL on a line chart that allows zooming and
+                        panning by date
+                    </li>
+                    <li>
+                        Downloading PnL reports generated from live data
+                        retrieved
+                    </li>
+                    <li>
+                        Plotting moving median / moving averages for specified
+                        intervals
+                    </li>
+                    <li>
+                        Viewing portfolio at any given time, selectable by form
+                        field, or by clicking on a line chart
+                    </li>
+                    <li>
+                        Portfolio grouped by platform, and assets, currently
+                        generic view for all platforms
+                    </li>
+                    <li>Browsing transactions for specified time period</li>
+                    <li>
+                        Viewing operations for any transaction within
+                        transactions table
+                    </li>
+                    <li>
+                        Summarising Profit and Loss for a given open and close
+                        dates
+                    </li>
+                </ul>
+
+                <h3>2. Portfolio management</h3>
+
+                <ul>
+                    <li>Creating, modifying and deleting portfolio</li>
+                    <li>
+                        Adding, removing, modifying addresses within portfolios
+                    </li>
+                </ul>
+
+                <h3>3. Market data management</h3>
+
+                <ul>
+                    <li>Listing all exchange pairs within Wormhole</li>
+                    <li>Listing all missing exchange pairs in Wormhole</li>
+                    <li>Listing all missing method definitions in Wormhole</li>
+                    <li>Ability to download those in CSV form</li>
+                    <li>Option to remove all exchange rates from Wormhole</li>
+                    <li>
+                        Basic filtering to only show active and/or requested
+                    </li>
+                </ul>
+
+                <h3>4. Configuration panel for Wormhole</h3>
+
+                <ul>
+                    <li>
+                        Selecting connected Wormhole backend with option to
+                        connect to a different than default for the system
+                    </li>
+                    <li>
+                        Listing of all exchange rate providers registered in
+                        system
+                    </li>
+                    <li>Viewing and editing of shared settings</li>
+                    <li>Health check display</li>
+                    <li>
+                        Worker agents management (listing, renaming, disabling)
+                    </li>
+                    <li>Worker tasks list</li>
+                    <li>Worker tasks status</li>
+                    <li>Ability to start, stop, or restart all workers</li>
+                    <li>Schema information</li>
+                    <li>Service status</li>
+                    <li>Exceptions list</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Features incomplete</h2>
+
+                <ul>
+                    <li>Authentication / authorisation</li>
+                    <li>No roles, everyone has access to everything</li>
+                    <li>All blockchain features currently experimental</li>
+                    <li>Display classes for portfolio view</li>
+                    <li>
+                        Linking filter settings to url not done for all forms
+                    </li>
+                </ul>
+
+                <h2>Known issues</h2>
+
+                <ul>
+                    <li>Error catching too aggressive sometimes</li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</app-main>

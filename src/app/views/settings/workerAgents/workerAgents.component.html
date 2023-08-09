@@ -1,0 +1,84 @@
+<mat-card class="app-d-f">
+    <mat-card-title class="app-ta-c app-m-1 app-important">
+        Worker Agents
+    </mat-card-title>
+
+    <mat-card-content>
+        <table
+            mat-table
+            [dataSource]="workerAgentsData"
+            class="app-worker-agents__table mat-elevation-z8 app-w-100"
+            multiTemplateDataRows
+        >
+            <ng-container
+                *ngFor="let column of workerAgentsDataColumns"
+                [matColumnDef]="column.columnDef"
+            >
+                <th mat-header-cell *matHeaderCellDef>
+                    <span>{{ column.header }}</span>
+                </th>
+
+                <td
+                    mat-cell
+                    *matCellDef="let row"
+                    [ngSwitch]="column.columnType"
+                >
+                    <ng-container *ngSwitchCase="'checkbox'">
+                        <div>
+                            <mat-checkbox
+                                [checked]="row.enabled"
+                                (change)="toggleAgent(row)"
+                            ></mat-checkbox>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'input'">
+                        <div class="app-d-f">
+                            <input
+                                matInput
+                                placeholder="Preset Name"
+                                class="
+                                    app-worker-agents__table__input
+                                    app-mat-input
+                                    app-fw-400
+                                    app-w-100
+                                    app-bs-bx
+                                    app-important
+                                    app-p-0-05
+                                "
+                                name="searching"
+                                [value]="column.cell(row)"
+                                (change)="renameAgent($event, row)"
+                            />
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngSwitchDefault>
+                        <span>
+                            {{ column.cell(row) }}
+                        </span>
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+                class="app-worker-agents__table__row__header"
+            ></tr>
+            <tr
+                mat-row
+                *matRowDef="
+                    let row;
+                    columns: displayedColumns;
+                    let i = dataIndex
+                "
+                [ngClass]="
+                    i % 2 === 0
+                        ? 'app-worker-agents__table__row__odd'
+                        : 'app-worker-agents__table__row__even'
+                "
+            ></tr>
+        </table>
+    </mat-card-content>
+</mat-card>

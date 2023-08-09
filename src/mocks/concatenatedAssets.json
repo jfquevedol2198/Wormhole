@@ -1,0 +1,72 @@
+[
+    {
+        "name": "asset 8(platform 8)",
+        "positions": [
+            {
+                "ledgerAddress": "string",
+                "timestamp": "2021-03-01T20:54:48.989Z",
+                "platformName": "platform 1",
+                "platformLogoUri": "platform logo",
+                "assetName": "asset 1",
+                "assetSymbol": "string",
+                "assetAddress": "string",
+                "tokenId": "string",
+                "assetLogoUri": "asset logo",
+                "fundingToken": 1,
+                "floatingFundingUsd": 1,
+                "fixedFundingUsd": 1,
+                "netWorth": 1,
+                "tokenBasedPnL": 1,
+                "dollarBasedPnL": 1,
+                "walletToken": 1,
+                "walletUsd": 1,
+                "supplyToken": 1,
+                "supplyUsd": 1,
+                "stakeToken": 1,
+                "stakeUsd": 1,
+                "collateralToken": 1,
+                "collateralUsd": 1,
+                "borrowToken": 3,
+                "borrowUsd": 3,
+                "portfolioId": 5
+            }
+        ],
+        "totalBalance": 8,
+        "absoluteTotalBalance": 8
+    },
+    {
+        "name": "asset 9(platform 9)",
+        "positions": [
+            {
+                "ledgerAddress": "string",
+                "timestamp": "2021-03-01T20:54:48.989Z",
+                "platformName": "platform 1",
+                "platformLogoUri": "platform logo",
+                "assetName": "asset 1",
+                "assetSymbol": "string",
+                "assetAddress": "string",
+                "tokenId": "string",
+                "assetLogoUri": "asset logo",
+                "fundingToken": 1,
+                "floatingFundingUsd": 1,
+                "fixedFundingUsd": 1,
+                "netWorth": 1,
+                "tokenBasedPnL": 1,
+                "dollarBasedPnL": 1,
+                "walletToken": 1,
+                "walletUsd": 1,
+                "supplyToken": 1,
+                "supplyUsd": 1,
+                "stakeToken": 1,
+                "stakeUsd": 1,
+                "collateralToken": 1,
+                "collateralUsd": 1,
+                "borrowToken": 3,
+                "borrowUsd": 3,
+                "portfolioId": 5
+            }
+        ],
+        "totalBalance": 8,
+        "absoluteTotalBalance": 8
+    }
+]

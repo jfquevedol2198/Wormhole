@@ -1,0 +1,27 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Speed Up</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div #table class="app-style-guide__content--container">
+            <div class="app-d-f app-ai-c app-jc-c">
+                <app-dynamic-table
+                    [dataSource]="basicTableSource"
+                    [columns]="basicTableColumns"
+                    (onCheckboxClick)="selectRow($event)"
+                ></app-dynamic-table>
+            </div>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-dialog-close mat-stroked-button>Cancel</button>
+        <button mat-flat-button color="accent" (click)="updatePriority()">
+            Speed Up
+        </button>
+    </div>
+</div>

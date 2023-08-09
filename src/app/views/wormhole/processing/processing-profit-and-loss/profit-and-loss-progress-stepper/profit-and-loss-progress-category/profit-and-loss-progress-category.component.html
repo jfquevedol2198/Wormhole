@@ -1,0 +1,18 @@
+<div class="app-progress-category app-m-3-0">
+    <div class="app-d-f app-ai-c">
+        <div class="app-progress-category__line {{
+                !isFirst ? 'active' : null
+            }}"></div>
+        <mat-icon class="app-c-p {{
+                getIconColor(categoryData.syncTimestamp)
+            }} material-icons-outlined">{{ getIcon(categoryData.syncTimestamp) }}</mat-icon>
+        <div class="app-progress-category__line  {{
+                !isLast ? 'active' : null
+            }} "></div>
+    </div>
+    <div class="app-progress-category__title app-ta-c app-m-0-a">
+        <span class="app-f-s-11 app-progress-category__title__text">
+            {{ categoryData.category }}
+        </span>
+    </div>
+</div>

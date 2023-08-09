@@ -1,0 +1,131 @@
+<div class="app-line-chart app-d-f app-fd-c app-jc-c app-ai-c">
+    <div class="app-d-f app-jc-c" *ngIf="loading$ | async">
+        <mat-progress-spinner
+            class="app-m-3-a"
+            color="accent"
+            mode="indeterminate"
+        >
+        </mat-progress-spinner>
+    </div>
+
+    <app-no-data-communicate
+        *ngIf="!(loading$ | async) && series.length === 0"
+        [data]="'Profit And Loss data'"
+    >
+    </app-no-data-communicate>
+
+    <ng-container *ngIf="!(loading$ | async) && series.length !== 0">
+        <form
+            [formGroup]="lineChartControls"
+            class="app-d-f app-ai-c app-w-100"
+        >
+            <div class="app-d-f app-important app-ai-c app-w-100 app-jc-sb">
+                <div
+                    class="
+                        app-d-f app-pl-05 app-ml-1
+                        app-line-chart__days-buttons
+                    "
+                >
+                    <div
+                        *ngFor="
+                            let days of daysSelectionOptionsWithIndexesSubtraction;
+                            let i = index
+                        "
+                        [matTooltip]="
+                            days.isDisable
+                                ? 'No data available for this range'
+                                : null
+                        "
+                        [matTooltipPosition]="'above'"
+                    >
+                        <button
+                            mat-button
+                            class="app-button app-button--small"
+                            (click)="setLastDays(days.daysSelection, i)"
+                            [class.active]="
+                                !isCustomDaysSelected && selectedDayIndex == i
+                            "
+                            [disabled]="days.isDisable"
+                        >
+                            {{
+                                days.daysSelection === 'All'
+                                    ? 'All'
+                                    : days.daysSelection + 'd'
+                            }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="app-d-f app-pl-05 app-ml-1" *ngIf="fullscreenMode">
+                    <span
+                        class="app-button app-button--small"
+                        *ngFor="let day of daysForAverage"
+                    >
+                        MA ({{ day }} days) {{ averageValues[day] }}M
+                    </span>
+                </div>
+
+                <div>
+                    <mat-select
+                        class="
+                            app-line-chart__select
+                            app-mat-input app-d-f app-fw-400
+                        "
+                        formControlName="trendline"
+                    >
+                        <mat-option
+                            *ngFor="let hours of [24, 10, 5, 3]"
+                            [value]="'moving-average-' + hours"
+                            >Moving Average ({{ hours }} Hour)</mat-option
+                        >
+                        <mat-option
+                            *ngFor="let hours of [24, 10, 5, 3]"
+                            [value]="'moving-median-' + hours"
+                            >Moving Median ({{ hours }} Hour)</mat-option
+                        >
+                    </mat-select>
+
+                    <button
+                        *ngIf="!fullscreenMode"
+                        mat-icon-button
+                        class="app-button app-button--small app-d-f"
+                        (click)="fullscreen.emit()"
+                        matTooltip="View in full screen"
+                    >
+                        <mat-icon>fullscreen</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div
+            class="app-line-chart__legend app-d-f app-jc-c app-fw-w app-mb-1"
+            *ngIf="series?.length > 1"
+        >
+            <div
+                class="app-line-chart__legend-item app-d-if app-ai-c"
+                *ngFor="let line of series"
+            >
+                <div
+                    class="app-line-chart__legend-indicator"
+                    [style.background-color]="line.color"
+                ></div>
+
+                <span>{{ line.name }}</span>
+            </div>
+        </div>
+    </ng-container>
+
+    <svg
+        *ngIf="!hideDisplay"
+        class="app-line-chart__display"
+        [attr.width]="width$ | async"
+        [attr.height]="height - 80"
+    ></svg>
+
+    <svg
+        class="app-line-chart__navigator"
+        [attr.width]="width$ | async"
+        [attr.height]="80"
+    ></svg>
+</div>

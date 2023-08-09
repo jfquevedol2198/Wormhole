@@ -1,0 +1,113 @@
+<div class="app-dialog">
+    <div class="app-mb-1">
+        <app-status-message class="app-d-b"></app-status-message>
+    </div>
+
+    <mat-dialog-content
+        class="
+            app-advanced-search-dialog app-important app-d-f app-fd-r app-jc-sb
+        "
+    >
+        <div class="app-fg-2">
+            <span class="app-advanced-search-dialog__title app-mb-075"
+                >Advanced Search</span
+            >
+            <form [formGroup]="form" class="app-advanced-search-dialog__form">
+                <app-advanced-search-form
+                    [form]="form"
+                    [submitted]="submitted"
+                    [platforms]="platforms"
+                ></app-advanced-search-form>
+            </form>
+        </div>
+
+        <div
+            class="
+                app-advanced-search-list
+                app-advanced-search-dialog-list
+                app-fg-1
+                app-ml-1
+            "
+        >
+            <span class="app-advanced-search-dialog__title">Presets</span>
+            <ng-scrollbar track="all">
+                <div class="app-d-f app-important">
+                    <app-advanced-search-list
+                        class="app-advanced-search-list__recent"
+                        (updatedPreset)="updatePreset($event)"
+                        (removedPreset)="removePreset($event)"
+                        title="Recent Search"
+                        [presetsList]="recentPresetsList$"
+                    ></app-advanced-search-list>
+                    <app-advanced-search-list
+                        class="app-advanced-search-list__saved"
+                        (updatedPreset)="updatePreset($event)"
+                        (removedPreset)="removePreset($event)"
+                        title="Saved search"
+                        [presetsList]="savedPresetsList$"
+                    ></app-advanced-search-list>
+                </div>
+            </ng-scrollbar>
+        </div>
+    </mat-dialog-content>
+    <mat-divider class="app-important app-mt-15"></mat-divider>
+    <mat-dialog-actions
+        *ngIf="!data.isToBeSelected"
+        class="app-d-f app-jc-sb app-important"
+    >
+        <div>
+            <button class="mat-stroked-button" (click)="cancel()">
+                Cancel
+            </button>
+        </div>
+        <div>
+            <button
+                class="mat-stroked-button app-mr-05 app-important"
+                type="submit"
+                (click)="reset()"
+            >
+                Reset
+            </button>
+            <button
+                class="mat-flat-button mat-accent app-mr-05 app-important"
+                type="submit"
+                (click)="savePresetAndSearch()"
+            >
+                Save and Search
+            </button>
+
+            <button
+                class="mat-flat-button mat-accent app-mr-05 app-important"
+                (click)="searchPreset()"
+            >
+                Search
+            </button>
+            <button
+                *ngIf="presetToUpdate"
+                class="mat-flat-button mat-accent"
+                (click)="update()"
+                [disabled]="!form.dirty"
+            >
+                Update
+            </button>
+        </div>
+    </mat-dialog-actions>
+    <mat-dialog-actions
+        *ngIf="data.isToBeSelected"
+        class="app-d-f app-jc-sb app-important"
+    >
+        <div>
+            <button class="mat-stroked-button app-mr-05" (click)="cancel()">
+                Cancel
+            </button>
+        </div>
+        <div>
+            <button
+                class="mat-raised-button mat-accent app-important"
+                (click)="select()"
+            >
+                Select
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

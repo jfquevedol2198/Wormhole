@@ -1,0 +1,56 @@
+@import '../../../../../../../../styles/variables/variables.scss';
+@import '../../../../../../../../styles/colors/colors.scss';
+
+.app-overlay {
+    .line-link-to-parent {
+        margin-left: 0.75 * $spacer;
+        background-color: $tableLinkLineColor;
+        width: $tableLinkLineSize;
+        bottom: $spacer + (1.2 * $spacer);
+        position: relative;
+    }
+
+    .app-overlay-table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: $spacer;
+        margin-bottom: $spacer;
+
+        th {
+            border-bottom: 0;
+            &:first-child {
+                background-color: $tableBg1;
+            }
+
+            &:not(:first-child) {
+                background-color: $tableBg2;
+                border-bottom: 1px solid $light-08;
+                color: $light-02;
+                font-weight: normal;
+            }
+        }
+
+        td:not(:first-child) {
+            background-color: $tableBg2;
+            border-bottom: 1px solid $light-08;
+            color: $highDarkEmphasis;
+        }
+
+        &__line-to-parent {
+            background-color: $tableBg1;
+            border-top: 0;
+            border-bottom: 0;
+            display: flex;
+            align-items: center;
+            height: 2.5 * $spacer;
+            padding: 0 !important;
+            min-width: 1.5 * $spacer;
+
+            &__link {
+                width: 100%;
+                height: $tableLinkLineSize;
+                background-color: $tableLinkLineColor;
+            }
+        }
+    }
+}

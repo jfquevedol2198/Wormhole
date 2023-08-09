@@ -1,0 +1,51 @@
+@import '../../../../../../../styles/colors/colors.scss';
+
+.usages {
+    ::ng-deep {
+        .usage-label {
+            span {
+                line-height: 26px;
+                padding: 0 13px;
+                border-radius: 30px;
+            }
+            &__usage {
+                border: 2px solid $darkOliveGreen-2;
+                line-height: 22px!important;
+            }
+            &__analysed {
+                border: 2px solid $skyBlue-2;
+                line-height: 22px!important;
+            }
+        }
+    }
+    
+    .usage-content {
+        padding: 0 56px;
+        &__filter {
+            max-width: 475px;
+            flex-basis: 475px;
+            &__header {
+                .btn-filter {
+                    font-size: 16px;
+                    width: 47.02px;
+                    height: 48px;
+                    line-height: 46px;
+                    margin: 0;
+                }
+            }
+            &__form {
+                padding: 19px;
+                form {
+                    max-width: 353px;
+                }
+            }
+        }
+        &__diagram {
+            padding: 56px;
+            svg {
+                width: 100%;
+                min-height: 350px;
+            }
+        }
+    }
+}

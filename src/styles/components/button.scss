@@ -1,0 +1,28 @@
+@import '../variables/variables';
+
+.app-button {
+    &--small {
+        font-size: $font-size-10 !important;
+        line-height: $font-size-12 !important;
+        padding: 0 0.5 * $spacer !important;
+        min-width: 0.5 * $spacer !important;
+    }
+
+    &--faded {
+        color: $dark-07 !important;
+    }
+    &--table {
+        line-height: 1.5 * $spacer !important;
+        font-size: $font-size-10 !important;
+        min-width: 5.25 * $spacer !important;
+    }
+    &--toggle {
+        height: 2.25 * $spacer !important;
+        button {
+            height: 2.25 * $spacer !important;
+            .mat-button-toggle-label-content {
+                line-height: unset;
+            }
+        }
+    }
+}

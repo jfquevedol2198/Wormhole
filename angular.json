@@ -1,0 +1,150 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "PortalApp": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-builders/custom-webpack:browser",
+                    "options": {
+                        "customWebpackConfig": {
+                            "path": "./extra-webpack.config.js",
+                            "mergeRules": {
+                                "externals": "replace"
+                            }
+                        },
+                        "outputPath": "dist/PortalApp",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/mocks/notifications.json",
+                            "src/mocks/processingProfitAndLoss.json",
+                            "src/mocks/dataAdminPlatforms.json",
+                            "src/mocks/dataAdminAddressLabels.json",
+                            "src/mocks/dataAdminAddressLabelsJobs.json",
+                            "src/mocks/dataAdminMethodDefinitions.json",
+                            "src/mocks/dataAdminMarketDataProviders.json",
+                            "src/mocks/dataAdminMarketDataProvidersJobs.json",
+                            "src/mocks/dataAdminCurrencyPairs.json",
+                            "src/mocks/dataAdminCurrencyPairsJobs.json",
+                            "src/mocks/dataAdminCurrencyPairsProcessingJobs.json",
+                            "src/mocks/dataAdminCurrencyPairsMarketToMarket.json",
+                            "src/mocks/listCoins.json",
+                            "src/config.json"
+                        ],
+                        "styles": [
+                            "src/styles.scss",
+                            "src/styles/themes/themes.scss",
+                            "./node_modules/tippy.js/dist/tippy.css"
+                        ],
+                        "scripts": [],
+                        "allowedCommonJsDependencies": ["web3"]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "30kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-builders/custom-webpack:dev-server",
+                    "options": {
+                        "browserTarget": "PortalApp:build",
+                        "proxyConfig": "proxy.conf.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "PortalApp:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "PortalApp:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-builders/custom-webpack:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+                            "src/styles.scss"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "PortalApp:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "PortalApp:serve:production"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "PortalApp",
+    "cli": {
+        "analytics": false
+    }
+}

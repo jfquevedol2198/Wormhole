@@ -1,0 +1,29 @@
+@import '../../../styles/variables/variables.scss';
+@import '../../../styles/colors/colors.scss';
+.app-advanced-search-dialog {
+    &__form-field.wider {
+        width: 15 * $spacer;
+    }
+    &__close-button {
+        position: absolute;
+        right: -1.313 * $spacer;
+        top: 0.9 * $spacer;
+    }
+    &__title {
+        font-size: 10.5pt;
+        color: $light-05;
+        font-weight: 500;
+        display: block;
+    }
+}
+
+.app-advanced-search-list {
+    border-left: 0.063 * $spacer solid $elevation-03;
+    min-width: 400px;
+    margin-left: 10px;
+}
+
+.app-advanced-search-dialog-list {
+    padding-left: 1.5 * $spacer;
+    min-height: 1.25 * $spacer;
+}

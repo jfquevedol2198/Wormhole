@@ -1,0 +1,120 @@
+<div class="app-general-ledger-table app-h-100">
+    <div class="app-f-s-20 app-p-r">
+        <mat-toolbar
+            class="
+                app-mt-2 app-d-f app-important app-jc-sb
+                app-general-ledger-table__toolbar
+            "
+        >
+            <mat-tab-group
+                mat-align-tabs="start"
+                class="app-general-ledger-table__toolbar__group"
+                (selectedTabChange)="onViewChange($event.index)"
+                [selectedIndex]="tableView === 'transactions' ? 0 : 1"
+            >
+                <mat-tab
+                    label="Transactions"
+                    [tabIndex]="0"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                ></mat-tab>
+                <mat-tab
+                    label="DeFi Impact"
+                    [tabIndex]="1"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                ></mat-tab>
+            </mat-tab-group>
+            <div
+                class="
+                    app-general-ledger-table__toolbar__buttons
+                    app-c-dde app-p-a app-d-f app-ai-c
+                "
+            >
+                <mat-slide-toggle
+                    labelPosition="before"
+                    [checked]="isEditMode"
+                    (change)="onEditModeToggleClick($event)"
+                    *ngIf="
+                        tableView === 'transactions' &&
+                        authenticationService.isDataValidator()
+                    "
+                    [disabled]="generalLedgerService.isTransactionsDataLoading"
+                    class="
+                        app-general-ledger-table__toolbar__buttons__toggle
+                        app-f-s-10 app-m-05
+                    "
+                    >Edit Mode</mat-slide-toggle
+                >
+                <button
+                    mat-button
+                    class="
+                        app-general-ledger-table__toolbar__buttons__search-button
+                        main-toolbar-button
+                    "
+                    *ngIf="reportPresetId && tableView === 'transactions'"
+                    (click)="resetReportPresetId()"
+                    [disabled]="generalLedgerService.isTransactionsDataLoading"
+                >
+                    Reset Filters
+                </button>
+                <button
+                    *ngIf="tableView === 'transactions'"
+                    mat-button
+                    class="
+                        app-general-ledger-table__toolbar__buttons__search-button
+                        main-toolbar-button
+                    "
+                    (click)="openDialog()"
+                    [disabled]="generalLedgerService.isTransactionsDataLoading"
+                >
+                    <mat-icon
+                        class="
+                            mat-toolbar-icon
+                            app-general-ledger-table__toolbar__buttons__search-button__icon
+                        "
+                        >manage_search</mat-icon
+                    >
+                    Advanced Search
+                </button>
+                <div
+                    *ngIf="tableView === 'de-fi-impact'"
+                    class="app-d-f app-ai-c"
+                >
+                    <span class="app-f-s-10">Sorting by: $ </span>
+                    <mat-slide-toggle
+                        class="app-c-dde app-mr-05"
+                        labelPosition="before"
+                        [checked]="sortingDeFiImpactBy === 'diffPercentage'"
+                        (change)="onChangeSortingByClick()"
+                        [disabled]="generalLedgerService.isDeFiImpactLoading"
+                    ></mat-slide-toggle>
+                    <span class="app-f-s-10">%</span>
+                </div>
+                <button
+                    mat-icon-button
+                    class="app-button app-button--small app-d-f"
+                    (click)="openFullscreen()"
+                    [disabled]="
+                        generalLedgerService.pnlEssentialDataLoading$ | async
+                    "
+                    matTooltip="View in full screen"
+                >
+                    <mat-icon>fullscreen</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+
+        <div class="app-w-100 app-p-r">
+            <app-transactions-table
+                *ngIf="tableView === 'transactions'"
+            ></app-transactions-table>
+            <app-de-fi-impact-table
+                *ngIf="tableView === 'de-fi-impact'"
+                [paginationDisabled]="paginationDisabled"
+            ></app-de-fi-impact-table>
+        </div>
+    </div>
+</div>

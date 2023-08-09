@@ -1,0 +1,254 @@
+<div *ngIf="isOperationsLoading">
+    <mat-progress-spinner class="app-m-3" color="accent" mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<div
+    class="app-d-f app-operations"
+    *ngIf="
+        transaction.operations &&
+        transaction.operations.length > 0 &&
+        !isOperationsLoading
+    "
+>
+    <div class="line-link-to-parent"></div>
+    <table
+        mat-table
+        [dataSource]="transaction.operations"
+        class="app-operations-table mat-elevation-z8 app-w-50"
+        multiTemplateDataRows
+    >
+        <ng-container
+            *ngFor="let column of columns"
+            [matColumnDef]="column.columnDef"
+        >
+            <th mat-header-cell *matHeaderCellDef>
+                <span>{{ column.header }}</span>
+            </th>
+
+            <td
+                mat-cell
+                *matCellDef="let operation"
+                [class.app-c-p]="column.tooltip"
+                [ngSwitch]="column.columnType"
+            >
+                <ng-container *ngSwitchCase="'parent-link'"
+                    ><div class="link"></div
+                ></ng-container>
+                <ng-container *ngSwitchCase="'expand-overlay'">
+                    <div class="app-d-f app-ai-c">
+                        <mat-icon
+                            class="app-c-p"
+                            (click)="
+                                operation.expandOverlay =
+                                    !operation.expandOverlay
+                            "
+                            >{{
+                                operation.expandOverlay
+                                    ? 'keyboard_arrow_down'
+                                    : 'keyboard_arrow_right'
+                            }}</mat-icon
+                        >
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'logo'">
+                    <app-logo-icon
+                        [logo]="column.cell(operation)"
+                        [name]="column.tooltip(operation)"
+                    ></app-logo-icon>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'addressLabel'">
+                    <div>
+                        <div #tippyTemplate>
+                            <app-dynamic-table-tooltip
+                                [title]="column.header"
+                                [label]="column.cell(operation)"
+                                [address]="column.subCell(operation)"
+                                (refresh)="refreshData.emit()"
+                            ></app-dynamic-table-tooltip>
+                        </div>
+                        <div
+                            class="app-c-p app-ov-h app-t-ov-e app-w-s-n"
+                            [ngxTippy]="tippyTemplate"
+                            [tippyProps]="tippyProps"
+                        >
+                            {{ column.cell(operation) }}
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'toggle'">
+                    <div class="app-d-f app-fw-w">
+                        <mat-slide-toggle
+                            [checked]="!operation.enabled"
+                            (change)="
+                                onDisableOperationClick(
+                                    operation,
+                                    $event.checked
+                                )
+                            "
+                        ></mat-slide-toggle>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'checkbox'">
+                    <div class="app-d-f app-fw-w">
+                        <mat-checkbox
+                            (click)="selectOperation(operation)"
+                        ></mat-checkbox>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'treatment'">
+                    <mat-icon
+                        class="
+                            app-c-p app-mr-025 app-f-s-14
+                            material-icons-outlined
+                        "
+                        *ngFor="let treatment of operation.treatmentWithIcons"
+                        [matTooltip]="treatment.name"
+                        [matTooltipPosition]="'above'"
+                        >{{ treatment.icon }}</mat-icon
+                    >
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'icon'">
+                    <mat-icon
+                        class="
+                            app-c-p app-mr-025 app-f-s-14
+                            material-icons-outlined
+                        "
+                        [matTooltip]="operation.statusWithIcon.status"
+                        [matTooltipPosition]="'above'"
+                        >{{ operation.statusWithIcon.icon }}</mat-icon
+                    >
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'button'">
+                    <button
+                        class="
+                            mat-stroked-button
+                            app-button--small
+                            app-important app-button
+                        "
+                        mat-button
+                        (click)="editOperation(operation)"
+                        *ngIf="operation.statusWithIcon.status !== 'Manual'"
+                    >
+                        Edit
+                    </button>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+                    <span>
+                        {{ column.cell(operation) }}
+                    </span>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container [matColumnDef]="'margin'">
+            <td
+                *matCellDef="let operations; let i = dataIndex"
+                class="
+                    app-operations-table__row__inner__cell
+                    app-operations-table__row__inner__cell--margin
+                "
+                [class.app-operations-table__row__inner__cell--last-row]="
+                    operations.expandOverlay &&
+                    transaction.operations.length - 1 == i
+                "
+                mat-cell
+            ></td>
+        </ng-container>
+        <ng-container [matColumnDef]="'overlay'">
+            <td
+                class="app-operations-table__row__inner__cell"
+                mat-cell
+                *matCellDef="let operations"
+                [attr.colspan]="displayedColumns.length - 1"
+                [class.app-operations-table__row__inner__cell--expanded]="
+                    operations.expandOverlay
+                "
+            >
+                <div
+                    [@detailExpand]="
+                        operations.expandOverlay ? 'expanded' : 'collapsed'
+                    "
+                >
+                    <div *ngIf="operations.expandOverlay">
+                        <app-overlay-table
+                            [operation]="operations"
+                        ></app-overlay-table>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+            class="app-operations-table__row__header"
+        ></tr>
+
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = dataIndex"
+        ></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: ['margin', 'overlay']"
+            class="app-operations-table__row__inner"
+            [class.app-operations-table__row__inner--hide-overlay]="
+                !row.expandOverlay
+            "
+        ></tr>
+    </table>
+
+    <div class="app-ml-3 app-d-f app-ai-c" *ngIf="isEditMode">
+        <div class="app-d-f">
+            <button
+                class="mat-stroked-button app-mr-05 app-important"
+                mat-button
+                type="submit"
+                (click)="addOperation()"
+            >
+                Add New Operation
+            </button>
+            <div
+                [matTooltip]="'Remove manually added operations'"
+                [matTooltipPosition]="'above'"
+            >
+                <button
+                    class="mat-stroked-button app-mr-05 app-important"
+                    mat-button
+                    type="submit"
+                    (click)="removeOperations()"
+                    [disabled]="!areOperationsToRemove()"
+                >
+                    Remove Selected
+                </button>
+            </div>
+            <button
+                class="mat-stroked-button app-mr-05 app-important"
+                mat-button
+                type="submit"
+                (click)="restoreOperations()"
+                [disabled]="!areSelectedOperations()"
+            >
+                Restore Selected
+            </button>
+        </div>
+    </div>
+</div>
+
+<app-no-data-communicate
+    *ngIf="
+        transaction.operations &&
+        transaction.operations.length === 0 &&
+        !isOperationsLoading
+    "
+    [data]="'operations'"
+>
+</app-no-data-communicate>

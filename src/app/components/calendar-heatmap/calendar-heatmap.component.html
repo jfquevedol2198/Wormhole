@@ -1,0 +1,21 @@
+<div class="app-calendar-heatmap">
+    <mat-progress-spinner
+        *ngIf="generalLedgerService.isTraderStaminaLoading"
+        class="app-calendar-heatmap__spinner"
+        color="accent"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+
+    <div
+        [style.visibility]="
+            !generalLedgerService.isTraderStaminaLoading &&
+            (generalLedgerService.traderStaminaData$ | async).length > 0
+                ? null
+                : 'hidden'
+        "
+    >
+        <span class="app-d-f app-ai-c app-mb-1">Trader Stamina</span>
+        <div class="app-calendar-heatmap__chart app-p-r app-mt-05"></div>
+    </div>
+</div>

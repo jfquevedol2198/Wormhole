@@ -1,0 +1,9 @@
+<mat-chip-list>
+    <mat-chip
+        class="app-tt-c app-chip--{{ type }}"
+        [class.app-chip--small]="size === 'small'"
+        [matTooltip]="tooltipText"
+        [matTooltipPosition]="'above'"
+        >{{ text ? text : type }}</mat-chip
+    >
+</mat-chip-list>

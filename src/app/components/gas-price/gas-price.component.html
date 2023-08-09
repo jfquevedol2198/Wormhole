@@ -1,0 +1,46 @@
+<div class="app-gas-price app-pt-1 app-pb-1" *ngIf="gasPrice">
+    <div class="app-d-f app-jc-sa app-ta-c">
+        <div class="app-gas-price--item">
+            <div class="app-gas-price--title">Slow</div>
+            <h2 class="app-gas-price--success app-important app-mb-0">
+                {{ gasPrice.slow }} gwei
+            </h2>
+            <div class="app-gas-price--footer">
+                {{ getETHPriceFromGwei(gasPrice.slow) }} < 10mins
+            </div>
+        </div>
+
+        <div class="app-gas-price--item">
+            <div class="app-gas-price--title">Average</div>
+            <h2 class="app-gas-price--info app-important app-mb-0">
+                {{ gasPrice.average }} gwei
+            </h2>
+            <div class="app-gas-price--footer">
+                {{ getETHPriceFromGwei(gasPrice.average) }} ~3mins
+            </div>
+        </div>
+
+        <div class="app-gas-price--item">
+            <div class="app-gas-price--title">Fast</div>
+            <h2 class="app-gas-price--error app-important app-mb-0">
+                {{ gasPrice.fast }} gwei
+            </h2>
+            <div class="app-gas-price--footer">
+                {{ getETHPriceFromGwei(gasPrice.fast) }} ~1min
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-d-f app-fd-c app-pt-1">
+    <mat-progress-spinner
+        *ngIf="!gasPrice"
+        class="app-p-a app-m-0-a app-p-1"
+        color="accent"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+
+    <p *ngIf="gasPrice" class="app-c-dde app-f-s-12">Gas Price</p>
+    <div class="app-gas-price--chart app-w-100"></div>
+</div>

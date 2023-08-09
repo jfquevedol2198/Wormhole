@@ -1,0 +1,63 @@
+<table
+    *ngIf="inventoryPerformance"
+    mat-table
+    [dataSource]="inventoryPerformance.records"
+    class="app-inventory-performance-table mat-elevation-z8 app-w-100"
+    multiTemplateDataRows
+>
+    <ng-container
+        *ngFor="let column of columns"
+        [matColumnDef]="column.columnDef"
+    >
+        <th mat-header-cell *matHeaderCellDef>
+            <app-table-header-component
+                [column]="column"
+                [sortColumns]="inventoryPerformance.sortColumns"
+                (sort)="
+                    sortInventoryPerformance(
+                        $event.isButtonPressed,
+                        $event.columnDef,
+                        inventoryPerformance
+                    )
+                "
+            ></app-table-header-component>
+        </th>
+
+        <td
+            mat-cell
+            *matCellDef="let row"
+            [class.app-c-p]="column.tooltip"
+            [style.background-color]="
+                inventoryPerformance.highlightColumn === column.columnDef
+                    ? getBackgroundColor(inventoryPerformance.highlightColumn)
+                    : ''
+            "
+        >
+            <span
+                [matTooltip]="column.tooltip ? column.tooltip(row) : undefined"
+                [matTooltipPosition]="'above'"
+            >
+                {{ column.cell(row) }}
+
+                <small *ngIf="column.subCell" class="app-d-b app-f-s-8">
+                    {{ column.subCell(row) }}
+                </small>
+            </span>
+        </td>
+    </ng-container>
+
+    <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+        class="app-inventory-performance-table__row__header"
+    ></tr>
+    <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns; let i = dataIndex"
+        [ngClass]="
+            i % 2 === 0
+                ? 'app-inventory-performance-table__row__odd'
+                : 'app-inventory-performance-table__row__even'
+        "
+    ></tr>
+</table>

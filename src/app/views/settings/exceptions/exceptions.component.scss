@@ -1,0 +1,13 @@
+@import '../../../../styles/mixins/content';
+@import '../../../../styles/mixins/table';
+
+.app-configuration-exceptions {
+    @include content;
+    @include contentPosition;
+    @include title;
+
+    @include tableHeader;
+    @include tableHeaderLastChild;
+    @include tableDataLastChild;
+   
+}

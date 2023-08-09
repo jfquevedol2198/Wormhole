@@ -1,0 +1,199 @@
+<div class="app-d-f app-important app-ml-075 app-mt-1 app-mb-1 app-ai-c">
+    <form [formGroup]="filtersForm">
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Task state</mat-label>
+            <mat-select color="accent" formControlName="taskStates">
+                <mat-option
+                    *ngFor="let taskState of taskStatesOptions"
+                    [value]="taskState"
+                    >{{ taskState }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Name</mat-label>
+            <mat-select color="accent" formControlName="instanceName">
+                <mat-option
+                    *ngFor="let option of instanceNamesOptions"
+                    [value]="option"
+                    >{{ option }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--short
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Select By</mat-label>
+            <mat-select formControlName="selectBy">
+                <mat-option
+                    *ngFor="let option of selectByOptions"
+                    [value]="option"
+                    >{{ option }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Start Block Height</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="blockStartHeight"
+            />
+            <button
+                (click)="filtersForm.controls.blockStartHeight.setValue('')"
+                *ngIf="filtersForm.controls.blockStartHeight.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>End Block Height</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="blockEndHeight"
+            />
+            <button
+                (click)="filtersForm.controls.blockEndHeight.setValue('')"
+                *ngIf="filtersForm.controls.blockEndHeight.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Active</mat-label>
+            <mat-select formControlName="enabled">
+                <mat-option
+                    *ngFor="let option of enabledOptions"
+                    [value]="option"
+                    >{{ option }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--long
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Session ID</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="sessionId"
+            />
+            <button
+                (click)="filtersForm.controls.sessionId.setValue('')"
+                *ngIf="filtersForm.controls.sessionId.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Worker Task ID</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="workerTaskIds"
+            />
+            <button
+                (click)="filtersForm.controls.workerTaskIds.setValue('')"
+                *ngIf="filtersForm.controls.workerTaskIds.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+    <div>
+        <button
+            class="app-mr-05 app-important"
+            color="accent"
+            type="submit"
+            (click)="filter()"
+            mat-flat-button
+            mat-button
+        >
+            Filter
+        </button>
+        <button
+            class="mat-stroked-button app-mr-05 app-important"
+            (click)="reset()"
+            *ngIf="areFiltersSelected()"
+        >
+            Reset
+        </button>
+    </div>
+</div>

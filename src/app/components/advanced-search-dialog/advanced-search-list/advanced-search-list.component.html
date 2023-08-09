@@ -1,0 +1,68 @@
+<div class="app-d-f app-fd-r app-important">
+    <div class="app-mr-1 app-important">
+        <mat-list>
+            <span
+                class="app-tt-u app-advanced-search-dialog-list__text lighter"
+                >{{ title }}</span
+            >
+            <mat-list-item
+                class="app-advanced-search-dialog-list__text"
+                *ngFor="let preset of presetsList | async"
+            >
+                <div
+                    class="
+                        app-d-f
+                        app-jc-sb
+                        app-important
+                        app-ai-c
+                        app-important
+                        app-pl-75
+                        app-c-p
+                    "
+                    (click)="update(preset)"
+                    [ngClass]="{
+                        'app-advanced-search-dialog-list__active-item':
+                            preset.isActive
+                    }"
+                >
+                    <div class="app-advanced-search-dialog-list__wrapper">
+                        <span
+                            *ngIf="preset.name"
+                            class="app-advanced-search-dialog-list__text"
+                            [matTooltip]="preset.name"
+                            >{{ preset.name }}</span
+                        >
+                    </div>
+                    <div>
+                        <button
+                            class="app-advanced-search-dialog-list__button"
+                            mat-icon-button
+                            (click)="update(preset)"
+                        >
+                            <mat-icon
+                                class="
+                                    app-f-s-14 app-important
+                                    app-advanced-search-dialog-list__button-icon
+                                "
+                                >tune</mat-icon
+                            >
+                        </button>
+                        <button
+                            class="app-advanced-search-dialog-list__button"
+                            (click)="delete(preset)"
+                            mat-icon-button
+                        >
+                            <mat-icon
+                                class="
+                                    app-advanced-search-dialog-list__button-icon
+                                    app-f-s-14 app-important
+                                "
+                                >delete</mat-icon
+                            >
+                        </button>
+                    </div>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

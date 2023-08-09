@@ -1,0 +1,445 @@
+<div class="app-report-history app-container">
+    <app-status-message class="app-d-b"></app-status-message>
+    <mat-toolbar class="app-report-history__toolbar">
+        <mat-toolbar-row class="app-report-history__toolbar-row">
+            <div class="app-d-f app-important app-jc-sb app-w-100 app-ai-c">
+                <p
+                    class="
+                        app-d-f
+                        app-ai-c
+                        app-fw-400
+                        app-f-s-14
+                        app-important
+                        app-m-0
+                        app-important
+                    "
+                >
+                    Reports
+                </p>
+
+                <div class="app-d-f app-ai-c">
+                    <button
+                        class="app-report-history-toolbar__new-report"
+                        mat-button
+                        matTooltip="Expand New Report Creator"
+                        (click)="toggleNewReportCreator()"
+                    >
+                        <mat-icon
+                            class="
+                                material-icons-outlined
+                                app-mr-05 app-important
+                            "
+                            >note_add</mat-icon
+                        >
+                        New Report
+                    </button>
+                    <button
+                        class="
+                            app-report-history-toolbar__filter
+                            app-c-hde app-important
+                        "
+                        mat-icon-button
+                        aria-label="Filter button"
+                        matTooltip="Filter reports (TBD)"
+                        matBadgeSize="medium"
+                        disabled
+                    >
+                        <mat-icon class="material-icons-outlined"
+                            >filter_alt</mat-icon
+                        >
+                    </button>
+                    <form [formGroup]="reportForm" class="app-d-f">
+                        <mat-form-field
+                            *ngIf="isSearchInputOpen"
+                            appearance="fill"
+                            class="
+                                app-form-select
+                                app-form-select--search
+                                app-form-select--search--small
+                                app-mr-1
+                            "
+                        >
+                            <input
+                                matInput
+                                type="text"
+                                formControlName="searchInput"
+                                placeholder="Search"
+                                (keyup)="handleKeyUp($event)"
+                            />
+                            <button
+                                matSuffix
+                                mat-icon-button
+                                (click)="onSearch()"
+                            >
+                                <mat-icon>done</mat-icon>
+                            </button>
+                            <button
+                                matSuffix
+                                mat-icon-button
+                                (click)="onCloseSearchClick()"
+                            >
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <button
+                            *ngIf="!isSearchInputOpen"
+                            mat-icon-button
+                            class="app-button app-button--small app-d-f"
+                            (click)="onSearchButtonClick()"
+                        >
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div
+        *ngIf="isCreatorOpen"
+        class="app-pl-1 app-report-history__new-report-form app-mt-15 app-mb-2"
+    >
+        <p
+            class="
+                app-d-f app-ai-c app-fw-400 app-f-s-14 app-important app-mb-15
+            "
+        >
+            Create New Report
+        </p>
+        <form [formGroup]="reportForm">
+            <div class="app-d-f app-important app-fd-r app-ai-c app-mb-1">
+                <mat-form-field
+                    class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--medium
+                        app-mr-05
+                        app-report-history__new-report-form__field
+                    "
+                    appearance="fill"
+                >
+                    <mat-label>Based on Preset</mat-label>
+                    <mat-select formControlName="reportPresetId">
+                        <mat-option>
+                            <button
+                                type="button"
+                                mat-icon-button
+                                (click)="openDialog()"
+                            >
+                                Advanced Presets View
+                            </button>
+                        </mat-option>
+                        <mat-option
+                            *ngFor="let preset of savedPresetsList$ | async"
+                            [value]="preset.reportPresetId"
+                            >{{ preset.name }}</mat-option
+                        >
+                    </mat-select>
+                    <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    <mat-error>Report preset is required</mat-error>
+                </mat-form-field>
+                <mat-form-field
+                    class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--medium
+                        app-form-select--close
+                        app-mr-05
+                        app-report-history__new-report-form__field
+                    "
+                    appearance="fill"
+                >
+                    <mat-label>Report Name</mat-label>
+                    <input
+                        matInput
+                        data-lpignore="true"
+                        formControlName="name"
+                    />
+                    <button
+                        (click)="reportForm.controls.name.setValue('')"
+                        *ngIf="reportForm.controls.name.value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                    >
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-form-field
+                    class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--long
+                        app-form-select--close
+                        app-mr-05
+                        app-report-history__new-report-form__field
+                    "
+                    appearance="fill"
+                >
+                    <mat-label>Description</mat-label>
+                    <input
+                        matInput
+                        data-lpignore="true"
+                        formControlName="description"
+                    />
+                    <button
+                        (click)="reportForm.controls.description.setValue('')"
+                        *ngIf="reportForm.controls.description.value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                    >
+                        <mat-icon class="app-f-s-9">close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-form-field
+                    class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--medium
+                        app-mr-05
+                        app-report-history__new-report-form__field
+                    "
+                    appearance="fill"
+                >
+                    <mat-label>Schedule</mat-label>
+                    <mat-select formControlName="schedule">
+                        <mat-option
+                            *ngFor="let scheduleOption of scheduleOptions"
+                            [value]="scheduleOption"
+                            >{{ scheduleOption }}</mat-option
+                        >
+                    </mat-select>
+                    <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                </mat-form-field>
+                <div>
+                    <button
+                        class="app-report-history__new-report-form__button"
+                        mat-button
+                        matTooltip="Create New Report"
+                        (click)="createNewReport()"
+                        color="accent"
+                        mat-raised-button
+                    >
+                        Create New Report
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-accordion displayMode="flat" multi="true" togglePosition="before">
+        <mat-expansion-panel
+            *ngFor="let report of reportDefinitions$ | async; let i = index"
+            [expanded]="report.isExpanded"
+            class="
+                mat-elevation-z0
+                app-report-history__panel
+                app-ml-1 app-mr-1 app-important
+            "
+        >
+            <mat-expansion-panel-header [collapsedHeight]="collapsedHeight">
+                <mat-panel-title class="app-report-history__panel-title">
+                    <div
+                        class="
+                            app-d-f
+                            app-f-s-10
+                            app-fw-400
+                            app-important
+                            app-jc-fs
+                            app-ai-c
+                        "
+                    >
+                        <div
+                            class="app-d-f app-important app-jc-sb app-ai-c"
+                            *ngIf="!report.isEdited"
+                        >
+                            <div
+                                class="
+                                    app-report-history__panel-name
+                                    app-report-history__panel-text
+                                "
+                                [matTooltip]="report.name"
+                            >
+                                {{ report.name }}
+                            </div>
+                            <div
+                                class="
+                                    app-report-history__panel-text
+                                    app-report-history__panel-description
+                                "
+                                [matTooltip]="report.description"
+                            >
+                                {{ report.description }}
+                            </div>
+                            <div
+                                class="
+                                    app-report-history__panel-schedule
+                                    app-report-history__panel-text
+                                    app-ml-05
+                                "
+                            >
+                                {{ report.schedule }}
+                            </div>
+                        </div>
+                        <form
+                            [formGroup]="report.formGroup"
+                            *ngIf="report.isEdited"
+                        >
+                            <div class="app-d-f app-important app-ai-c">
+                                <mat-form-field
+                                    class="
+                                        app-form-select
+                                        app-form-select--small
+                                        app-form-select--medium
+                                        app-form-select--close
+                                        app-mr-05
+                                        app-report-history__panel-form__field
+                                    "
+                                    (keydown.Space)="
+                                        $event.stopImmediatePropagation()
+                                    "
+                                    (click)="stopEventPropagation($event)"
+                                    appearance="fill"
+                                >
+                                    <mat-label>Report Name</mat-label>
+                                    <input
+                                        matInput
+                                        data-lpignore="true"
+                                        #name
+                                        formControlName="name"
+                                    />
+                                    <button
+                                        (click)="name.value = ''"
+                                        *ngIf="name.value"
+                                        matSuffix
+                                        mat-icon-button
+                                        aria-label="Clear"
+                                        class="
+                                            app-report-history__panel-form__button
+                                        "
+                                    >
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                                <mat-form-field
+                                    class="
+                                        app-form-select
+                                        app-form-select--small
+                                        app-form-select--long
+                                        app-form-select--close
+                                        app-mr-05
+                                        app-report-history__new-report-form__field
+                                    "
+                                    (click)="stopEventPropagation($event)"
+                                    appearance="fill"
+                                    (keydown.Space)="
+                                        $event.stopImmediatePropagation()
+                                    "
+                                >
+                                    <mat-label>Report Description</mat-label>
+                                    <input
+                                        matInput
+                                        data-lpignore="true"
+                                        #description
+                                        formControlName="description"
+                                    />
+                                    <button
+                                        (click)="description.value = ''"
+                                        *ngIf="description.value"
+                                        matSuffix
+                                        mat-icon-button
+                                        aria-label="Clear"
+                                        class="
+                                            app-report-history__panel-form__button
+                                        "
+                                    >
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                                <mat-form-field
+                                    class="
+                                        app-form-select
+                                        app-form-select--small
+                                        app-form-select--medium
+                                        app-mr-05
+                                        app-report-history__new-report-form__field
+                                    "
+                                    (click)="stopEventPropagation($event)"
+                                    appearance="fill"
+                                    (keydown.Space)="
+                                        $event.stopImmediatePropagation()
+                                    "
+                                >
+                                    <mat-label>Schedule</mat-label>
+                                    <mat-select formControlName="schedule">
+                                        <mat-option
+                                            *ngFor="
+                                                let scheduleOption of scheduleOptions
+                                            "
+                                            [value]="scheduleOption"
+                                            >{{ scheduleOption }}</mat-option
+                                        >
+                                    </mat-select>
+                                    <mat-icon matSuffix
+                                        >keyboard_arrow_down</mat-icon
+                                    >
+                                </mat-form-field>
+                                <button
+                                    (click)="
+                                        updateReportDefinition($event, report)
+                                    "
+                                    mat-button
+                                    mat-icon-button
+                                    aria-label="Save report definition"
+                                    matTooltip="Save"
+                                >
+                                    <mat-icon
+                                        class="
+                                            app-f-s-14 app-important
+                                            material-icons-outlined
+                                        "
+                                        >save</mat-icon
+                                    >
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </mat-panel-title>
+
+                <mat-panel-description>
+                    <button
+                        class="app-report-history__panel__button"
+                        mat-icon-button
+                        (click)="toggleUpdating($event, i)"
+                    >
+                        <mat-icon
+                            class="
+                                material-icons-outlined
+                                app-f-s-14 app-important
+                                app-report-history__panel__button-icon
+                            "
+                            >tune</mat-icon
+                        >
+                    </button>
+                    <button
+                        class="app-report-history__panel__button"
+                        mat-icon-button
+                        (click)="deleteReportDefinition($event, report)"
+                    >
+                        <mat-icon
+                            class="
+                                material-icons-outlined
+                                app-f-s-14 app-important
+                                app-report-history__panel__button-icon
+                            "
+                            >delete</mat-icon
+                        >
+                    </button>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <app-report-history-table
+                [reports]="report.reportDefinitionItems"
+            ></app-report-history-table>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

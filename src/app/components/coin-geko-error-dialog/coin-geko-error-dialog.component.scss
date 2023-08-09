@@ -1,0 +1,11 @@
+@import "../../../styles/colors/colors.scss";
+.coin-error-dialog {
+    &__title {
+        background-color: $red-4;
+        color: $highEmphasis;
+        padding: 10px 18px;
+    }
+    &__content {
+        border: 1px solid $elevation-00;
+    }
+}

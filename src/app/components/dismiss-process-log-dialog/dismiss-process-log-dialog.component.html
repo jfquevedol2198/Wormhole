@@ -1,0 +1,43 @@
+<div class="app-dialog add-method-definition-dialog">
+    <div mat-dialog-title class="app-d-f app-ai-c app-jc-sb">
+        <h3 class="app-mb-0 app-important">Dismiss</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div mat-dialog-content class="app-custom-scroll">
+        <form [formGroup]="form">
+            <div class="app-d-f">
+                <div class="app-f-1 add-method-definition-dialog__transaction">
+                    <p class="app-f-s-11 app-c-white-54">Note</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--full-width
+                            app-d-f app-fd-c
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="note"
+                        >
+                            <mat-option
+                                value="Custom"
+                            >Custom</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions class="app-jc-sb app-important action-content app-b-t-elevation-03">
+        <button color="accent" mat-raised-button>Confirm</button>
+        <div>
+            <button class="app-mr-075" mat-stroked-button mat-dialog-close>Cancel</button>
+        </div>
+    </mat-dialog-actions>
+</div>

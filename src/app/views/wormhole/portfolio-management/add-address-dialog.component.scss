@@ -1,0 +1,29 @@
+@import '../../../../styles/variables/variables';
+@import '../../../../styles/colors/colors';
+
+.app-account-address {
+    background-color: $dark-03;
+    margin: 0.75 * $spacer;
+    border: 0.15 * $spacer solid $dark-03;
+    max-width: 27 * $spacer;
+    justify-content: space-between;
+
+    &__body {
+        height: 3 * $spacer;
+        padding: 0.25 * $spacer 0.5 * $spacer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &--selected {
+        border: 0.15 * $spacer solid $blue;
+        background-color: rgba(120, 178, 240, 0.1);
+    }
+
+    &__icon {
+        border-radius: 50%;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}

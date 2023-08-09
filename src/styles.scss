@@ -1,0 +1,469 @@
+// Imports for Angular Material Theming
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import './styles/colors/colors';
+@import './styles/scssHelpers';
+@import './styles/themes/themes';
+
+@import './styles/components/form-field-controls';
+@import './styles/components/select';
+@import './styles/components/select-date';
+@import './styles/components/button';
+@import './styles/components/dialog';
+@import './styles/components/progress-bar';
+@import './styles/components/table';
+@import './styles/components/container';
+@import './styles/components/md-icon';
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    background: $light-00;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+// INVENTORY
+.mat-expansion-panel-body {
+    padding: 0 !important;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    height: 3rem !important;
+}
+
+.app-inventory-fullscreen {
+    .form-field {
+        width: 9.5 * $spacer;
+
+        .app-mat-date-input-wrapper {
+            top: -0.4 * $spacer;
+            right: -2.5 * $spacer;
+        }
+    }
+}
+
+// TOOLBAR
+
+.mat-toolbar-row {
+    font-size: 12pt;
+}
+
+.app-pnl-asset-positions mat-toolbar {
+    .mat-tab-label {
+        height: 2rem !important;
+    }
+}
+
+.dark-theme .app-pnl-asset-positions__toolbar {
+    background-color: $dark-00 !important;
+}
+
+.dark-theme mat-toolbar .mat-tab-link.mat-tab-label-active {
+    background: $dark-02 !important;
+}
+
+.dark-theme mat-toolbar.mat-toolbar-multiple-rows {
+    background: $dark-02 !important;
+
+    mat-focus-indicator.mat-stroked-button.mat-button-base {
+        margin-bottom: 1.25 * $spacer;
+    }
+}
+
+.dark-theme .app-footer .app-footer {
+    &__container {
+        p {
+            color: $highDarkEmphasis !important;
+        }
+
+        a {
+            color: $mediumDarkEmphasis !important;
+        }
+    }
+}
+
+.dark-theme mat-toolbar .mat-ink-bar {
+    background-color: $light-01 !important;
+}
+
+.dark-theme mat-toolbar {
+    color: $highDarkEmphasis !important;
+    opacity: 1;
+}
+
+// TOOLTIP
+
+.mat-tooltip {
+    max-width: unset !important;
+    white-space: pre-line !important;
+    background: $light-07;
+}
+
+.dark-theme .mat-tooltip {
+    background: $dark-05;
+}
+
+.LSD-theme .mat-tooltip {
+    background: $LSD-06;
+}
+
+.mat-tab-label {
+    min-width: 6rem !important;
+    padding: 0 12px !important;
+
+    &.mat-tab-label-active {
+        opacity: 1 !important;
+    }
+}
+
+.LSD-theme {
+    .app-dynamic-table tbody tr.app-dynamic-table__row__odd:nth-child(odd) {
+        background-color: $LSD-03;
+    }
+}
+
+// BOX SHADOW DISABLED
+
+.mat-dialog-container,
+.dark-theme .mat-dialog-container,
+.dark-theme .mat-card,
+.mat-card,
+.mat-focus-indicator.app-marketData__button.app-important.mat-raised-button,
+.mat-expansion-panel,
+.dark-theme .mat-expansion-panel {
+    box-shadow: none !important;
+}
+
+// ACTIVE TAB BACKGROUND
+
+mat-toolbar .mat-tab-link.mat-tab-label-active {
+    background: $light-01 !important;
+}
+
+.LSD-theme mat-toolbar .mat-tab-link.mat-tab-label-active {
+    background: $light-01 !important;
+}
+
+// INPUTS
+
+.mat-form-field-underline,
+.mat-form-field-underline.mat-focused {
+    background: none !important;
+    border: none;
+}
+
+.mat-input-wrapper.mat-form-field {
+    width: 7.5rem;
+
+    .app-mat-input {
+        background: rgba(255, 255, 255, 0);
+        padding: 0.5em !important;
+        border: 0.063rem solid rgba(0, 0, 0, 0.12);
+        border-radius: 0.25rem;
+        padding: 4px;
+        font-weight: 400;
+        color: $dark-01;
+    }
+
+    .mat-input-label {
+        color: $dark-01;
+    }
+}
+
+.mat-input-wrapper.mat-form-field.app-configuration-shared-settings__form-field {
+    width: 39rem;
+}
+
+.dark-theme .mat-input-wrapper.mat-form-field {
+    .app-mat-input {
+        background: rgba(0, 0, 0, 0);
+        border: 0.063rem solid $dark-05;
+        color: $light-07;
+    }
+
+    .mat-input-label {
+        color: $dark-07;
+    }
+}
+
+.LSD-theme .mat-input-wrapper.mat-form-field {
+    .app-mat-input {
+        background: $LSD-07;
+        border: 0.063rem solid $LSD-00;
+        color: red;
+    }
+
+    .mat-input-label {
+        color: red;
+    }
+}
+
+.LSD-theme .mat-date-wrapper.mat-form-field {
+    .mat-date-picker {
+        color: $LSD-01;
+    }
+}
+
+.dark-theme .mat-date-wrapper.mat-form-field {
+    width: 7.5 * $spacer;
+
+    .mat-date-picker {
+        color: $dark-01;
+    }
+}
+
+.mat-date-wrapper.mat-form-field {
+    .app-mat-date-input {
+        width: 7.5rem;
+    }
+
+    .mat-date-picker {
+        position: absolute;
+        right: -0.938rem;
+        bottom: 0;
+        color: $dark-05;
+    }
+}
+
+.LSD-theme .mat-date-wrapper.mat-form-field {
+    .mat-date-picker {
+        color: $LSD-00;
+    }
+}
+
+.dark-theme .mat-date-wrapper.mat-form-field {
+    .mat-date-picker {
+        color: $light-07;
+    }
+}
+
+.magic-inch-trades .example-form-field.mat-input-wrapper.mat-form-field {
+    .mat-close-button {
+        position: absolute;
+        right: -3rem;
+        bottom: -0.188rem;
+
+        color: $dark-05;
+    }
+}
+
+.dark-theme .example-form-field.mat-input-wrapper.mat-form-field {
+    .mat-close-button {
+        color: $light-07;
+    }
+}
+
+.LSD-theme .example-form-field.mat-input-wrapper.mat-form-field {
+    .mat-close-button {
+        color: $LSD-00;
+    }
+}
+
+.app-mat-input {
+    border: 0.125rem solid $light-07;
+}
+
+.dark-theme .app-mat-input {
+    border: 0.125rem solid $dark-03;
+}
+
+.LSD-theme .app-mat-input {
+    border: 0.125rem solid $LSD-01;
+}
+
+// CHIP
+
+.mat-chip.mat-standard-chip:not([class*='app-chip-']) {
+    background: $light-03 !important;
+}
+
+.dark-theme .mat-chip.mat-standard-chip:not([class*='app-chip-']) {
+    background: $dark-06 !important;
+}
+
+.LSD-theme .mat-chip.mat-standard-chip:not([class*='app-chip-']) {
+    background: $LSD-03 !important;
+}
+
+general-ledger-table .mat-toolbar .mat-tab-body-wrapper {
+    height: 100vh !important;
+}
+
+.app-advanced-search-dialog-list .mat-list-base .mat-list-item .mat-list-item-content {
+    padding: 0 !important;
+}
+
+.dark-theme .mat-input-wrapper.mat-form-field .app-mat-input.red-border-class {
+    border: 1px solid $errorRed !important;
+}
+
+.app-general-ledger-toolbar {
+    .form-field {
+        width: 9.5 * $spacer;
+
+        .app-mat-date-input-wrapper {
+            top: -0.4 * $spacer;
+            right: 0.3 * $spacer;
+            color: $disabledDarkEmphasis;
+        }
+    }
+}
+
+// Pie Chart
+
+.dark-theme .app-pie-chart {
+    color: $disabledDarkEmphasis;
+}
+
+.dark-theme .app-pie-chart__chart__label {
+    fill: $highDarkEmphasis;
+}
+
+.dark-theme .app-pie-chart__chart__section {
+    stroke: $dark-00;
+}
+
+.dark-theme .app-pie-chart__bar-chart-container {
+    background-color: $dark-01 !important;
+}
+
+// MENU
+
+.dark-theme .app-menu__button {
+    color: $highDarkEmphasis !important;
+    opacity: 1;
+}
+
+// Transactions
+
+.app-general-ledger-table mat-toolbar .mat-tab-label {
+    height: 2rem !important;
+    font-size: 10pt !important;
+    font-weight: 400 !important;
+}
+
+// Tables
+
+.app-operations-table,
+.app-token-metrics-table,
+.app-transactions-table,
+.app-de-fi-impact-table,
+.app-dynamic-table,
+.app-inventory-performance-table,
+.app-basic-dynamic-table,
+.app-notifications-table,
+.app-change-table {
+    box-shadow: none !important;
+
+    tr {
+        height: 2.5 * $spacer !important;
+    }
+
+    tr.app-operations-table__row__odd,
+    tr.app-transactions-table__row,
+    tr.app-de-fi-impact-table__row,
+    tr.app-dynamic-table__row__odd,
+    tr.app-inventory-performance-table__row__odd,
+    tr.app-notifications-table__row__odd,
+    tr.app-basic-dynamic-table__row__odd {
+        background-color: $dark-00 !important;
+    }
+
+    th,
+    td {
+        font-size: $font-size-9 !important;
+        max-width: 7.5 * $spacer !important;
+        overflow: hidden !important;
+        padding-left: 0.625 * $spacer !important;
+        padding-right: 0.625 * $spacer !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+
+        small {
+            opacity: 0.5 !important;
+        }
+    }
+}
+
+.mat-icon {
+    &.btn-filter {
+        width: 64px;
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
+        margin: 0 24px;
+    }
+
+    &.active {
+        background: linear-gradient(0deg, $elevation-dark-01, $elevation-dark-01), $dark;
+    }
+}
+
+// diagram svg
+.dg-body {
+    background: transparent;
+    display: flex;
+
+    span {
+        line-height: 26px !important;
+        padding: 7px 13px !important;
+        border-radius: 30px !important;
+        text-align: center;
+    }
+}
+// TABS
+.dark-theme .mat-tab-nav-bar,
+.dark-theme .mat-tab-header {
+    border-bottom: none !important;
+}
+
+// SLIDERS
+.mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: $dark-06;
+}
+
+.mat-slide-toggle.mat-disabled:not(.mat-checked) .mat-slide-toggle-thumb {
+    background-color: $dark-07;
+}
+
+// three dots loading
+.three-dots-runing:after {
+    content: '.';
+    animation: threeDots 1s steps(5, end) infinite;
+}
+
+@keyframes threeDots {
+    0%,
+    20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow:
+            .25em 0 0 rgba(0, 0, 0, 0),
+            .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    40% {
+        color: $skyBlue-2;
+        text-shadow:
+            .25em 0 0 rgba(0, 0, 0, 0),
+            .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    60% {
+        text-shadow:
+            .25em 0 0 $skyBlue-2,
+            .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    80%,
+    100% {
+        text-shadow:
+            .25em 0 0 $skyBlue-2,
+            .5em 0 0 $skyBlue-2;
+    }
+}

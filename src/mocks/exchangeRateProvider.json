@@ -1,0 +1,12 @@
+{
+    "responseTimestamp": "2021-08-25T16:25:18.534Z",
+    "recordCount": 0,
+    "records": [
+        {
+            "name": "string",
+            "ledgerName": "None",
+            "platformId": 0,
+            "providerParameters": "string"
+        }
+    ]
+}

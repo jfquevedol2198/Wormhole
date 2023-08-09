@@ -1,0 +1,20 @@
+<div
+    class="app-inventory-fullscreen app-w-100-vw app-h-100-vh app-d-f app-jc-c"
+>
+    <mat-progress-spinner
+        *ngIf="generalLedgerService.pnlEssentialDataLoading$ | async"
+        color="accent"
+        class="app-m-3-a"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+    <div
+        class="app-h-100 app-w-100"
+        *ngIf="!(generalLedgerService.pnlEssentialDataLoading$ | async)"
+    >
+        <div class="app-mb-05 app-mt-05">
+            <app-select-date></app-select-date>
+        </div>
+        <app-inventory></app-inventory>
+    </div>
+</div>

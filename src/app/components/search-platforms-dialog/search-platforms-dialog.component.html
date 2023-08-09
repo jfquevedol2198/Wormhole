@@ -1,0 +1,134 @@
+<div class="app-dialog search-platform-dialog">
+    <div mat-dialog-title class="app-d-f app-ai-c app-jc-sb">
+        <form [formGroup]="filtersForm">
+            <div class="app-d-f">
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-mb-05 app-important">Search Platforms</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-label>Search Platforms</mat-label>
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="text"
+                        />
+                        <button
+                            (click)="filtersForm.controls.text.setValue('')"
+                            *ngIf="filtersForm.controls.text.value"
+                            matSuffix
+                            mat-icon-button
+                            aria-label="Clear"
+                        >
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-icon matSuffix *ngIf="filtersForm.controls.text.value === ''">search</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-mb-05 app-important">Filters</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--small
+                            app-form-select--w-77
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-label>Filters</mat-label>
+                        <mat-select
+                            color="accent"
+                            formControlName="filter"
+                        >
+                            <mat-option
+                                value="filter"
+                            >Filter</mat-option>
+                            <mat-option
+                                value="filter1"
+                            >Filter1</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <div class="app-pt-25">
+            <button
+                mat-stroked-button
+                class="app-button app-button--small app-d-f app-ai-c btn-filter-apply"
+                *ngIf="filtersForm.controls.text.value.length > 0 || filtersForm.controls.filter.value.length > 0"
+            >
+                Filter applied <mat-icon class="material-icon-15" (click)="initFilterForm()">cancel</mat-icon>
+            </button>
+            <button
+                mat-icon-button
+                class="app-button app-button--small app-d-f"
+            >
+                <mat-icon>filter_list</mat-icon>
+            </button>
+            <button mat-icon-button mat-dialog-close>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div mat-dialog-content class="app-custom-scroll">
+        <div class="app-d-f">
+            <div class="search-platform-dialog__content app-b-a-elevation-03">
+                <div class="app-f-s-11 app-pr-1 app-pl-1 app-pt-05 app-pb-05 app-b-b-elevation-03">
+                    {{ listFilter[index] }}
+                </div>
+                <div class="search-platform-dialog__content__list app-of-y-a app-p-15 app-custom-scroll">
+                    <div
+                        fxLayout="row"
+                        fxLayout.xs="column"
+                        fxLayout="row wrap"
+                        class="app-nmr-1"
+                    >
+                        <div
+                            *ngFor="let coin of processListCoins()"
+                            fxFlex="25"
+                            class="app-mb-075 app-pr-1"
+                        >
+                            <div
+                                class="
+                                    app-d-f
+                                    app-ai-c
+                                    app-f-1
+                                    search-platform-dialog__content__list__coin cursor-pointer
+                                    app-p-05
+                                "
+                                [ngClass]="{'selected': selectedCoin?.id === coin.id}"
+                                (click)="onSelectCoin(coin)"
+                            >
+                                <div class="left app-d-f app-ai-c">
+                                    <img [src]="coin.image" [alt]="coin.name" />
+                                    <span class="app-f-s-10">{{ coin.name }}</span>
+                                </div>
+                                <span class="app-f-a app-f-s-10">{{ coin.id }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-f-s-11 app-pr-1 app-pl-1 app-pt-05 app-pb-05 app-b-t-elevation-03">
+                    {{ index < listFilter.length - 1 ? listFilter[index + 1] : '&nbsp;' }}
+                </div>
+            </div>
+            <div class="search-platform-dialog__alphabet-filter app-f-a app-d-f app-fd-c app-pl-15">
+                <span
+                    *ngFor="let a of listFilter; let i = index"
+                    class="app-f-s-10 cursor-pointer"
+                    [ngClass]="{'active' : index === i}"
+                    (click)="index = i"
+                >{{ a }}</span>
+            </div>
+        </div>
+    </div>
+</div>

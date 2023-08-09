@@ -1,0 +1,24 @@
+@import '../../../../styles/variables/variables';
+@import '../../../../styles/colors/colors';
+
+.app-fullscreen-toolbar {
+    height: 3 * $spacer !important;
+
+    .app-menu {
+        &__button {
+            padding: 0 $spacer !important;
+            min-width: 0 !important;
+        }
+    }
+}
+
+.app-fullscreen {
+    width: 100%;
+    height: calc(100vh - 48px);
+}
+
+::ng-deep {
+    .app-menu mat-ink-bar.mat-ink-bar {
+        display: none;
+    }
+}

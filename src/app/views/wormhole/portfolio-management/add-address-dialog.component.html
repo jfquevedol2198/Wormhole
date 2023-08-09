@@ -1,0 +1,56 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Add Address</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <mat-progress-spinner
+            *ngIf="isAllAccountsLoading"
+            class="app-m-3-a"
+            color="accent"
+            mode="indeterminate"
+        >
+        </mat-progress-spinner>
+        <div *ngIf="!isAllAccountsLoading">
+            <div
+                *ngFor="let account of allAccounts"
+                class="app-account-address app-d-f app-c-p app-br-05"
+                [class.app-account-address--selected]="
+                    isAccountSelected(account)
+                "
+                (click)="onAddressClick(account)"
+            >
+                <div class="app-d-f app-ai-c app-m-05">
+                    <img
+                        class="app-account-address__icon"
+                        [attr.src]="account.iconUrl"
+                    />
+                </div>
+                <div class="app-account-address__body app-c-hde app-ta-c">
+                    <div class="app-f-s-12">
+                        {{ account.accountAddress }}
+                    </div>
+
+                    <div *ngIf="account.description" class="app-f-s-9">
+                        {{ account.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button
+            mat-flat-button
+            color="accent"
+            (click)="onAddAddressClick()"
+            [disabled]="!selectedAccounts.length"
+        >
+            Add
+        </button>
+    </div>
+</div>

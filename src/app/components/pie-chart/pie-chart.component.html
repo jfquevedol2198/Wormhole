@@ -1,0 +1,85 @@
+<div class="app-pie-chart app-h-100">
+    <div
+        class="app-d-f app-jc-c"
+        *ngIf="generalLedgerService.isPieChartLoading"
+    >
+        <mat-progress-spinner
+            class="app-m-3-a"
+            color="accent"
+            mode="indeterminate"
+        >
+        </mat-progress-spinner>
+    </div>
+
+    <app-no-data-communicate
+        *ngIf="
+            !generalLedgerService.isPieChartLoading && barChartData.length === 0
+        "
+        [data]="'data'"
+    >
+    </app-no-data-communicate>
+
+    <div
+        class="app-d-f app-jc-c app-ai-c app-ta-c app-fw-w app-pl-05"
+        [class.app-fd-c]="!alignCenter"
+        [class.app-ai-st]="!alignCenter"
+        [style.visibility]="
+            generalLedgerService.isPieChartLoading || barChartData.length === 0
+                ? 'hidden'
+                : null
+        "
+    >
+        <div class="app-mb-05" [class.app-w-100]="!alignCenter">
+            <div class="app-f-s-10 app-mt-05 app-mb-05">
+                <span>Platform Allocation</span>
+            </div>
+            <div class="app-d-f app-pl-1 app-pr-1 app-jc-c">
+                <div
+                    class="app-pie-chart__chart"
+                    [class.app-pie-chart--smaller]="alignCenter"
+                ></div>
+            </div>
+        </div>
+        <div class="app-fg-1" [class.app-w-100]="!alignCenter">
+            <div class="app-br-02 app-d-f app-jc-sb app-p-05 app-fd-c">
+                <div
+                    class="
+                        app-pie-chart__bar-chart-container
+                        app-pt-05 app-pb-05 app-mb-05
+                    "
+                >
+                    <ng-container *ngFor="let element of barChartData">
+                        <app-bar-chart
+                            *ngIf="!isBarChartForPercentages(element.name)"
+                            [data]="element"
+                            [namesWithColors]="platformNamesWithColors"
+                            [isBarChartForPercentages]="
+                                isBarChartForPercentages
+                            "
+                        ></app-bar-chart>
+                    </ng-container>
+                </div>
+                <div
+                    class="
+                        app-pie-chart__bar-chart-container
+                        app-pt-05 app-pb-05
+                    "
+                >
+                    <div
+                        *ngFor="let element of barChartData"
+                        class="app-pie-chart__bar-chart-container"
+                    >
+                        <app-bar-chart
+                            *ngIf="isBarChartForPercentages(element.name)"
+                            [data]="element"
+                            [namesWithColors]="platformNamesWithColors"
+                            [isBarChartForPercentages]="
+                                isBarChartForPercentages
+                            "
+                        ></app-bar-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

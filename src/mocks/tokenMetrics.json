@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Profit and Loss",
+        "change": -0.8217779996654501,
+        "usdOpening": 87739609.76,
+        "usdClosing": 87018584.95,
+        "usdChange": -721024.8100000024
+    },
+    {
+        "name": "Exchange Rate",
+        "change": -0.8217779952748693,
+        "usdOpening": 22.15646153932227,
+        "usdClosing": 21.97438461386058,
+        "usdChange": -0.18207692546168985
+    },
+    {
+        "name": "New Worth",
+        "change": -0.8217779952748709,
+        "usdOpening": 85080820.37,
+        "usdClosing": 84381644.91,
+        "usdChange": -699175.4600000083
+    },
+    {
+        "name": "Funding",
+        "change": -0.8217781401632568,
+        "tokenOpening": -120000.632029312,
+        "tokenClosing": -120000.632029312,
+        "tokenChange": 0,
+        "usdOpening": -2658789.39,
+        "usdClosing": -2636940.04,
+        "usdChange": 21849.350000000093
+    },
+    {
+        "name": "Wallet",
+        "change": -0.8217779952748709,
+        "tokenOpening": 3840000.3637314765,
+        "tokenClosing": 3840000.3637314765,
+        "tokenChange": 0,
+        "usdOpening": 85080820.37,
+        "usdClosing": 84381644.91,
+        "usdChange": -699175.4600000083
+    },
+    {
+        "name": "Supply",
+        "change": -0.8217779824792476,
+        "tokenOpening": -627845.6289979147,
+        "tokenClosing": -627845.6289979147,
+        "tokenChange": 0,
+        "usdOpening": -13910837.53,
+        "usdClosing": -13796521.33,
+        "usdChange": 114316.19999999925
+    },
+    {
+        "name": "Collateral",
+        "change": -0.821777982318729,
+        "tokenOpening": 3332154.736459477,
+        "tokenClosing": 3332154.736459477,
+        "tokenChange": 0,
+        "usdOpening": 73828758.26,
+        "usdClosing": 73222049.78,
+        "usdChange": -606708.4800000042
+    },
+    {
+        "name": "Stake",
+        "change": 0,
+        "tokenOpening": 0,
+        "tokenClosing": 0,
+        "tokenChange": 0,
+        "usdOpening": 0,
+        "usdClosing": 0,
+        "usdChange": 0
+    },
+    {
+        "name": "Borrow",
+        "change": 0,
+        "tokenOpening": 0,
+        "tokenClosing": 0,
+        "tokenChange": 0,
+        "usdOpening": 0,
+        "usdClosing": 0,
+        "usdChange": 0
+    }
+]

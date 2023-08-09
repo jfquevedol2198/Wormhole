@@ -1,0 +1,67 @@
+[
+    {
+        "provider": "Veribet",
+        "pairName": "Stim",
+        "lastRate": 27.16512,
+        "highestRate": 74.40337,
+        "lowestRate": 8.75833,
+        "dataQuality": "Scheduled",
+        "dataProvider": "Scheduled",
+        "firstSeen": "11/30/2020",
+        "lastSeen": "8/28/2020",
+        "active": false,
+        "requested": false
+    },
+    {
+        "provider": "Y-Solowarm",
+        "pairName": "Biodex",
+        "lastRate": 28.48488,
+        "highestRate": 45.90792,
+        "lowestRate": 69.37429,
+        "dataQuality": "Running",
+        "dataProvider": "Running",
+        "firstSeen": "8/17/2020",
+        "lastSeen": "11/17/2020",
+        "active": false,
+        "requested": true
+    },
+    {
+        "provider": "Span",
+        "pairName": "Regrant",
+        "lastRate": 96.41144,
+        "highestRate": 79.06622,
+        "lowestRate": 40.13048,
+        "dataQuality": "Failed",
+        "dataProvider": "Failed",
+        "firstSeen": "12/16/2020",
+        "lastSeen": "12/23/2020",
+        "active": false,
+        "requested": false
+    },
+    {
+        "provider": "Cardguard",
+        "pairName": "Lotlux",
+        "lastRate": 72.17008,
+        "highestRate": 68.9406,
+        "lowestRate": 87.29916,
+        "dataQuality": "Completed",
+        "dataProvider": "Completed",
+        "firstSeen": "1/27/2021",
+        "lastSeen": "2/8/2021",
+        "active": false,
+        "requested": false
+    },
+    {
+        "provider": "Regrant",
+        "pairName": "Span",
+        "lastRate": 93.70638,
+        "highestRate": 69.20253,
+        "lowestRate": 55.80153,
+        "dataQuality": "Completed",
+        "dataProvider": "Completed",
+        "firstSeen": "12/9/2020",
+        "lastSeen": "1/1/2021",
+        "active": false,
+        "requested": false
+    }
+]

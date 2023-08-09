@@ -1,0 +1,77 @@
+@import '../../../../styles/colors/colors';
+@import '../../../../styles/variables/variables';
+
+.app-sort-arrow {
+    color: $tableLinkLineColor;
+    opacity: 0;
+    transform: translateY(25%);
+    margin: 0 0 0 0.3 * $spacer;
+    height: 0.8 * $spacer;
+    width: 0.8 * $spacer;
+    min-width: 0.8 * $spacer;
+
+    &:hover {
+        opacity: 0.54;
+        transform: translateY(0px);
+    }
+
+    &--selected {
+        opacity: 1 !important;
+        transform: translateY(0px);
+    }
+
+    &__stem {
+        background: currentColor;
+        height: 0.8 * $spacer;
+        width: 0.13 * $spacer;
+    }
+
+    &__indicator {
+        height: 0.13 * $spacer;
+        top: 0;
+        left: 0;
+
+        &--asc {
+            transform: translateY(0px);
+        }
+
+        &--desc {
+            transform: translateY(10px);
+        }
+
+        &__left {
+            transform-origin: right;
+            left: 0;
+        }
+
+        &__right {
+            transform-origin: left;
+            right: 0;
+        }
+
+        &__left--asc,
+        &__right--desc {
+            transform: rotate(-45deg);
+        }
+
+        &__left--desc,
+        &__right--asc {
+            transform: rotate(45deg);
+        }
+
+        &__left,
+        &__right {
+            background: currentColor;
+            width: 0.4 * $spacer;
+            height: 0.13 * $spacer;
+            top: 0;
+        }
+
+        &__middle {
+            height: 0.13 * $spacer;
+            width: 0.13 * $spacer;
+            background: currentColor;
+            transform: rotate(45deg);
+        }
+    }
+}

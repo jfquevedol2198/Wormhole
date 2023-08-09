@@ -1,0 +1,6 @@
+<mat-slide-toggle
+    labelPosition="before"
+    [checked]="themeService.selectedTheme$.value === 'Dark' ? true : false"
+    (change)="toggleTheme($event.checked)"
+    >{{ themeService.selectedTheme$.value }}</mat-slide-toggle
+>

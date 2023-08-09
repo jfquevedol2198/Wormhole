@@ -1,0 +1,36 @@
+@import '../../../../styles/colors/colors';
+@import '../../../../styles/variables/variables';
+
+.app-worker-agents {
+    &__table {
+        box-shadow: none !important;
+
+        tr {
+            height: 2.5 * $spacer;
+        }
+
+        tr.app-worker-agents__table__row__odd {
+            background-color: $dark-00 !important;
+        }
+
+        th,
+        td {
+            font-size: $font-size-9;
+            max-width: 7.5 * $spacer;
+            overflow: hidden;
+            padding-left: 0.625 * $spacer;
+            padding-right: 0.625 * $spacer;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &__input {
+            width: 7.5 * $spacer;
+            height: 2 * $spacer;
+            margin: auto !important;
+            background-color: $dark-01 !important;
+            color: $highDarkEmphasis !important;
+            font-size: 10pt !important;
+        }
+    }
+}

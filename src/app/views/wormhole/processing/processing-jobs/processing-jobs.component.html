@@ -1,0 +1,131 @@
+<div class="app-container">
+    <app-processing-jobs-filters
+        [filtersForm]="filtersForm"
+        (filterJobs)="filterProcessingJobs($event)"
+    ></app-processing-jobs-filters>
+    <mat-progress-spinner
+        *ngIf="isProcessingJobsDataLoading"
+        class="app-m-3-a"
+        color="accent"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+
+    <div *ngIf="processingJobsData.total > 0 && !isProcessingJobsDataLoading">
+        <table
+            mat-table
+            [dataSource]="processingJobsData.data"
+            class="app-pnl-jobs-table mat-elevation-z8 app-w-100"
+            multiTemplateDataRows
+        >
+            <ng-container
+                *ngFor="let column of columns"
+                [matColumnDef]="column.columnDef"
+            >
+                <th mat-header-cell *matHeaderCellDef>
+                    <app-table-header-component
+                        [column]="column"
+                        [sortColumns]="sortColumns"
+                        (sort)="sort($event.isButtonPressed, $event.columnDef)"
+                    ></app-table-header-component>
+                </th>
+                <td
+                    mat-cell
+                    *matCellDef="let job"
+                    [ngSwitch]="column.columnType"
+                >
+                    <ng-container *ngSwitchCase="'chip'">
+                        <div class="app-d-f app-fw-w">
+                            <app-chip
+                                class="app-m-025"
+                                *ngFor="let chip of job.chips"
+                                [type]="chip.type"
+                                [text]="chip.text"
+                                [tooltipText]="chip.tooltipText"
+                                [size]="'small'"
+                            ></app-chip>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'slideToggle'">
+                        <div class="app-d-f app-fw-w">
+                            <mat-slide-toggle
+                                [checked]="job.isToggled"
+                                (change)="toggleActive(job)"
+                                [disabled]="!job.isToggleDisabled"
+                            ></mat-slide-toggle>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'action-menu'">
+                        <div class="app-d-f app-fw-w">
+                            <button
+                                [matMenuTriggerFor]="menu"
+                                color="accent"
+                                mat-icon-button
+                            >
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button
+                                    *ngFor="let action of job.actions"
+                                    mat-menu-item
+                                    (click)="selectAction(action, job)"
+                                >
+                                    <span>{{ action }}</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <span
+                            [matTooltip]="
+                                column.tooltip ? column.tooltip(job) : undefined
+                            "
+                            [matTooltipPosition]="'above'"
+                        >
+                            {{ column.cell(job) }}
+
+                            <small
+                                *ngIf="column.subCell"
+                                class="app-d-b app-f-s-8"
+                            >
+                                {{ column.subCell(job) }}
+                            </small>
+                        </span>
+                    </ng-container>
+                </td>
+            </ng-container>
+            <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+                class="app-pnl-jobs-table__row__header"
+            ></tr>
+            <tr
+                mat-row
+                *matRowDef="
+                    let job;
+                    columns: displayedColumns;
+                    let i = dataIndex
+                "
+                [ngClass]="
+                    i % 2 === 0
+                        ? 'app-pnl-jobs-table__row__odd'
+                        : 'app-pnl-jobs-table__row__even'
+                "
+            ></tr>
+        </table>
+        <app-paginator
+            [length]="processingJobsData.total"
+            [pageSize]="processingJobsData.pageSize"
+            [pageSizeOptions]="[10, 25, 50, 100, 250]"
+            [pageIndex]="processingJobsData.pageIndex"
+            (page)="page($event.pageIndex, $event.pageSize)"
+        >
+        </app-paginator>
+    </div>
+
+    <app-no-data-communicate
+        *ngIf="!isProcessingJobsDataLoading && processingJobsData.total === 0"
+        [data]="'Profit And Loss Jobs data'"
+    >
+    </app-no-data-communicate>
+</div>

@@ -1,0 +1,52 @@
+[
+    {
+        "pairName": "Latlux",
+        "baseToken": "17pECe9TwM5p1XcMjCRjxo2PHayWD4K9kq",
+        "quoteToken": "1BgmJTVvrozMqZBucUDJJ4vf7MXSV6S8LL",
+        "fixedExchangeRate": 39.20689,
+        "firstSeen": "11/1/2020",
+        "lastSeen": "8/20/2020",
+        "active": false,
+        "requested": true
+    },
+    {
+        "pairName": "Voltsillam",
+        "baseToken": "1PsTvcFFETMP8LT5bsL2oQgaVKkgMm98Uq",
+        "quoteToken": "19pdgKUijWQu6oYrAoMVZEfErpkZCWbMgB",
+        "fixedExchangeRate": 2.42786,
+        "firstSeen": "3/12/2021",
+        "lastSeen": "7/1/2021",
+        "active": true,
+        "requested": true
+    },
+    {
+        "pairName": "Zamit",
+        "baseToken": "1Mnsvu74p1eGVcNTDnjdSTBVDEzPMjmMVP",
+        "quoteToken": "1MUo9sSapcuaunnqaGq2Gg7sf1XUpML9ft",
+        "fixedExchangeRate": 92.88086,
+        "firstSeen": "8/5/2020",
+        "lastSeen": "6/26/2021",
+        "active": false,
+        "requested": true
+    },
+    {
+        "pairName": "Subin",
+        "baseToken": "1MXLAayy8Ap537qVzpQ6FZ8kL1vkLo2JHG",
+        "quoteToken": "14uXgt6tcNBQAfXzN3FfduvXLpdysRQ3aY",
+        "fixedExchangeRate": 37.13076,
+        "firstSeen": "1/31/2021",
+        "lastSeen": "6/7/2021",
+        "active": false,
+        "requested": false
+    },
+    {
+        "pairName": "Redhold",
+        "baseToken": "18255wXT1GX6c1LV77K4oMcwgYbJM29oam",
+        "quoteToken": "1CLedJDt2w3zx4PiRCE28mWEpizes34V7R",
+        "fixedExchangeRate": 51.48903,
+        "firstSeen": "5/5/2021",
+        "lastSeen": "4/22/2021",
+        "active": false,
+        "requested": false
+    }
+]

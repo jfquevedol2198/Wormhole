@@ -1,0 +1,244 @@
+<div *ngIf="accounts.length">
+    <table
+        class="app-addresses-table app-w-100"
+        mat-table
+        [dataSource]="accounts"
+        multiTemplateDataRows
+    >
+        <ng-container
+            *ngFor="let column of columns"
+            [matColumnDef]="column.columnDef"
+        >
+            <th mat-header-cell *matHeaderCellDef>
+                <span>{{ column.header }}</span>
+            </th>
+
+            <td
+                mat-cell
+                *matCellDef="let account"
+                [ngSwitch]="column.columnType"
+            >
+                <ng-container *ngSwitchCase="'address'">
+                    <div>
+                        <div
+                            class="
+                                app-account-address app-d-f app-c-p app-br-05
+                            "
+                            [class.app-account-address--selected]="
+                                selectedPortfolioId
+                            "
+                        >
+                            <div class="app-d-f app-ai-c app-m-05">
+                                <img
+                                    class="app-account-address__icon"
+                                    [attr.src]="account.iconUrl"
+                                />
+                            </div>
+                            <div
+                                class="
+                                    app-account-address__body
+                                    app-c-hde app-ta-c
+                                "
+                            >
+                                <div class="app-f-s-12">
+                                    {{ account.ledgerAddress }}
+                                </div>
+
+                                <div
+                                    *ngIf="account.description"
+                                    class="app-f-s-9"
+                                >
+                                    {{ account.description }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'icon'">
+                    <div
+                        *ngIf="account.watchedAccount"
+                        class="app-d-f app-ai-c"
+                    >
+                        <mat-icon class="material-icons-outlined"
+                            >visibility</mat-icon
+                        >
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'progress-bar'">
+                    <div
+                        *ngIf="account.state === 'Active'; else noProgressBar"
+                        class="app-min-w-9"
+                    >
+                        <div class="app-mb-05">
+                            <mat-progress-bar
+                                class="app-progress-bar"
+                                [class.app-progress-bar--success]="
+                                    account.syncPercentage == 1
+                                "
+                                [value]="account.syncPercentage * 100"
+                            ></mat-progress-bar>
+                        </div>
+                        <div class="app-d-f app-jc-c">
+                            <div>
+                                <span>
+                                    {{ column.cell(account) }}
+                                </span>
+                                <span *ngIf="column.subCell" class="app-c-dde">
+                                    {{ column.subCell(account) }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #noProgressBar>
+                        <div class="app-mb-05">
+                            <mat-progress-bar
+                                class="app-progress-bar"
+                                [value]="0"
+                            ></mat-progress-bar>
+                        </div>
+                        <div class="app-d-f app-jc-c">
+                            <span> - </span>
+                        </div>
+                    </ng-template>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'icon'">
+                    <div
+                        *ngIf="account.watchedAccount"
+                        class="app-d-f app-ai-c"
+                    >
+                        <mat-icon class="material-icons-outlined"
+                            >visibility</mat-icon
+                        >
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'button'">
+                    <div
+                        *ngIf="account.state === 'Pending'"
+                        class="app-d-f"
+                        [matTooltip]="'Will be added soon'"
+                        [matTooltipPosition]="'above'"
+                    >
+                        <button
+                            class="mat-stroked-button app-important app-button"
+                            mat-button
+                            disabled
+                        >
+                            Pay
+                        </button>
+
+                        <button
+                            class="
+                                mat-stroked-button
+                                app-important app-button app-ml-1
+                            "
+                            mat-button
+                            disabled
+                        >
+                            Authorise
+                        </button>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'actions'">
+                    <div class="app-d-f">
+                        <button
+                            matSuffix
+                            mat-icon-button
+                            [matMenuTriggerFor]="menu"
+                        >
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu
+                            #menu="matMenu"
+                            class="app-paginator-page-menu"
+                        >
+                            <button
+                                mat-menu-item
+                                (click)="onImportTransactionsClick()"
+                            >
+                                Import Transactions
+                            </button>
+                        </mat-menu>
+                        <button
+                            *ngIf="selectedPortfolioId"
+                            matSuffix
+                            mat-icon-button
+                            (click)="onDeleteAddressClick(account)"
+                        >
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'estimation'">
+                    <div
+                        *ngIf="account.state === 'Active'; else noEstimation"
+                        class="app-d-f app-min-w-9 app-jc-c"
+                    >
+                        <div *ngIf="account.estimatedEndDate; else upToDate">
+                            <div>
+                                <div class="app-d-f app-jc-c app-mb-05">
+                                    <span class="app-fw-500">{{
+                                        account.remainingTime
+                                    }}</span>
+                                </div>
+                                <div>
+                                    <span class="app-mr-05 app-fw-500"
+                                        >ETA:</span
+                                    >
+                                    <span>
+                                        {{ column.cell(account) }}
+                                    </span>
+                                    <span
+                                        *ngIf="column.subCell"
+                                        class="app-c-dde"
+                                    >
+                                        {{ column.subCell(account) }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #upToDate>
+                            <div>
+                                <div class="app-d-f app-jc-c app-mb-05">
+                                    <span class="app-fw-500">Up To Date</span>
+                                </div>
+                                <div class="app-d-f app-jc-c">
+                                    <span class="app-mr-05 app-fw-500"
+                                        >ETA:</span
+                                    >
+                                    <span>-</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <ng-template #noEstimation>
+                        <div>
+                            <div class="app-d-f app-jc-c app-mb-05">
+                                <span class="app-fw-500">-</span>
+                            </div>
+                            <div class="app-d-f app-jc-c">
+                                <span class="app-fw-500">-</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+                    {{ column.cell(account) }}
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>
+
+<div *ngIf="!accounts.length" class="app-f-s-14 app-d-f app-jc-c app-mb-2">
+    No addresses found
+</div>

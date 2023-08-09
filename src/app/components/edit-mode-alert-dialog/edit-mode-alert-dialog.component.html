@@ -1,0 +1,27 @@
+<div class="app-dialog app-dialog--prompt-max-width">
+    <div mat-dialog-title>
+        <h3>Edit Mode Alert</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div>
+            The edit mode allows you to change the data for operations. After
+            the changes are made, you can start calculating a new PnL for the
+            overlay data in "Processing -> Profit And Loss".
+        </div>
+
+        <div class="app-mt-2">
+            Are you sure you want to enable editing mode?
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close>No</button>
+        <button mat-flat-button color="accent" (click)="onYesClick()">
+            Yes
+        </button>
+    </div>
+</div>

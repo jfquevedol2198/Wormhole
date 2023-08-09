@@ -1,0 +1,19 @@
+@import '../../../../../styles/variables/variables';
+@import '../../../../../styles/colors/colors';
+
+.app-addresses-table {
+    th,
+    td {
+        color: $highDarkEmphasis;
+        padding-left: 0.625 * $spacer !important;
+        padding-right: 0.625 * $spacer !important;
+    }
+
+    td {
+        font-size: $font-size-10 !important;
+    }
+
+    th {
+        font-size: $font-size-12 !important;
+    }
+}

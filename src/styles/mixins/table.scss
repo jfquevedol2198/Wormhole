@@ -1,0 +1,52 @@
+@mixin tableHeader {
+    &__th {
+        text-align: left;
+    }
+}
+
+@mixin tableHeaderLastChild {
+    &__th:not(:last-child) {
+        padding-right: 1rem;
+        text-align: left;
+    }
+}
+
+@mixin tableDataLastChild {
+    &__td:not(:last-child) {
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+@mixin table {
+    border-spacing: 0;
+
+    tr:not(:last-child) {
+        td,
+        th {
+            border-bottom: 0.0625rem solid $light-06;
+        }
+    }
+    td,
+    th {
+        white-space: nowrap;
+        text-align: left;
+        padding: 1rem;
+    }
+
+    th {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    td:first-child,
+    th:first-child {
+        padding-left: 0;
+    }
+
+    td:last-child,
+    th:last-child {
+        padding-right: 0;
+    }
+}

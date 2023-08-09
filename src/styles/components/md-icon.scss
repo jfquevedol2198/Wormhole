@@ -1,0 +1,22 @@
+@import "../mixins/icon.scss";
+
+.mat-icon {
+    &.material-icon-13_81 {
+        @include md-icon-size(13.81px)
+    }
+    &.material-icon-16 {
+        @include md-icon-size(16px)
+    }
+    &.material-icon-18 {
+        @include md-icon-size(18px)
+    }
+    &.material-icon-15 {
+        @include md-icon-size(15px)
+    }
+    &.material-icon-135 {
+        @include md-icon-size(13.5px)
+    }
+    &.material-icon-20 {
+        @include md-icon-size(20px)
+    }
+}

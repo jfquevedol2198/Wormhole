@@ -1,0 +1,238 @@
+<mat-progress-spinner
+    *ngIf="generalLedgerService.isTransactionsDataLoading"
+    class="app-m-3-a"
+    color="accent"
+    mode="indeterminate"
+>
+</mat-progress-spinner>
+
+<ng-container
+    *ngIf="
+        transactionsData.data.length > 0 &&
+        !generalLedgerService.isTransactionsDataLoading
+    "
+>
+    <table
+        mat-table
+        [dataSource]="transactionsData.data"
+        class="app-transactions-table mat-elevation-z8 app-w-100"
+        multiTemplateDataRows
+    >
+        <ng-container
+            *ngFor="let column of columns"
+            [matColumnDef]="column.columnDef"
+        >
+            <th mat-header-cell *matHeaderCellDef>
+                <app-table-header-component
+                    [column]="column"
+                    [sortColumns]="sortColumns"
+                    (sort)="sort($event.isButtonPressed, $event.columnDef)"
+                ></app-table-header-component>
+            </th>
+
+            <td
+                mat-cell
+                *matCellDef="let transaction"
+                [class.app-c-p]="column.tooltip"
+                [ngSwitch]="column.columnType"
+            >
+                <ng-container *ngSwitchCase="'is-selected-icon'">
+                    <div class="app-d-f app-ai-c">
+                        <mat-icon
+                            class="app-c-p"
+                            (click)="expandTransaction(transaction)"
+                            >{{
+                                transaction.isExpanded
+                                    ? 'keyboard_arrow_down'
+                                    : 'keyboard_arrow_right'
+                            }}</mat-icon
+                        >
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'icon'">
+                    <div
+                        class="app-d-f app-ai-c"
+                        [matTooltip]="column.tooltip(transaction)"
+                        [matTooltipPosition]="'above'"
+                    >
+                        <mat-icon class="{{ column.textColor(transaction) }}">{{
+                            column.cell(transaction)
+                        }}</mat-icon>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'is-edited'">
+                    <div #tippyTemplate>
+                        <app-edited-transaction-tooltip
+                            *ngIf="transaction.edited"
+                            [title]="column.header"
+                            [transactionId]="transaction.transactionId"
+                        ></app-edited-transaction-tooltip>
+                    </div>
+                    <div
+                        class="app-d-f app-ai-c app-c-p"
+                        [ngxTippy]="tippyTemplate"
+                        [tippyProps]="tippyProps"
+                    >
+                        <mat-icon class="{{ column.textColor(transaction) }}">{{
+                            column.cell(transaction)
+                        }}</mat-icon>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'logo'">
+                    <app-logo-icon
+                        [logo]="column.cell(transaction)"
+                        [name]="column.tooltip(transaction)"
+                    ></app-logo-icon>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'transactionHash'">
+                    <div class="app-d-f app-ai-c app-c-p">
+                        <div
+                            class="app-w-80 app-ov-h app-t-ov-e app-w-s-n"
+                            [matTooltip]="column.cell(transaction)"
+                            [matTooltipPosition]="'above'"
+                        >
+                            {{ column.cell(transaction) }}
+                        </div>
+                        <mat-icon
+                            class="app-f-s-14 app-ml-05 app-mt-05"
+                            [matTooltip]="'Copy TxHash'"
+                            [matTooltipPosition]="'above'"
+                            [cdkCopyToClipboard]="column.cell(transaction)"
+                            >content_copy
+                        </mat-icon>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'addressLabel'">
+                    <div>
+                        <div #tippyTemplate>
+                            <app-dynamic-table-tooltip
+                                [title]="column.header"
+                                [label]="column.cell(transaction)"
+                                [address]="column.subCell(transaction)"
+                                (refresh)="refreshDataOnly()"
+                            ></app-dynamic-table-tooltip>
+                        </div>
+                        <div
+                            class="app-c-p app-ov-h app-t-ov-e app-w-s-n"
+                            [ngxTippy]="tippyTemplate"
+                            [tippyProps]="tippyProps"
+                        >
+                            {{ column.cell(transaction) }}
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'treatment'">
+                    <mat-icon
+                        class="
+                            app-c-p app-mr-025 app-f-s-14
+                            material-icons-outlined
+                        "
+                        *ngFor="let treatment of transaction.treatmentWithIcons"
+                        [matTooltip]="treatment.name"
+                        [matTooltipPosition]="'above'"
+                        >{{ treatment.icon }}</mat-icon
+                    >
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'toggle'">
+                    <div class="app-d-f app-fw-w">
+                        <mat-slide-toggle
+                            [checked]="!transaction.enabled"
+                            (change)="
+                                onDisableTransactionClick(
+                                    transaction,
+                                    $event.checked
+                                )
+                            "
+                        ></mat-slide-toggle>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+                    <span
+                        [matTooltip]="
+                            column.tooltip
+                                ? column.tooltip(transaction)
+                                : undefined
+                        "
+                        [matTooltipPosition]="'above'"
+                    >
+                        {{ column.cell(transaction) }}
+                    </span>
+                    <span *ngIf="column.subCell" class="app-c-dde">
+                        {{ column.subCell(transaction) }}
+                    </span>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container
+            *ngFor="let innerColumn of innerColumns"
+            [matColumnDef]="innerColumn.columnDef"
+        >
+            <td
+                class="app-transactions-table__inner-row__cell app-p-0"
+                mat-cell
+                *matCellDef="let transaction"
+                [attr.colspan]="displayedColumns.length"
+            >
+                <div
+                    [@detailExpand]="
+                        transaction.isExpanded ? 'expanded' : 'collapsed'
+                    "
+                >
+                    <div *ngIf="transaction.isExpanded">
+                        <app-operations-table
+                            [transaction]="transaction"
+                            [isEditMode]="transactionsData.isEditMode"
+                            (refreshData)="refreshDataOnly()"
+                        ></app-operations-table>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+            class="app-transactions-table__row__header"
+        ></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = dataIndex"
+            class="app-transactions-table__row"
+            (dblclick)="openEtherscan(row)"
+        ></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedInnerColumns"
+            class="
+                app-transactions-table__row app-transactions-table__inner-row
+            "
+        ></tr>
+    </table>
+
+    <app-paginator
+        [length]="transactionsData.total"
+        [pageSize]="transactionsData.pageSize"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]"
+        [pageIndex]="transactionsData.pageIndex"
+        (page)="page($event.pageIndex, $event.pageSize)"
+    >
+    </app-paginator>
+</ng-container>
+
+<app-no-data-communicate
+    *ngIf="
+        !generalLedgerService.isTransactionsDataLoading &&
+        transactionsData.data.length === 0
+    "
+    [data]="'transactions'"
+>
+</app-no-data-communicate>

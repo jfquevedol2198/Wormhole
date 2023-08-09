@@ -1,0 +1,22 @@
+@mixin content {
+    &__content {
+        max-height: 100%;
+        align-items: stretch;
+        overflow: auto;
+    }
+}
+
+@mixin contentPosition {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    position: absolute;
+}
+
+@mixin title {
+    &__title {
+        text-align: center;
+        padding-bottom: 1.5rem;
+    }
+}

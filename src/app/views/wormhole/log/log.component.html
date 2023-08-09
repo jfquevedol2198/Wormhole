@@ -1,0 +1,20 @@
+<mat-toolbar class="app-log__toolbar app-important app-pt-1 app-pb-1">
+    <mat-toolbar-row class="app-log__toolbar-row">
+        <div
+            class="mat-input-wrapper app-important mat-form-field app-d-f app-fd-c"
+        >
+            <mat-label class="app-f-s-9 mat-input-label app-mb-05 app-important"
+                >Set Log Level</mat-label
+            >
+            <mat-select
+                [value]="logLevel$ | async"
+                (valueChange)="changeLogLevel($event)"
+                class="app-mat-input app-fw-400"
+            >
+                <mat-option [value]="option" *ngFor="let option of options">{{
+                    option
+                }}</mat-option>
+            </mat-select>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

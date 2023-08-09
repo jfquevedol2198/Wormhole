@@ -1,0 +1,21 @@
+@import '../../../../../styles/variables/variables.scss';
+
+.app-general-ledger-table {
+    &__toolbar {
+        height: 2.5 * $spacer !important;
+        &__buttons {
+            right: 0;
+            z-index: 2;
+            &__search-button {
+                font-weight: 400;
+                &__icon {
+                    margin-right: 0.5 * $spacer;
+                    margin-bottom: 0.2 * $spacer;
+                }
+            }
+            &__toggle {
+                font-weight: 400;
+            }
+        }
+    }
+}

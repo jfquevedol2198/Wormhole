@@ -1,0 +1,131 @@
+<!-- source: https://github.com/angular/components/blob/11.2.12/src/material/paginator/paginator.html -->
+<div class="mat-paginator-outer-container">
+    <div class="app-d-f app-paginator-offset"></div>
+    <div class="mat-paginator-container">
+        <div class="mat-paginator-range-actions">
+            <button
+                mat-icon-button
+                type="button"
+                class="mat-paginator-navigation-previous"
+                (click)="previousPage()"
+                [attr.aria-label]="_intl.previousPageLabel"
+                [matTooltip]="_intl.previousPageLabel"
+                [matTooltipDisabled]="_previousButtonsDisabled()"
+                [matTooltipPosition]="'above'"
+                [disabled]="_previousButtonsDisabled()"
+            >
+                <svg
+                    class="mat-paginator-icon"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                >
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+            </button>
+
+            <div class="app-paginator-page-numbers">
+                <button
+                    (click)="firstPage()"
+                    *ngIf="pageIndex > 0"
+                    mat-icon-button
+                >
+                    1
+                </button>
+
+                <button mat-icon-button disabled *ngIf="pageIndex - 2 > 0">
+                    ...
+                </button>
+
+                <button
+                    mat-icon-button
+                    *ngIf="pageIndex > 1 && pageIndex < getNumberOfPages()"
+                    (click)="pageIndex = pageIndex - 1; emitPageEvent()"
+                >
+                    {{ pageIndex }}
+                </button>
+                <button mat-icon-button class="active" disableRipple>
+                    {{ pageIndex + 1 }}
+                </button>
+                <button
+                    mat-icon-button
+                    (click)="pageIndex = pageIndex + 1; emitPageEvent()"
+                    *ngIf="pageIndex < getNumberOfPages() - 2"
+                >
+                    {{ pageIndex + 2 }}
+                </button>
+
+                <button
+                    mat-icon-button
+                    disabled
+                    *ngIf="pageIndex < getNumberOfPages() - 3"
+                >
+                    ...
+                </button>
+
+                <button
+                    (click)="lastPage()"
+                    *ngIf="pageIndex < getNumberOfPages() - 1"
+                    mat-icon-button
+                >
+                    {{ getNumberOfPages() }}
+                </button>
+            </div>
+
+            <button
+                mat-icon-button
+                type="button"
+                class="mat-paginator-navigation-next"
+                (click)="nextPage()"
+                [attr.aria-label]="_intl.nextPageLabel"
+                [matTooltip]="_intl.nextPageLabel"
+                [matTooltipDisabled]="_nextButtonsDisabled()"
+                [matTooltipPosition]="'above'"
+                [disabled]="_nextButtonsDisabled()"
+            >
+                <svg
+                    class="mat-paginator-icon"
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                >
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="app-d-f app-ai-c">
+        <div class="mat-paginator-range-label">
+            {{ _intl.getRangeLabel(pageIndex, pageSize, length) }}
+        </div>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" class="app-paginator-page-menu">
+            <button mat-menu-item (click)="openSelect()">
+                Enter page number
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="menuPerPage">
+                Results per page
+            </button>
+        </mat-menu>
+
+        <mat-menu #menuPerPage="matMenu" class="app-paginator-page-menu">
+            <button
+                mat-menu-item
+                (click)="_changePageSize(pageSizeOption)"
+                *ngFor="let pageSizeOption of _displayedPageSizeOptions"
+            >
+                <mat-icon
+                    class="material-icons-outlined"
+                    [class.app-op-06]="pageSize != pageSizeOption"
+                    [class.app-success]="pageSize == pageSizeOption"
+                    >{{
+                        pageSize == pageSizeOption ? 'check_circle' : 'circle'
+                    }}</mat-icon
+                >
+                {{ pageSizeOption }}
+            </button>
+        </mat-menu>
+    </div>
+</div>

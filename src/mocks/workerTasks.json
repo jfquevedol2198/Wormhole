@@ -1,0 +1,51 @@
+{
+    "responseTimestamp": "2021-01-13T15:06:37.6442451+00:00",
+    "recordCount": 5,
+    "workerTasks": [
+        {
+            "workerTaskId": 0,
+            "taskType": "Master",
+            "workerName": "string",
+            "enabled": true,
+            "taskScheduled": "2021-08-25T15:50:38.986Z",
+            "taskStarted": "2021-08-25T15:50:38.986Z",
+            "taskCompleted": "2021-08-25T15:50:38.986Z",
+            "state": "Scheduled",
+            "taskParameters": "string",
+            "runCounter": 0,
+            "lockTimestamp": "2021-08-25T15:50:38.986Z",
+            "agentId": 0,
+            "sessionId": "string"
+        },
+        {
+            "workerTaskId": 0,
+            "taskType": "Master",
+            "workerName": "string",
+            "enabled": true,
+            "taskScheduled": "2021-08-25T15:50:38.986Z",
+            "taskStarted": "2021-08-25T15:50:38.986Z",
+            "taskCompleted": "2021-08-25T15:50:38.986Z",
+            "state": "Scheduled",
+            "taskParameters": "string",
+            "runCounter": 0,
+            "lockTimestamp": "2021-08-25T15:50:38.986Z",
+            "agentId": 0,
+            "sessionId": "string"
+        },
+        {
+            "workerTaskId": 0,
+            "taskType": "Master",
+            "workerName": "string",
+            "enabled": true,
+            "taskScheduled": "2021-08-25T15:50:38.986Z",
+            "taskStarted": "2021-08-25T15:50:38.986Z",
+            "taskCompleted": "2021-08-25T15:50:38.986Z",
+            "state": "Scheduled",
+            "taskParameters": "string",
+            "runCounter": 0,
+            "lockTimestamp": "2021-08-25T15:50:38.986Z",
+            "agentId": 0,
+            "sessionId": "string"
+        }
+    ]
+}

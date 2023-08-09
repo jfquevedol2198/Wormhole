@@ -1,0 +1,24 @@
+<div class="app-w-100">
+    <div class="app-d-f app-jc-sb">
+        <div class="app-mb-05 app-mt-05">
+            <app-date-range-inputs></app-date-range-inputs>
+        </div>
+    </div>
+    <mat-progress-spinner
+        *ngIf="isLoading"
+        class="app-m-3-a"
+        color="accent"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+
+    <div *ngIf="!isLoading && reportPresetId !== null">
+        <app-transactions-table></app-transactions-table>
+    </div>
+
+    <app-no-data-communicate
+        *ngIf="!isLoading && reportPresetId === null"
+        [data]="'preset'"
+    >
+    </app-no-data-communicate>
+</div>

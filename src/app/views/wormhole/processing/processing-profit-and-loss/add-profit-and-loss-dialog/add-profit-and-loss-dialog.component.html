@@ -1,0 +1,87 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Create Profit and Loss Definition</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <form [formGroup]="formGroup" class="app-mr-05">
+            <mat-form-field
+                class="
+                    app-form-select-date
+                    app-form-select-date--small
+                    app-form-select-date--medium
+                    app-ml-1
+                "
+                appearance="fill"
+            >
+                <mat-label>Start Date</mat-label>
+                <input
+                    matInput
+                    [ngxMatDatetimePicker]="pickerStart"
+                    [min]="minDate"
+                    [max]="maxDate"
+                    formControlName="startDate"
+                    data-lpignore="true"
+                />
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerStart"
+                ></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker
+                    #pickerStart
+                    showSpinners="1"
+                    [showSeconds]="false"
+                    [stepHour]="1"
+                    [stepMinute]="1"
+                >
+                </ngx-mat-datetime-picker>
+            </mat-form-field>
+            <mat-form-field
+                class="
+                    app-form-select-date
+                    app-form-select-date--small
+                    app-form-select-date--medium
+                    app-ml-1
+                "
+                appearance="fill"
+            >
+                <mat-label>End Date</mat-label>
+                <input
+                    matInput
+                    [ngxMatDatetimePicker]="pickerEnd"
+                    [min]="minDate"
+                    [max]="maxDate"
+                    formControlName="endDate"
+                    data-lpignore="true"
+                />
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerEnd"
+                ></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker
+                    #pickerEnd
+                    showSpinners="1"
+                    [showSeconds]="false"
+                    [stepHour]="1"
+                    [stepMinute]="1"
+                >
+                </ngx-mat-datetime-picker>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button
+            mat-flat-button
+            color="accent"
+            type="submit"
+            (click)="addPnLDefinition()"
+        >
+            Add
+        </button>
+    </div>
+</div>

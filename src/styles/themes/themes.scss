@@ -1,0 +1,169 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import '../colors/colors';
+
+$primary: mat-palette($mat-grey, 50);
+$accent: mat-palette($mat-grey, 50);
+$warn: mat-palette($mat-red, 500);
+
+$dark-primary: mat-palette($mat-grey, 50);
+$dark-accent: mat-palette($mat-grey, 50);
+$dark-warn: mat-palette($mat-red, 500);
+
+// this setting fixes weird halo around mat-slide-toggles when they are selected (no other issues found when this is set to 0)
+$mat-ripple-color-opacity: 0;
+
+$background: (
+    background: $light-00,
+    hover: $light-03,
+    app-bar: $light-03,
+    card: $light-02,
+    dialog: $light-02,
+    status-bar: map_get($mat-grey, 100),
+    disabled-button: $black-12-opacity,
+    raised-button: $light-00,
+    focused-button: $black-6-opacity,
+    selected-button: $light-05,
+    selected-disabled-button: map_get($mat-grey, 500),
+    disabled-button-toggle: map_get($mat-grey, 700),
+    unselected-chip: map_get($mat-grey, 700),
+    disabled-list-option: white,
+);
+
+$foreground: (
+    secondary-text: $dark-05,
+    icon: $dark-01,
+    icons: $dark-01,
+    text: $dark-01,
+    hint-text: $light-07,
+    divider: $black-12-opacity,
+    dividers: $black-12-opacity,
+    ja base: rgba(white, 0.87),
+    disabled: rgba($dark-00, 0.38),
+    disabled-button: rgba($dark-00, 0.38),
+    disabled-text: $disabledEmphasis,
+    slider-min: $dark-00,
+    slider-off: rgba($dark-00, 0.3),
+    slider-off-active: rgba($dark-00, 0.3),
+);
+
+$dark-background: (
+    background: $dark-00,
+    hover: $dark-03,
+    app-bar: $dark-03,
+    card: $dark-02,
+    dialog: $dark-02,
+    status-bar: map_get($mat-grey, 100),
+    disabled-button: $white-12-opacity,
+    raised-button: $dark-00,
+    focused-button: $white-6-opacity,
+    selected-button: $dark-05,
+    selected-disabled-button: map_get($mat-grey, 500),
+    disabled-button-toggle: map_get($mat-grey, 700),
+    unselected-chip: map_get($mat-grey, 700),
+    disabled-list-option: black,
+);
+
+$dark-foreground: (
+    secondary-text: $light-07,
+    icon: $light-01,
+    icons: $light-01,
+    text: $light-01,
+    hint-text: $light-07,
+    divider: $white-12-opacity,
+    dividers: $white-12-opacity,
+    ja base: rgba(black, 0.87),
+    disabled: rgba($light, 0.38),
+    disabled-button: rgba($light, 0.38),
+    disabled-text: $disabledDarkEmphasis,
+    slider-min: $light,
+    slider-off: rgba($light, 0.3),
+    slider-off-active: rgba($light, 0.3),
+);
+
+// instead of creating a theme with mat-light-theme like a sane person, we will create our own theme-creating function that lets us apply our own foreground and background palettes.
+@function create-theme($primary, $accent, $warn, $foreground, $background) {
+    @return (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: false,
+        foreground: $foreground,
+        background: $background
+    );
+}
+
+// // The rest of this is like a normal theme.scss file. The only difference being that we use create-wonky-theme instead of mat-light-theme
+
+$theme: create-theme($primary, $accent, $warn, $foreground, $background);
+
+@include angular-material-theme($theme);
+
+// DARK theme
+
+$dark-theme: create-theme(
+    $dark-primary,
+    $dark-accent,
+    $dark-warn,
+    $dark-foreground,
+    $dark-background
+);
+
+.dark-theme {
+    color: $light-primary-text;
+    @include angular-material-theme($dark-theme);
+}
+
+//LSD theme
+
+$LSD-primary: mat-palette($mat-green);
+$LSD-accent: mat-palette($mat-blue);
+$LSD-warn: mat-palette($mat-red);
+
+$LSD-background: (
+    status-bar: #611de9,
+    app-bar: #3399ff,
+    background: #a784f9,
+    hover: rgba(white, 0.04),
+    card: #ccff00,
+    dialog: map_get($mat-grey, 800),
+    disabled-button: $white-12-opacity,
+    raised-button: map-get($mat-grey, 800),
+    focused-button: $white-6-opacity,
+    selected-button: map_get($mat-grey, 900),
+    selected-disabled-button: map_get($mat-grey, 800),
+    disabled-button-toggle: black,
+    unselected-chip: map_get($mat-grey, 700),
+    disabled-list-option: black,
+);
+
+$LSD-foreground: (
+    base: #7fffd4,
+    divider: $white-12-opacity,
+    dividers: $white-12-opacity,
+    disabled: rgba(white, 0.3),
+    disabled-button: rgba(white, 0.3),
+    disabled-text: rgba(white, 0.3),
+    hint-text: rgba(white, 0.3),
+    secondary-text: rgba(white, 0.7),
+    icon: white,
+    icons: white,
+    text: #8904b1,
+    slider-min: white,
+    slider-off: rgba(white, 0.3),
+    slider-off-active: rgba(white, 0.3),
+);
+
+$LSD-theme: create-theme(
+    $LSD-primary,
+    $LSD-accent,
+    $LSD-warn,
+    $LSD-foreground,
+    $LSD-background
+);
+
+.LSD-theme {
+    @include angular-material-theme($LSD-theme);
+}

@@ -1,0 +1,35 @@
+<div class="app-dialog coin-error-dialog">
+    <div mat-dialog-title class="app-d-f app-ai-c app-jc-sb">
+        <h3 class="app-mb-0 app-important">CoinGeko</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div mat-dialog-content class="app-custom-scroll">
+        <div>
+            <div class="app-d-f coin-error-dialog__title app-ai-c">
+                <mat-icon class="app-mr-1">highlight_off</mat-icon>
+                <span class="">Error: JSON couldn’t be validated</span>
+            </div>
+            <div class="app-custom-scroll coin-error-dialog__content">
+                <my-codemirror
+                    [content]="error"
+                    [options]="{
+                        lineNumbers: true,
+                        mode: 'markdown',
+                        readOnly: true,
+                        scrollbarStyle: null
+                    }"
+                ></my-codemirror>
+            </div>
+        </div>
+        <div class="app-d-f app-ai-c app-mt-15">
+            <span class="app-mr-05 app-important">Active</span>
+            <mat-slide-toggle [checked]="active"></mat-slide-toggle>
+        </div>
+    </div>
+    <mat-dialog-actions class="action-content app-b-t-elevation-03">
+        <button class="app-mr-075" mat-stroked-button mat-dialog-close>Cancel</button>
+        <button class="app-m-0" mat-button color="accent" mat-raised-button>Save</button>
+    </mat-dialog-actions>
+</div>

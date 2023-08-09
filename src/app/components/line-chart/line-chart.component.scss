@@ -1,0 +1,36 @@
+@import '../../../styles/variables/variables';
+@import '../../../styles/colors/colors';
+
+.app-line-chart {
+    &__legend {
+        margin-top: 0.5 * $spacer;
+    }
+
+    &__legend-item {
+        padding-left: 0.5 * $spacer;
+        padding-right: 0.5 * $spacer;
+    }
+
+    &__legend-indicator {
+        width: $spacer;
+        height: $spacer;
+        border-radius: 0.5 * $spacer;
+        margin-right: 0.25 * $spacer;
+    }
+
+    &__select {
+        width: 11.5 * $spacer;
+        border: none;
+    }
+
+    &__display {
+        cursor: crosshair;
+    }
+    .app-button.app-button--small {
+        color: $dark-07;
+        font-weight: 400;
+    }
+    .active {
+        color: $white !important;
+    }
+}

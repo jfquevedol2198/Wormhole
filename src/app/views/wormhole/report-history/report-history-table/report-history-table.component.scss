@@ -1,0 +1,9 @@
+@import '../../../../../styles/variables/variables.scss';
+
+.app-report-history-container {
+    max-width: 112.5 * $spacer;
+    margin: 0 auto;
+    &__calendars {
+        flex-wrap: wrap;
+    }
+}

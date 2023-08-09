@@ -1,0 +1,16 @@
+<mat-card class="app-d-f app-fd-c">
+    <mat-card-title class="app-ta-c app-mb-1 app-important">
+        Exchange Rate Providers
+    </mat-card-title>
+
+    <mat-card-content>
+        <mat-chip-list class="app-d-f app-fw-w app-m-0 app-p-0">
+            <mat-chip
+                class="app-d-if app-fw-lr app-f-s-12"
+                *ngFor="let provider of providers$ | async"
+            >
+                {{ provider.name }}
+            </mat-chip>
+        </mat-chip-list>
+    </mat-card-content>
+</mat-card>

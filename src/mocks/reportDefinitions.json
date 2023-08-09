@@ -1,0 +1,57 @@
+{
+    "responseTimestamp": "2021-06-17T05:19:01.5666649+00:00",
+    "recordCount": 1,
+    "records": [
+        {
+            "reportDefinitionId": 12,
+            "reportPresetId": 3,
+            "reportPreset": {
+                "reportPresetId": 3,
+                "userAccountId": 1,
+                "userAccount": {
+                    "userAccountId": 0,
+                    "name": "string",
+                    "apiKey": "string",
+                    "lastAccess": "2021-08-25T15:40:27.684Z",
+                    "disabled": true,
+                    "locked": true,
+                    "userAccountRoles": [
+                        {
+                            "userAccountRoleId": 0,
+                            "userAccountId": 0,
+                            "userRoleId": 0,
+                            "userRole": {
+                                "userRoleId": 0,
+                                "userRoleName": "string",
+                                "userAccountRoles": [null]
+                            }
+                        }
+                    ]
+                },
+                "name": "test123",
+                "scope": "user",
+                "definition": {
+                    "startBlock": 0,
+                    "endBlock": 0,
+                    "source": "string",
+                    "platform": "string",
+                    "fromValue": 0,
+                    "toValue": 100,
+                    "isUsdValue": true,
+                    "isEdited": true,
+                    "isDisabled": true,
+                    "asset": "string",
+                    "isError": true,
+                    "methodId": "string",
+                    "methodDescription": "string",
+                    "transactionTreatment": 0
+                },
+                "persistent": true,
+                "createdDate": "2021-06-16T10:52:28.299952+00:00"
+            },
+            "name": "test1",
+            "description": "test2",
+            "schedule": "Weekly"
+        }
+    ]
+}

@@ -1,0 +1,120 @@
+<div class="app-dialog import-address-dialog">
+    <div mat-dialog-title class="app-d-f app-ai-c app-jc-sb">
+        <h3 class="app-mb-0 app-important">Import Addresses</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div class="app-d-f app-jc-sb app-ai-c">
+            <span class="app-f-s-10">Text to parse</span>
+            <div>
+                <button
+                    mat-icon-button
+                    class="app-button app-button--small app-d-f"
+                >
+                    <mat-icon>search</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    class="app-button app-button--small app-d-f"
+                >
+                    <mat-icon>filter_list</mat-icon>
+                </button>
+            </div>
+        </div>
+        <form [formGroup]="form" class="import-address-dialog__form">
+            <mat-form-field
+                class="
+                    app-form-select app-form-select--small app-form-select--long 
+                    import-address-dialog__form__text-input
+
+                "
+                appearance="fill"
+            >
+                <textarea matInput formControlName="text" rows="10"></textarea>
+            </mat-form-field>
+            <div class="app-d-f app-mt-15">
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 import-address-dialog__form__title">Platform</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="platform"
+                        >
+                            <mat-option
+                                *ngFor="let p of data.platforms"
+                                [value]="p.name"
+                            >{{p.name}}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 import-address-dialog__form__title">Contract group</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="contract"
+                        >
+                            <mat-option
+                                value="unstake"
+                            >Unstake</mat-option>
+                            <mat-option
+                                value="unstake1"
+                            >Unstake1</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 import-address-dialog__form__title">Type</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="type"
+                        >
+                            <mat-option
+                                *ngFor="let ct of data.currencyType"
+                                [value]="ct"
+                            >{{ct}}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions class="app-jc-sb app-important action-content">
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button mat-button color="accent" mat-raised-button>Parse</button>
+    </mat-dialog-actions>
+</div>

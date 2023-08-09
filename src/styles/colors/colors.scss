@@ -1,0 +1,132 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$white: #ffffff;
+$black: #000000;
+
+//DARK THEME
+$dark-00: rgb(31, 31, 31);
+$dark-01: rgb(35, 35, 35);
+$dark-02: rgb(37, 37, 37);
+$dark-03: rgb(44, 44, 44);
+$dark-04: rgb(62, 62, 62);
+$dark-05: rgb(66, 66, 66);
+$dark-06: rgb(97, 97, 97);
+$dark-07: rgb(155, 155, 155);
+
+//LSD THEME
+
+$LSD-00: rgba(167, 132, 249, 0);
+$LSD-01: rgba(50, 39, 74, 0);
+$LSD-03: rgba(127, 255, 212, 0);
+$LSD-04: rgba(97, 29, 233, 0);
+$LSD-05: rgba(204, 255, 0, 0);
+$LSD-06: rgba(51, 153, 255, 0);
+$LSD-07: rgba(51, 153, 255, 0.2);
+$LSD-08: #8904b1;
+
+//LIGHT THEME
+$light-08: rgb(114, 114, 114);
+$light-07: rgb(168, 168, 168);
+$light-06: rgb(189, 189, 189);
+$light-05: rgb(237, 237, 237);
+$light-04: rgb(239, 239, 239);
+$light-03: rgb(241, 241, 241);
+$light-02: rgb(249, 249, 249);
+$light-01: rgb(252, 252, 252);
+$light-00: $white;
+
+$light: map_get($mat-grey, 50);
+
+$greyish: #1d1d1d;
+$gray-18: #2f2f2f;
+$purple: #6043af;
+$purple1: #9d7cff;
+$purple-300: #ac6ec1;
+$blue: #4fa6ed;
+$blue-01: #78b2f0;
+$yellow: #f5c145;
+$amber: #f6ca50;
+$green: #97bf5c;
+$green-1: #b5d289;
+$green-2: #a6c871;
+$darkOliveGreen-2: #cfd959;
+$orange: #ea6539;
+$grey: #657b88;
+$lightBlue: #42cbde;
+$lightGreen: #cbde42;
+$pink: #de42cb;
+$skyBlue-2: #71bff2;
+
+$dark: #121212;
+$errorRed: #cf4846;
+$red-4: #da5f56;
+$tomato-1: #d47975;
+$tomato-2: #de5442;
+
+$green-08: rgba($green-1, 0.08);
+$skyBlue2-08: rgba($skyBlue-2, 0.08);
+$purple1-012: rgba($purple1, 0.12);
+
+// Elevation
+$elevation-00: rgba($white, 0.04);
+$elevation-01: rgba($white, 0.05);
+$elevation-02: rgba($white, 0.07);
+$elevation-03: rgba($white, 0.12);
+$elevation-04: rgba($white, 0.11);
+$elevation-05: rgba($white, 0.09);
+$elevation-dark-02: rgba($black, 0.07);
+$elevation-dark-01: rgba($black, 0.05);
+$elevation-dark-03: rgba($white, 0.08);
+
+// Typography
+$highDarkEmphasis: rgba($white, 0.87);
+$mediumDarkEmphasis: rgba($white, 0.4);
+$disabledDarkEmphasis: rgba($white, 0.62);
+$darkEmphasis: rgba($white, 0.6);
+$darkEmphasis-01: rgba($white, 0.54);
+
+$highEmphasis: rgba($black, 0.87);
+$highEmphasis-1: rgba($black, 0.7);
+$mediumEmphasis: rgba($black, 0.4);
+$disabledEmphasis: rgba($black, 0.62);
+
+// colours
+
+$primarySuccess: map_get($mat-light-green, 400); // #9ccc65
+$primaryInfo: $blue;
+$primaryWarning: #ffa713;
+$primaryError: $errorRed;
+$primaryProcess: #8e77c6;
+
+// Components
+
+$chipColorError: #dd425a;
+$chipColorErrorBg: rgba(#dd425a, 0.15);
+
+$chipColorInfo: #00bdcb;
+$chipColorInfoBg: rgba(#00bdcb, 0.15);
+
+$chipColorWarning: #ffa713;
+$chipColorWarningBg: rgba(#ffa000, 0.16);
+
+$chipColorSuccess: $green;
+$chipColorSuccessBg: rgba($green, 0.16);
+
+$chipColorProcess: $primaryProcess;
+$chipColorProcessBg: rgba($primaryProcess, 0.16);
+$chipColor-012: rgba($primaryProcess, 0.12);
+
+$green-1-015: rgba($green-1, 015);
+
+$progressBarBackground: $dark-06;
+$progressBarFill: $light-05;
+
+// Tables
+
+$tableLinkLineSize: 2px;
+$tableLinkLineColor: $light-07;
+$tableBg1: $dark-02;
+$tableBg2: $dark-04;
+$background: $dark-00;

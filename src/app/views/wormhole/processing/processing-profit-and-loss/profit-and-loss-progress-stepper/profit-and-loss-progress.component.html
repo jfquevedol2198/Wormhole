@@ -1,0 +1,9 @@
+<div *ngIf="progressData.length" class="app-d-f app-mt-05 app-pnl-progress-items-wrapper">
+    <div *ngFor="let category of progressData; let i = index"
+        class="app-pnl-progress-item {{ i === activeIndex ? 'active' : '' }}" (click)="onSelect(i)">
+        <app-profit-and-loss-progress-category [categoryData]="category" [isFirst]="i === 0"
+            [isLast]="i === progressData.length - 1" [startDate]="pnlDefinitionStartDate"
+            [endDate]="pnlDefinitionEndDate">
+        </app-profit-and-loss-progress-category>
+    </div>
+</div>

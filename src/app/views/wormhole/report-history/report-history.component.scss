@@ -1,0 +1,29 @@
+@import '../../../../styles/variables/variables';
+@import '../../../../styles/colors/colors';
+
+.app-report-history {
+    &__panel {
+        border-top: 0.1rem solid $dark-03;
+        border-radius: 0 !important;
+    }
+    &__panel-description {
+        color: $light-07 !important;
+        width: 16 * $spacer !important;
+    }
+    &__panel-text {
+        width: 10 * $spacer;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__toolbar {
+        height: 3 * $spacer;
+        min-height: 0;
+    }
+
+    &__panel-title {
+        max-width: 40 * $spacer;
+    }
+}

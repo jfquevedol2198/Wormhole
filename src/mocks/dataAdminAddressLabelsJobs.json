@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "agent": "Aldous",
+        "runCount": 1,
+        "sessionID": "1pfunYstPwTWVDyvX7aYVWuVSBV8VL7j4",
+        "scheduled": "11/12/2020",
+        "started": "12/29/2020",
+        "completed": "6/17/2021",
+        "provider": "Talane",
+        "status": "Completed",
+        "active": true,
+        "isSelected": false
+    },
+    {
+        "id": 2,
+        "agent": "Jeffie",
+        "runCount": 6,
+        "sessionID": "13R6jmCpCE1UDns6vAY9Hqb3DWRdqArkeW",
+        "scheduled": "4/24/2021",
+        "started": "1/7/2021",
+        "completed": "6/24/2021",
+        "provider": "Myworks",
+        "status": "Running",
+        "active": false,
+        "isSelected": true
+    },
+    {
+        "id": 3,
+        "agent": "Kakalina",
+        "runCount": 94,
+        "sessionID": "1HLkpUDJeVwGEJLpa7zBRyWvhYeoSj9YZK",
+        "scheduled": "11/19/2020",
+        "started": "9/4/2020",
+        "completed": "4/7/2021",
+        "provider": "Kayveo",
+        "status": "Failed",
+        "active": true,
+        "isSelected": true
+    },
+    {
+        "id": 4,
+        "agent": "Michaeline",
+        "runCount": 83,
+        "sessionID": "1DffojUQhcX9DHcojQ1uXeqTno7TPq1BUm",
+        "scheduled": "4/11/2021",
+        "started": "7/9/2021",
+        "completed": "7/15/2021",
+        "provider": "Shuffledrive",
+        "status": "Scheduled",
+        "active": false,
+        "isSelected": false
+    },
+    {
+        "id": 5,
+        "agent": "Pancho",
+        "runCount": 11,
+        "sessionID": "1PysyQ5SH5KXrvH8H97e8YiZqjazuisL52",
+        "scheduled": "2/13/2021",
+        "started": "9/1/2020",
+        "completed": "11/30/2020",
+        "provider": "Thoughtbeat",
+        "status": "Completed",
+        "active": true,
+        "isSelected": false
+    },
+    {
+        "id": 6,
+        "agent": "Jeffie",
+        "runCount": 6,
+        "sessionID": "13R6jmCpCE1UDns6vAY9Hqb3DWRdqArkeW",
+        "scheduled": "4/24/2021",
+        "started": "1/7/2021",
+        "completed": "6/24/2021",
+        "provider": "Myworks1",
+        "status": "Running",
+        "active": false,
+        "isSelected": true
+    }
+]

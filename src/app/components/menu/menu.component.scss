@@ -1,0 +1,18 @@
+@import "../../../styles/variables/variables";
+@import "../../../styles/colors/colors";
+
+.app-menu {
+    &__button {
+        padding: 0 $spacer!important;
+        min-width: 0!important;
+        &--disabled {
+            color: $mediumDarkEmphasis!important;
+        }
+    }
+}
+
+::ng-deep {
+    .app-menu mat-ink-bar.mat-ink-bar {
+        display: none;
+    }
+}

@@ -1,0 +1,35 @@
+@import '../../../../styles/colors/colors';
+@import '../../../../styles/variables/variables';
+
+.app-advanced-search-dialog-list {
+    &__active-item {
+        background-color: #393939;
+        border-radius: 0.25rem;
+    }
+
+    &__text {
+        color: $light-07;
+        font-weight: 400;
+        font-size: 9pt;
+        padding: 0 !important;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__text.lighter {
+        color: $light-08;
+    }
+    &__button {
+        width: 1.874 * $spacer;
+        height: 1.874 * $spacer;
+        line-height: 1.5 * $spacer;
+    }
+    &__button-icon {
+        font-size: 12pt;
+        color: $light-07;
+    }
+    &__wrapper {
+        width: 6.25 * $spacer;
+    }
+}

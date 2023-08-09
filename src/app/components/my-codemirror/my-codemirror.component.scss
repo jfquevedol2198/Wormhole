@@ -1,0 +1,21 @@
+@import '../../../styles/colors/colors.scss';
+
+::ng-deep {
+    .CodeMirror {
+        background: linear-gradient(0deg, $elevation-05, $elevation-05), $dark;
+    }
+    .CodeMirror-line {
+        color: $white!important;
+    }
+    .CodeMirror-gutters {
+        background-color: transparent;
+        border: none;
+    }
+    .CodeMirror-line {
+        padding-left: 22px!important;
+    }
+    .CodeMirror-scroll {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+}

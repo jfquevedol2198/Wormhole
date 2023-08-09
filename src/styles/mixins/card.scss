@@ -1,0 +1,15 @@
+@mixin card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    &__card {
+        width: 40rem;
+        text-align: center;
+    }
+
+    &__version-info {
+        font-size: 8pt;
+    }
+}

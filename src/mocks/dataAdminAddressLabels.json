@@ -1,0 +1,72 @@
+[
+    {
+        "status": "ok",
+        "platform": "Aerified",
+        "address": "1GQHBvSXi2kbrcreVH22pT3EmpCA9sT8t9",
+        "displayName": "Abata",
+        "name": "Yodo",
+        "symbol": "BRL",
+        "decimal": 96,
+        "scope": "Zaam-Dox",
+        "gasToken": false,
+        "scam": false,
+        "chain": "Doors, Frames & Hardware",
+        "type": "Hard Tile & Stone"
+    },
+    {
+        "status": null,
+        "platform": "Asoka",
+        "address": "1CRRNhjacFEp6NGKRaPvboFtQa3FLgwoYG",
+        "displayName": "Buzzdog",
+        "name": "Vimbo",
+        "symbol": "NGN",
+        "decimal": 79,
+        "scope": "Namfix",
+        "gasToken": false,
+        "scam": true,
+        "chain": "Overhead Doors",
+        "type": "Exterior Signage"
+    },
+    {
+        "status": "ok",
+        "platform": "Keylex",
+        "address": "1C8RcxmjZE4RKVWXx5gBzZLtZBwivadLDx",
+        "displayName": "Katz",
+        "name": "Eabox",
+        "symbol": "CNY",
+        "decimal": 91,
+        "scope": "Regrant",
+        "gasToken": false,
+        "scam": false,
+        "chain": "Waterproofing & Caulking",
+        "type": "Electrical and Fire Alarm"
+    },
+    {
+        "status": "ok",
+        "platform": "Temp",
+        "address": "15YPz1BGQETVSiBamxaCRqn9erVL19HzbH",
+        "displayName": "Flipstorm",
+        "name": "Myworks",
+        "symbol": "PEN",
+        "decimal": 70,
+        "scope": "Bitwolf",
+        "gasToken": true,
+        "scam": true,
+        "chain": "Elevator",
+        "type": "Drywall & Acoustical (MOB)"
+    },
+    {
+        "status": null,
+        "platform": "Zaam-Dox",
+        "address": "1N5xTB7WEf1qGQbztVJ772Ao9fE7BYNWt9",
+        "displayName": "Thoughtstorm",
+        "name": "Skidoo",
+        "symbol": "CNY",
+        "decimal": 98,
+        "scope": "Ventosanzap",
+        "gasToken": false,
+        "scam": false,
+        "chain": "Epoxy Flooring",
+        "type": "Structural and Misc Steel (Fabrication)"
+    }
+]

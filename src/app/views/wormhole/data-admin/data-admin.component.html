@@ -1,0 +1,47 @@
+<ng-container>
+    <mat-tab-group
+        color="accent"
+        animationDuration="0ms"
+        (selectedTabChange)="setActiveTab($event.index)"
+    >
+        <mat-tab
+            *ngFor="let tab of dataAdminTabs; let index = index"
+            [label]="tab"
+            [tabIndex]="index"
+        >
+            <ng-template mat-tab-label
+                ><span class="app-data-admin__label app-fw-400">
+                    {{ tab.label }}
+                </span></ng-template
+            >
+        </mat-tab>
+    </mat-tab-group>
+    <mat-tab-group
+        color="accent"
+        animationDuration="0ms"
+        (selectedTabChange)="setActiveSubTab($event.index)"
+        [selectedIndex]="activeSubTabIndex"
+    >
+        <mat-tab
+            *ngFor="let tab of selectedTab.subTabs; let index = index"
+            [label]="tab"
+            [tabIndex]="index"
+        >
+            <ng-template mat-tab-label
+                ><span class="app-data-admin__label app-fw-400">
+                    {{ tab.label }}
+                </span></ng-template
+            >
+        </mat-tab>
+    </mat-tab-group>
+
+    <app-data-admin-platforms *ngIf="selectedTab.label === 'Platforms' && selectedSubTab.label === 'Platforms'"></app-data-admin-platforms>
+    <app-data-admin-address-labels *ngIf="selectedTab.label === 'Address Labels' && selectedSubTab.label === 'Address Labels'"></app-data-admin-address-labels>
+    <app-data-admin-address-labels-jobs  *ngIf="selectedTab.label === 'Address Labels' && selectedSubTab.label === 'Jobs'"></app-data-admin-address-labels-jobs>
+    <app-data-admin-method-definitions *ngIf="selectedTab.label === 'Method Definitions' && selectedSubTab.label === 'Method Definitions'"></app-data-admin-method-definitions>
+    <app-data-admin-method-definitions-jobs *ngIf="selectedTab.label === 'Method Definitions' && selectedSubTab.label === 'Jobs'"></app-data-admin-method-definitions-jobs>
+    <app-data-admin-market-data-providers *ngIf="selectedTab.label === 'Market Data' && selectedSubTab.label === 'Providers'"></app-data-admin-market-data-providers>
+    <app-data-admin-market-data-providers-jobs *ngIf="selectedTab.label === 'Market Data' && selectedSubTab.label === 'Providers Jobs'"></app-data-admin-market-data-providers-jobs>
+    <app-data-admin-currency-pairs *ngIf="selectedTab.label === 'Market Data' && selectedSubTab.label === 'Currency Pairs'"></app-data-admin-currency-pairs>
+    <app-data-admin-market-data-market-to-market *ngIf="selectedTab.label === 'Market Data' && selectedSubTab.label === 'Market To Market'"></app-data-admin-market-data-market-to-market>
+</ng-container>

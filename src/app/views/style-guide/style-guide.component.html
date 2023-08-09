@@ -1,0 +1,848 @@
+<app-main>
+    <mat-card class="app-style-guide">
+        <mat-sidenav-container class="app-style-guide__container">
+            <mat-sidenav mode="side" opened class="app-style-guide__nav">
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(typography)"
+                >
+                    Typography
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(color)"
+                >
+                    Color
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(button)"
+                >
+                    Button
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(dialog)"
+                >
+                    Dialog
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(form)"
+                >
+                    Form
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(toggle)"
+                >
+                    Toggle
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(chip)"
+                >
+                    Chip
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(icons)"
+                >
+                    Icons
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(progressBar)"
+                >
+                    Progress bar
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(search)"
+                >
+                    Search
+                </div>
+                <div
+                    class="app-style-guide__nav-link app-mb-05"
+                    (click)="navigate(table)"
+                >
+                    Table
+                </div>
+            </mat-sidenav>
+            <mat-sidenav-content class="app-style-guide__content app-pl-1">
+                <div #typography class="app-style-guide__content--container">
+                    <h3>Typography</h3>
+                    <div>
+                        <h1 class="app-h1">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                        </h1>
+                        <h2 class="app-h2">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                        </h2>
+                        <h3 class="app-h3">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                        </h3>
+                        <h4 class="app-h4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                        </h4>
+                        <h5 class="app-h5">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit
+                        </h5>
+                    </div>
+                </div>
+                <div #color class="app-style-guide__content--container">
+                    <h3>Color</h3>
+
+                    <div class="app-d-f">
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--primary
+                            "
+                        ></div>
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--secondary
+                            "
+                        ></div>
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--success
+                            "
+                        ></div>
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--info
+                            "
+                        ></div>
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--warning
+                            "
+                        ></div>
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--error
+                            "
+                        ></div>
+                        <div
+                            class="
+                                app-style-guide__color
+                                app-style-guide__color--process
+                            "
+                        ></div>
+                    </div>
+                </div>
+                <div #button class="app-style-guide__content--container">
+                    <h3>Button</h3>
+                    <div class="app-d-f app-ai-c">
+                        <button
+                            class="mat-stroked-button app-important app-mr-1"
+                            mat-button
+                        >
+                            Default
+                        </button>
+                        <button
+                            class="
+                                mat-raised-button
+                                app-important app-mr-1
+                                mat-accent
+                            "
+                            mat-button
+                        >
+                            Secondary
+                        </button>
+                        <div class="app-mr-1">
+                            <button
+                                class="
+                                    mat-stroked-button
+                                    app-button--small
+                                    app-important app-button
+                                "
+                                mat-button
+                            >
+                                Small
+                            </button>
+                        </div>
+                        <div class="app-mr-1">
+                            <button
+                                class="
+                                    app-button--table
+                                    mat-stroked-button
+                                    app-button
+                                "
+                                mat-button
+                            >
+                                Table
+                            </button>
+                        </div>
+                        <div>
+                            <mat-button-toggle-group
+                                name="toggle"
+                                aria-label="Toggle button"
+                                class="app-button--toggle app-button"
+                            >
+                                <mat-button-toggle value="one"
+                                    >One</mat-button-toggle
+                                >
+                                <mat-button-toggle value="two"
+                                    >Two</mat-button-toggle
+                                >
+                            </mat-button-toggle-group>
+                        </div>
+                    </div>
+                </div>
+                <div #dialog class="app-style-guide__content--container">
+                    <h3>Dialog</h3>
+                    <div class="app-d-f app-ai-c">
+                        <button
+                            class="mat-stroked-button app-important app-mr-1"
+                            mat-button
+                            (click)="openDialog()"
+                        >
+                            Default dialog
+                        </button>
+                    </div>
+                </div>
+                <div #form class="app-style-guide__content--container">
+                    <h3>Form</h3>
+
+                    <div class="app-d-f app-mb-1">
+                        <mat-form-field
+                            appearance="fill"
+                            class="
+                                app-form-select app-form-select--small
+                                app-mr-1
+                            "
+                        >
+                            <mat-label>Default</mat-label>
+                            <input matInput type="text" />
+                        </mat-form-field>
+                        <mat-form-field
+                            appearance="fill"
+                            class="
+                                app-form-select app-mr-1
+                                app-form-select--small
+                            "
+                        >
+                            <mat-label>Placeholder here</mat-label>
+                            <input
+                                matInput
+                                type="text"
+                                value="With text inside"
+                            />
+                        </mat-form-field>
+                    </div>
+                    <div class="app-d-f app-mb-1">
+                        <mat-form-field
+                            appearance="fill"
+                            class="
+                                app-form-select app-form-select--small
+                                app-mr-1
+                            "
+                        >
+                            <mat-label>Example with icons</mat-label>
+                            <input matInput type="text" />
+                            <button matSuffix mat-icon-button>
+                                <mat-icon>done</mat-icon>
+                            </button>
+                            <button matSuffix mat-icon-button>
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field
+                            appearance="fill"
+                            class="app-form-select app-form-select--small"
+                        >
+                            <mat-label>Example with icons</mat-label>
+                            <input
+                                matInput
+                                type="text"
+                                value="With text inside"
+                            />
+                            <button matSuffix mat-icon-button>
+                                <mat-icon>done</mat-icon>
+                            </button>
+                            <button matSuffix mat-icon-button>
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+
+                    <form [formGroup]="formGroup">
+                        <mat-form-field
+                            appearance="fill"
+                            class="
+                                app-form-select app-form-select--small
+                                app-mr-1
+                            "
+                        >
+                            <mat-label>Default</mat-label>
+                            <input
+                                matInput
+                                type="text"
+                                formControlName="example1"
+                            />
+                            <mat-error>Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field
+                            class="
+                                app-form-select
+                                app-form-select--small
+                                app-form-select--medium
+                                app-mr-1
+                            "
+                            appearance="fill"
+                        >
+                            <mat-label>Autocomplete</mat-label>
+                            <input
+                                type="text"
+                                matInput
+                                [matAutocomplete]="auto"
+                                formControlName="autocomplete"
+                            />
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option
+                                    *ngFor="
+                                        let option of filteredAutocompleteOptions
+                                            | async
+                                    "
+                                    [value]="option"
+                                >
+                                    {{ option }}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field
+                            class="
+                                app-form-select
+                                app-form-select--small
+                                app-form-select--long
+                                app-form-select--close
+                                app-mr-05
+                                app-report-history__new-report-form__field
+                            "
+                            appearance="fill"
+                        >
+                            <mat-label>Example with clear button</mat-label>
+                            <input
+                                matInput
+                                data-lpignore="true"
+                                formControlName="withClearButton"
+                            />
+                            <button
+                                (click)="
+                                    formGroup.controls.withClearButton.setValue(
+                                        ''
+                                    )
+                                "
+                                *ngIf="formGroup.controls.withClearButton.value"
+                                matSuffix
+                                mat-icon-button
+                                aria-label="Clear"
+                            >
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <mat-form-field
+                            class="
+                                app-form-select
+                                app-form-select--small
+                                app-form-select--long
+                                app-form-select--close
+                                app-mr-05
+                                app-report-history__new-report-form__field
+                            "
+                            appearance="fill"
+                        >
+                            <mat-label>Example with clear button</mat-label>
+                            <input
+                                matInput
+                                data-lpignore="true"
+                                formControlName="withClearButtonWithText"
+                            />
+                            <button
+                                (click)="
+                                    formGroup.controls.withClearButtonWithText.setValue(
+                                        ''
+                                    )
+                                "
+                                *ngIf="
+                                    formGroup.controls.withClearButtonWithText
+                                        .value
+                                "
+                                matSuffix
+                                mat-icon-button
+                                aria-label="Clear"
+                            >
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <div #toggle class="app-style-guide__content--container">
+                    <h3>Toggle</h3>
+
+                    <div class="app-d-f app-fd-c">
+                        <mat-slide-toggle checked="true" class="app-mb-1"
+                            >Toggle On</mat-slide-toggle
+                        >
+                        <mat-slide-toggle checked="false" class="app-mb-1"
+                            >Toggle Off</mat-slide-toggle
+                        >
+                        <mat-slide-toggle
+                            checked="true"
+                            class="app-mb-1"
+                            disabled="disabled"
+                            >Toggle On Disabled</mat-slide-toggle
+                        >
+                        <mat-slide-toggle checked="false" disabled="disabled"
+                            >Toggle Off Disabled</mat-slide-toggle
+                        >
+                    </div>
+                </div>
+
+                <div #chip class="app-style-guide__content--container">
+                    <h3>Chip</h3>
+                    <div class="app-d-f">
+                        <app-chip class="app-mr-1" text="Default"></app-chip>
+                        <app-chip
+                            class="app-mr-1"
+                            text="Success"
+                            type="success"
+                        ></app-chip>
+                        <app-chip
+                            class="app-mr-1"
+                            text="Info"
+                            type="info"
+                        ></app-chip>
+                        <app-chip
+                            class="app-mr-1"
+                            text="Warning"
+                            type="warning"
+                        ></app-chip>
+                        <app-chip
+                            class="app-mr-1"
+                            text="Error"
+                            type="error"
+                        ></app-chip>
+                        <app-chip
+                            class="app-mr-1"
+                            text="Process"
+                            type="process"
+                        ></app-chip>
+                    </div>
+                </div>
+
+                <div #icons class="app-style-guide__content--container">
+                    <h3>Icons</h3>
+                    <div class="app-d-f">
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Failed'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="app-error">highlight_off</mat-icon>
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Warning'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="app-warning"
+                                >error_outlined</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Successful'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="app-success"
+                                >check_circle_outlined</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Edited'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="app-success">edit</mat-icon>
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Stopped'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon>block</mat-icon>
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Running'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon>cached</mat-icon>
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'PerRequest'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon>hourglass_empty</mat-icon>
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Events'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >inventory</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Claim Reward / Reward'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >payments</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Swap'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >swap_horizontal_circle</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Change'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >swap_vertical_circle</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Liquidation'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >money_off</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Funding'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >savings</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Deposit'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >save_alt</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Withdrawal'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >ios_share</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Stake'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >add_circle_outline</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Unstake'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >remove_circle_outline</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Borrow'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >logout</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Repay / Supply'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >login</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Sent'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >call_made</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Received'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >call_received</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Collateral'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >lock</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Internal Transfer'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >change_circle</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Fee'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >local_atm</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Overlay'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >auto_fix_high</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'Manual'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >back_hand</mat-icon
+                            >
+                        </div>
+
+                        <div
+                            class="app-d-f app-ai-c app-c-p app-mr-1"
+                            [matTooltip]="'original'"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >source</mat-icon
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div #progressBar class="app-style-guide__content--container">
+                    <h3>Progress bar</h3>
+
+                    <div
+                        class="
+                            app-d-f
+                            app-fd-c
+                            app-style-guide-progress-bar-container
+                        "
+                    >
+                        <mat-progress-bar
+                            class="app-progress-bar"
+                            value="0"
+                        ></mat-progress-bar>
+
+                        <mat-progress-bar
+                            class="app-progress-bar"
+                            value="25"
+                        ></mat-progress-bar>
+                        <mat-progress-bar
+                            class="app-progress-bar"
+                            value="50"
+                        ></mat-progress-bar>
+
+                        <mat-progress-bar
+                            class="app-progress-bar"
+                            value="75"
+                        ></mat-progress-bar>
+
+                        <mat-progress-bar
+                            class="app-progress-bar"
+                            value="100"
+                        ></mat-progress-bar>
+
+                        <mat-progress-bar
+                            class="app-progress-bar app-progress-bar--success"
+                            value="100"
+                        ></mat-progress-bar>
+
+                        <mat-progress-bar
+                            class="app-progress-bar app-progress-bar--warning"
+                            value="100"
+                        ></mat-progress-bar>
+                        <mat-progress-bar
+                            class="app-progress-bar app-progress-bar--error"
+                            value="100"
+                        ></mat-progress-bar>
+                        <mat-progress-bar
+                            class="app-progress-bar app-progress-bar--info"
+                            value="100"
+                        ></mat-progress-bar>
+                    </div>
+                </div>
+
+                <div #search class="app-style-guide__content--container">
+                    <h3>Search</h3>
+
+                    <div class="app-d-f app-fd-c">
+                        <form [formGroup]="formGroup" class="app-d-f">
+                            <mat-form-field
+                                *ngIf="isSearchInputOpen"
+                                appearance="fill"
+                                class="
+                                    app-form-select app-form-select--search
+                                    app-mr-1
+                                "
+                            >
+                                <input
+                                    matInput
+                                    type="text"
+                                    formControlName="searchInput"
+                                    placeholder="Search"
+                                    (keyup)="handleKeyUp($event)"
+                                />
+                                <button
+                                    matSuffix
+                                    mat-icon-button
+                                    (click)="onSearch()"
+                                >
+                                    <mat-icon>done</mat-icon>
+                                </button>
+                                <button
+                                    matSuffix
+                                    mat-icon-button
+                                    (click)="onCloseSearchClick()"
+                                >
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <button
+                                *ngIf="!isSearchInputOpen"
+                                mat-icon-button
+                                class="app-button app-button--small app-d-f"
+                                (click)="onSearchButtonClick()"
+                            >
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        </form>
+
+                        <div
+                            class="app-d-f app-mt-1"
+                            *ngIf="searchQuery.length"
+                        >
+                            <h4>Search query : {{ searchQuery }}</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div #table class="app-style-guide__content--container">
+                    <h3>Table</h3>
+
+                    <div class="app-d-f">
+                        <app-basic-dynamic-table
+                            [dataSource]="basicTableSource"
+                            [columns]="basicTableColumns"
+                        ></app-basic-dynamic-table>
+                    </div>
+                </div>
+
+                <div #table class="app-style-guide__content--container">
+                    <h3>Paginator</h3>
+
+                    <div class="app-style-guide-paginator-container">
+                        <app-paginator
+                            class="app-w-100"
+                            [pageSizeOptions]="[10, 20, 50, 100, 200]"
+                            length="100"
+                            pageIndex="0"
+                            pageSize="10"
+                        ></app-paginator>
+                    </div>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container> </mat-card
+></app-main>

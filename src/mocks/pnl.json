@@ -1,0 +1,21 @@
+{
+    "responseTimestamp": "2021-07-05T08:39:36.385Z",
+    "recordCount": 0,
+    "records": [
+        {
+            "borrowBalance": 0,
+            "collateralBalance": 0,
+            "dollarBasedPnL": 0.0010447601,
+            "fundingReceivedFixed": 25358.1089552399,
+            "fundingReceivedFloating": 25358.11,
+            "ledgerAddress": "0xf01df97a5f92637f981df8071fff899fff764777",
+            "netWorth": 25358.11,
+            "profitAndLossScheduleId": 7,
+            "stakeBalance": 0,
+            "supplyBalance": 0,
+            "timestamp": "2020-09-09T15:00:00+00:00",
+            "tokenBasedPnL": 0,
+            "walletBalance": 25358.11
+        }
+    ]
+}

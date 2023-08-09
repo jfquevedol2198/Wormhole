@@ -1,0 +1,40 @@
+<mat-toolbar>
+    <mat-toolbar-row class="app-d-f app-ai-c">
+        <button
+            class="app-m-1 app-ml-0 app-important"
+            mat-stroked-button
+            (click)="enableAgent()"
+        >
+            Start Workers
+        </button>
+        <button
+            class="app-m-1 app-important"
+            mat-stroked-button
+            (click)="workers.disableAgent()"
+        >
+            Stop Workers
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="app-m-1">
+    <app-configuration-health-check></app-configuration-health-check>
+</div>
+
+<div class="app-m-1 app-d-f app-jc-sb">
+    <div class="app-w-45">
+        <app-configuration-shared-settings></app-configuration-shared-settings>
+    </div>
+
+    <div class="app-w-50">
+        <app-configuration-worker-agents></app-configuration-worker-agents>
+    </div>
+</div>
+
+<div class="app-m-1">
+    <app-configuration-worker-tasks></app-configuration-worker-tasks>
+</div>
+
+<div class="app-m-1">
+    <app-configuration-exchange-rate-providers></app-configuration-exchange-rate-providers>
+</div>

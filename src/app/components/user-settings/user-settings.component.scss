@@ -1,0 +1,44 @@
+@import '../../../styles/variables/variables';
+
+::ng-deep {
+    .user-settings-notifications {
+        .mat-badge-content {
+            top: 0 !important;
+            right: -0.375 * $spacer !important;
+            background-color: $primaryProcess;
+            color: $white;
+        }
+    }
+
+    .app-user-settings-menu {
+        .mat-menu-content {
+            min-width: 13.75 * $spacer;
+
+            .mat-menu-item {
+                padding-left: 2 * $spacer;
+            }
+
+            .mat-menu-item-submenu-trigger::after {
+                left: $spacer;
+                right: unset;
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+
+        .app-user-settings-advanced {
+            padding-left: 2 * $spacer;
+        }
+    }
+}
+
+.app-user-setting-search {
+    &__input-icon {
+        left: 6 * $spacer;
+        top: 0.1 * $spacer;
+    }
+
+    &__input {
+        background-color: $dark-01 !important;
+        color: $highDarkEmphasis !important;
+    }
+}

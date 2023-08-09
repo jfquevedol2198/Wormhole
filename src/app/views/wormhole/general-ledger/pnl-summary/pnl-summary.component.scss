@@ -1,0 +1,18 @@
+@import '../../../../../styles/colors/colors';
+@import '../../../../../styles/variables/variables';
+
+.app-pnl-summary {
+    &--center {
+        justify-content: space-evenly;
+        text-align: center;
+    }
+
+    &__item {
+        line-height: 1 * $spacer;
+        letter-spacing: 0.051rem;
+    }
+
+    span {
+        color: $primarySuccess;
+    }
+}

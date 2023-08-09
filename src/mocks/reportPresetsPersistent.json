@@ -1,0 +1,30 @@
+{
+    "responseTimestamp": "2021-06-28T15:05:46.0986986+00:00",
+    "recordCount": null,
+    "records": [
+        {
+            "reportPresetId": 789,
+            "userAccountId": 1,
+            "name": "xxxxx",
+            "scope": "User",
+            "definition": {
+                "startBlock": 0,
+                "endBlock": 0,
+                "source": "string",
+                "platform": "string",
+                "fromValue": 0,
+                "toValue": 0,
+                "isUsdValue": true,
+                "isEdited": true,
+                "isDisabled": true,
+                "asset": "string",
+                "isError": true,
+                "methodId": "string",
+                "methodDescription": "string",
+                "transactionTreatment": 0
+            },
+            "persistence": "Persistent",
+            "createdDate": "2021-06-28T14:42:57.851053+00:00"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+@import '../variables/variables';
+
+.app-table {
+    th.mat-header-cell {
+        font-size: $font-size-10;
+    }
+
+    &__striped tbody tr.mat-row:nth-child(odd) {
+        background-color: $light-00;
+    }
+    td.mat-cell {
+        padding-right: 12px;
+    }
+    th.mat-header-cell {
+        padding-right: 12px;
+    }
+}
+
+.dark-theme {
+    .app-table {
+        &__striped tbody tr.mat-row:nth-child(odd) {
+            background-color: $dark-00;
+        }
+    }
+}

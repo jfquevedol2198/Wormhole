@@ -1,0 +1,57 @@
+<mat-progress-spinner
+    *ngIf="isHealthCheckLoading"
+    class="app-m-10-a"
+    color="accent"
+    mode="indeterminate"
+>
+</mat-progress-spinner>
+
+<mat-card class="app-d-f" *ngIf="!isHealthCheckLoading">
+    <mat-card-title class="app-ta-c app-m-1 app-important">
+        Health Check
+    </mat-card-title>
+
+    <mat-card-content>
+        <section class="app-m-a app-mb-2 app-max-w-35">
+            <h2 class="app-ta-c">Runtime Information</h2>
+
+            <app-basic-dynamic-table
+                [dataSource]="runtimeInformationData"
+                [columns]="runtimeInformationDataColumns"
+                *ngIf="runtimeInformationData.length > 0"
+            ></app-basic-dynamic-table>
+        </section>
+
+        <section class="app-mb-2">
+            <h2 class="app-ta-c">Worker Task Status</h2>
+
+            <app-basic-dynamic-table
+                [dataSource]="workerTasksStatusData"
+                [columns]="workerTasksStatusDataColumns"
+                *ngIf="workerTasksStatusData.length > 0"
+            ></app-basic-dynamic-table>
+        </section>
+
+        <section class="app-d-f app-jc-sb app-mb-2">
+            <section class="app-w-20 app-min-w-14">
+                <h2 class="app-ta-c">Schema Information</h2>
+
+                <app-basic-dynamic-table
+                    [dataSource]="schemaInformationData"
+                    [columns]="schemaInformationDataColumns"
+                    *ngIf="schemaInformationData.length > 0"
+                ></app-basic-dynamic-table>
+            </section>
+
+            <section class="app-w-70 app-min-w-35">
+                <h2 class="app-ta-c">Service Status</h2>
+
+                <app-dynamic-table
+                    [dataSource]="serviceStatusData"
+                    [columns]="serviceStatusDataColumns"
+                    *ngIf="serviceStatusData.length > 0"
+                ></app-dynamic-table>
+            </section>
+        </section>
+    </mat-card-content>
+</mat-card>

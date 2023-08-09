@@ -1,0 +1,32 @@
+<div class="app-report-history-container">
+    <ng-container *ngIf="reports.length > 0; else noReportData">
+        <div class="app-d-f app-ai-c app-jc-fe app-mr-05">
+            <button mat-icon-button (click)="setYear(-1)">
+                <mat-icon class="material-icons-outlined">
+                    chevron_left
+                </mat-icon>
+            </button>
+            <span class="app-mt-025 app-d-b app-f-s-14">{{
+                now.format('YYYY')
+            }}</span>
+            <button mat-icon-button (click)="setYear(+1)">
+                <mat-icon class="material-icons-outlined">
+                    chevron_right
+                </mat-icon>
+            </button>
+        </div>
+
+        <div class="app-report-history-container__calendars app-d-f app-jc-sb">
+            <ng-container *ngFor="let month of months; let i = index">
+                <app-report-history-calendar
+                    [startAt]="month.startAt"
+                    [datesSelected]="month.datesSelected"
+                >
+                </app-report-history-calendar>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
+<ng-template #noReportData>
+    <div class="app-m-1">Reports are being generated, please wait...</div>
+</ng-template>

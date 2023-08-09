@@ -1,0 +1,48 @@
+<mat-toolbar class="app-main__toolbar app-p-0 app-important">
+    <div class="app-d-f app-jc-sb app-w-100">
+        <div class="app-d-f">
+            <div
+                class="
+                    app-d-f
+                    app-ai-c
+                    app-mr-1
+                    app-ml-1
+                    app-fw-500
+                    app-f-s-10
+                    app-tt-u
+                    app-c-p
+                "
+                (click)="redirectToMainPage()"
+            >
+                Wormhole
+            </div>
+
+            <app-menu *ngIf="routes?.length" [routes]="routes"></app-menu>
+        </div>
+
+        <div class="app-d-f app-ai-c">
+            <button
+                class="
+                    mat-raised-button mat-accent
+                    app-mr-1 app-important
+                    app-main__wallet-button
+                "
+                mat-button
+                (click)="onConnectWalletClick()"
+            >
+                {{ walletAddress }}
+            </button>
+        </div>
+    </div>
+
+    <app-user-settings
+        *ngIf="areUserSettingsVisible"
+        class="app-f-s-10 app-important app-d-f app-ai-c"
+    ></app-user-settings>
+</mat-toolbar>
+
+<div class="app-main__basic-container">
+    <ng-content></ng-content>
+</div>
+
+<app-footer></app-footer>

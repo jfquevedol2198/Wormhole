@@ -1,0 +1,202 @@
+<div class="app-processing-profit-and-loss__toolbar app-p-1">
+    <form [formGroup]="profitAndLossForm">
+        <div class="app-d-f app-important app-jc-sb">
+            <div class="app-d-f app-important app-ml--0-5">
+                <app-select-portfolio (changePortfolio)="selectPortfolio($event)"></app-select-portfolio>
+
+                <mat-form-field class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--medium
+                        app-mr-1
+                    " appearance="fill">
+                    <mat-label>Schedule</mat-label>
+                    <mat-select formControlName="schedule" [disabled]="isPnlDefinitionLoading">
+                        <mat-option *ngFor="let option of scheduleOptions" [value]="option">{{ option }}</mat-option>
+                    </mat-select>
+                    <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="app-d-f app-fd-r app-important app-ai-c">
+                <div class="app-d-f app-fd-c app-gap-1 app-mr-1">
+                    <mat-slide-toggle formControlName="cashBasedModel" labelPosition="before"
+                        [disabled]="isPnlDefinitionLoading">Cash Based
+                        Accounting</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="tokenBasedModel" labelPosition="before"
+                        [disabled]="isPnlDefinitionLoading">Token Based
+                        Accounting</mat-slide-toggle>
+                </div>
+
+                <mat-form-field class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--medium
+                        app-mr-1
+                    " appearance="fill">
+                    <mat-label>Pricing Curve</mat-label>
+                    <mat-select formControlName="pricingCurve" [disabled]="isPnlDefinitionLoading">
+                        <mat-option *ngFor="let option of pricingCurveOptions" [value]="option.id">{{ option.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                </mat-form-field>
+                <button mat-button color="accent" (click)="activatePricingCurve()" mat-flat-button
+                    matTooltip="Add Profit and Loss Schedule" [disabled]="isPnlDefinitionLoading">
+                    Activate PnL Schedule
+                </button>
+                <button mat-button color="accent" (click)="openDialog('addPnL')" mat-flat-button
+                    class="app-ml-1 app-important" matTooltip="Add Profit and Loss Definition">
+                    Add PnL Definition
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div *ngIf="definitionIndex > -1; else elseBlock">
+    <div class="app-processing-profit-and-loss__period">
+        <!-- <div class="select-period">
+        /// This should be discussed !!! Cannot remove this right now because this may need to add again
+        <mat-button-toggle-group ([ngModel])="period" aria-label="Font Style">
+            <mat-button-toggle value="years">Years</mat-button-toggle>
+            <mat-button-toggle value="months">Months</mat-button-toggle>
+            <mat-button-toggle value="weeks">Weeks</mat-button-toggle>
+            <mat-button-toggle value="days">Days</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div> -->
+
+        <div class="select-timeline" *ngIf="processingProfitAndLossData.data.length > 0">
+            <cdk-virtual-scroll-viewport orientation="horizontal" [itemSize]="161">
+                <app-arrow-button *cdkVirtualFor="let data of processingProfitAndLossData.data; let i = index"
+                    (onClick)="onSelectTimeline($event)" [index]="i" [selectIndex]='definitionIndex'
+                    [label]="getDefinitionLabel(data)" [status]="getPnLstatus(data)">
+                </app-arrow-button>
+            </cdk-virtual-scroll-viewport>
+            <div class="fade-effect left" [style.width]="getWidth(fadeLeftAmount)"></div>
+            <div class="fade-effect right" [style.width]="getWidth(fadeRightAmount)"></div>
+        </div>
+        <div class="timeline-wrapper">
+
+            <span class="btn-prev" (click)="onSelectTimelineByButton(true)">
+                <img src="../../../../../assets/img/arrow-left.png">
+            </span>
+            <span class="btn-next" (click)="onSelectTimelineByButton(false)">
+                <img src="../../../../../assets/img/arrow-right.png">
+            </span>
+        </div>
+    </div>
+    <div class="app-processing-profit-and-loss__progress">
+        <div class="app-d-f app-jc-sb">
+            <div class="app-d-f app-gap-1 app-ai-c app-mr-1">
+                <mat-icon class="app-success">check_circle_outlined</mat-icon>
+                {{ pnlDefinitionDescription }}
+            </div>
+            <form [formGroup]="profitAndLossStatusForm">
+                <div class="app-d-f app-gap-1">
+                    <mat-slide-toggle formControlName="published" labelPosition="before" disabled>Published
+                    </mat-slide-toggle>
+                    <mat-slide-toggle formControlName="draft" labelPosition="before" disabled="isPnlDefinitionLoading">
+                        Draft
+                    </mat-slide-toggle>
+                </div>
+            </form>
+        </div>
+        <div class="app-mh-1">
+            <mat-progress-bar class="progress-bar" mode="determinate" value="40"></mat-progress-bar>
+        </div>
+        <div class="app-d-f app-jc-fe">
+            Created date: {{ pnlDefinitionCreateDate }}
+        </div>
+    </div>
+
+    <div class="app-d-f app-jc-sb app-mt-2">
+        <div mat-dialog-content>
+            <form [formGroup]="pickDateForm" class="app-mr-05">
+                <mat-form-field class="
+                    app-form-select-date
+                    app-form-select-date--small
+                    app-form-select-date--medium
+                    app-ml-1
+                " appearance="fill">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="pickerStart" [min]="minDate" [max]="maxDate"
+                        formControlName="startDate" data-lpignore="true" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #pickerStart showSpinners="1" [showSeconds]="false" [stepHour]="1"
+                        [stepMinute]="1">
+                    </ngx-mat-datetime-picker>
+                </mat-form-field>
+                <mat-form-field class="
+                    app-form-select-date
+                    app-form-select-date--small
+                    app-form-select-date--medium
+                    app-ml-1
+                " appearance="fill">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="pickerEnd" [min]="minDate" [max]="maxDate"
+                        formControlName="endDate" data-lpignore="true" />
+                    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #pickerEnd showSpinners="1" [showSeconds]="false" [stepHour]="1"
+                        [stepMinute]="1">
+                    </ngx-mat-datetime-picker>
+                </mat-form-field>
+            </form>
+        </div>
+        <div>
+            <button class="mat-stroked-button app-important app-mr-1"
+                [disabled]="!pnlActionStatus.enabledRefresh || isPnlDefinitionLoading"
+                (click)="onClickAction('refresh')" mat-button>
+                Refresh
+            </button>
+            <button class="mat-stroked-button app-important app-mr-1"
+                [disabled]="!pnlActionStatus.enabledSchedule || isPnlDefinitionLoading"
+                (click)="onClickAction('schedule')" mat-button>
+                Schedule
+            </button>
+            <button class="mat-stroked-button app-important app-mr-1"
+                [disabled]="!pnlActionStatus.enabledStop || isPnlDefinitionLoading" (click)="onClickAction('stop')"
+                mat-button>
+                Stop
+            </button>
+            <button class="mat-stroked-button app-important app-mr-1"
+                [disabled]="!pnlActionStatus.enabledSpeedUp || isPnlDefinitionLoading"
+                (click)="onClickAction('speedup')" mat-button>
+                Speed up
+            </button>
+        </div>
+    </div>
+
+    <div class="app-processing-profit-and-loss__content">
+        <app-profit-and-loss-progress *ngIf="processingProgressData" [progressData]="processingProgressData"
+            [pnlDefinitionStartDate]="pnlDefinitionStartDate" [pnlDefinitionEndDate]="pnlDefinitionEndDate"
+            (onClick)="onSelectProgressCategory($event)" [activeIndex]="progressCategoryIndex">
+        </app-profit-and-loss-progress>
+        <div class="app-processing-profit-and-loss__table"
+            *ngIf="progressCategoryData && progressCategoryData.length > 0">
+            <app-dynamic-table [dataSource]="progressCategoryData" [columns]="columns"
+                [length]="progressCategoryData.length" [pageSize]="1" [pageIndex]="1"
+                [defaultSortingColumn]="defaultSortingColumn" [defaultSortingOrder]="defaultSortingOrder"
+                *ngIf="progressCategoryData.length > 0" (onToggleClick)="toggleRow($event)"></app-dynamic-table>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <div class="app-d-f app-jc-c">
+        <section class="app-ta-c app-mt-15">
+            <h1>No Profit And Loss Schedule</h1>
+        </section>
+    </div>
+    <div class="app-d-f app-jc-c">
+        <section class="app-ta-c app-mt-15">
+            <h1>No Profit And Loss Definitions</h1>
+        </section>
+    </div>
+</ng-template>
+
+<div *ngIf="isPnlDefinitionLoading"
+    class="app-d-f app-jc-c app-ai-c app-h-100-vh app-w-100-vw app-p-f app-zi-1000 app-t-0">
+    <mat-progress-spinner color="accent" mode="indeterminate">
+    </mat-progress-spinner>
+</div>

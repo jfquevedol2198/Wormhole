@@ -1,0 +1,186 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Add Operation</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <form [formGroup]="operationForm">
+            <mat-form-field
+                appearance="fill"
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+            >
+                <mat-label>From Address</mat-label>
+                <input
+                    matInput
+                    required
+                    type="text"
+                    formControlName="fromAddress"
+                />
+                <button
+                    (click)="
+                        operationForm.controls['fromAddress'].setValue(null)
+                    "
+                    *ngIf="operationForm.controls['fromAddress'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error>Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                appearance="fill"
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+            >
+                <mat-label>To Address</mat-label>
+                <input
+                    matInput
+                    required
+                    type="text"
+                    formControlName="toAddress"
+                />
+                <button
+                    (click)="operationForm.controls['toAddress'].setValue(null)"
+                    *ngIf="operationForm.controls['toAddress'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error>Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+                appearance="fill"
+            >
+                <mat-label>Amount</mat-label>
+                <input matInput required type="text" formControlName="amount" />
+                <button
+                    (click)="operationForm.controls['amount'].setValue(null)"
+                    *ngIf="operationForm.controls['amount'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error>Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                class="app-form-select app-form-select--small app-mr-2 app-mb-2"
+                appearance="fill"
+            >
+                <mat-label>Ledger Name</mat-label>
+                <mat-select required formControlName="ledgerName">
+                    <mat-option
+                        *ngFor="let ledgerName of supportedLedgers"
+                        [value]="ledgerName"
+                        >{{ ledgerName }}</mat-option
+                    >
+                </mat-select>
+                <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                <mat-error>Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+                appearance="fill"
+            >
+                <mat-label>Asset Address</mat-label>
+                <input
+                    matInput
+                    required
+                    type="text"
+                    formControlName="assetAddress"
+                />
+                <button
+                    (click)="
+                        operationForm.controls['assetAddress'].setValue(null)
+                    "
+                    *ngIf="operationForm.controls['assetAddress'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error>Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+                appearance="fill"
+            >
+                <mat-label>Token Id</mat-label>
+                <input matInput type="text" formControlName="tokenId" />
+                <button
+                    (click)="operationForm.controls['tokenId'].setValue(null)"
+                    *ngIf="operationForm.controls['tokenId'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field
+                class="app-form-select app-form-select--small app-mr-2 app-mb-2"
+                appearance="fill"
+            >
+                <mat-label>Treatment</mat-label>
+                <mat-select formControlName="flags" multiple>
+                    <mat-option
+                        *ngFor="let flag of flags"
+                        [value]="flag.columnName"
+                        >{{ flag.name }}</mat-option
+                    >
+                </mat-select>
+                <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="accent" (click)="onAddOperationClick()">
+            Add
+        </button>
+    </div>
+</div>

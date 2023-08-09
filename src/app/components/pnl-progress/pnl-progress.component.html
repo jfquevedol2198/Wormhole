@@ -1,0 +1,42 @@
+<div class="app-pnl-progress">
+    <span class="app-f-s-14 app-fw-b">
+        {{
+            estimateTimeRemaining()
+                ? (estimateTimeRemaining() | humanReadableTime)
+                : '8 hours'
+        }}
+        remaining
+    </span>
+
+    <mat-progress-spinner
+        *ngIf="!estimateTimeRemaining()"
+        color="accent"
+        mode="indeterminate"
+        class="app-pnl-progress__spinner"
+    >
+    </mat-progress-spinner>
+
+    <div
+        *ngFor="let accountData of accountDataSummary"
+        class="app-pnl-progress__category app-d-f app-mt-2"
+    >
+        <div class="app-w-15 app-f-s-12 app-d-f app-ai-c">
+            {{ accountData.category }}
+        </div>
+
+        <div class="app-fg-1 app-ta-c">
+            <span class="app-f-s-10"
+                >{{ accountData.syncPercentage * 100 | formatValue }}%</span
+            >
+
+            <mat-progress-bar
+                class="app-progress-bar"
+                [class.app-progress-bar--success]="
+                    accountData.syncPercentage == 1
+                "
+                mode="determinate"
+                [value]="accountData.syncPercentage * 100"
+            ></mat-progress-bar>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div
+    [class.app-container-simple_view]="
+        (activatedRoute.queryParams | async).view === '3'
+    "
+>
+    <app-general-ledger-toolbar
+        [alignCenter]="(activatedRoute.queryParams | async).view === '3'"
+    ></app-general-ledger-toolbar>
+
+    <router-outlet></router-outlet>
+</div>

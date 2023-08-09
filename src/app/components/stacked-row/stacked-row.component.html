@@ -1,0 +1,33 @@
+<div class="app-stacked-row__percentages app-d-f app-w-100 app-h-100">
+    <ng-container
+        *ngFor="
+            let element of data.percentages;
+            let first = first;
+            let last = last
+        "
+    >
+        <div
+            class="app-stacked-row__percentages__element app-d-ib app-min-w-005"
+            [class.app-stacked-row__percentages__element--transparent]="
+                element.value <= 0
+            "
+            [class.app-stacked-row__percentages__element--first]="first"
+            [class.app-stacked-row__percentages__element--last]="last"
+            [class.app-stacked-row__percentages__element--one-element]="
+                first && last
+            "
+            [style.width]="getElementWidth(element)"
+            [style.background-color]="getBackgroundColor(element)"
+            matTooltip="{{ element.name }} : {{
+                formatValue(element.value, '$')
+            }} ({{
+                formatValue(
+                    element.absolutePercentage || element.percentage
+                )
+            }}%)"
+            matTooltipPosition="above"
+            (mouseenter)="mouseenter(element)"
+            (mouseout)="mouseout(element)"
+        ></div>
+    </ng-container>
+</div>

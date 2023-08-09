@@ -1,0 +1,55 @@
+<div
+    class="app-pnl-summary app-d-f"
+    [class.app-pnl-summary--center]="alignCenter"
+>
+    <div class="app-d-f app-f-s-10">
+        <ng-container *ngIf="pnlData">
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">Funding</div>
+                <span>{{ pnlData.fundingReceived | formatValue: '$' }}</span>
+            </div>
+
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">Net Worth</div>
+                <span>{{ pnlData.netWorth | formatValue: '$' }}</span>
+            </div>
+
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">P&L</div>
+                <span>{{ pnlData.pnl | formatValue: '$' }}</span>
+            </div>
+
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">
+                    Wallet Balance
+                </div>
+
+                <span>{{ pnlData.currentBalance | formatValue: '$' }}</span>
+            </div>
+
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">
+                    Supply Balance
+                </div>
+
+                <span>{{ pnlData.supplyBalance | formatValue: '$' }}</span>
+            </div>
+
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">
+                    Stake Balance
+                </div>
+
+                <span>{{ pnlData.stakeBalance | formatValue: '$' }}</span>
+            </div>
+
+            <div class="app-m-0-1 app-pnl-summary__item app-jc-c">
+                <div class="app-m-0 app-tt-u app-lh-12 app-fw-n">
+                    Collateral Balance
+                </div>
+
+                <span>{{ pnlData.collateralBalance | formatValue: '$' }}</span>
+            </div>
+        </ng-container>
+    </div>
+</div>

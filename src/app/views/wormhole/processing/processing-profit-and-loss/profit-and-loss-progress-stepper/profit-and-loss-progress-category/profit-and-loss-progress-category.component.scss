@@ -1,0 +1,25 @@
+@import "../../../../../../../styles/colors/colors.scss";
+@import "../../../../../../../styles/variables/variables.scss";
+
+.app-progress-category {
+    width: 9 * $spacer;
+
+    &__line {
+        height: 0.1 * $spacer;
+        width: 4 * $spacer;
+        &.active {
+            background: rgba(255, 255, 255, 0.12);
+        }
+    }
+
+    &__title {
+        max-width: 8 * $spacer;
+        margin-top: $spacer;
+        padding-bottom: 0.5 * $spacer;
+
+        &__text {
+            flex: 1;
+            white-space: break-spaces;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<app-tooltip class="app-progress-tooltip">
+    <span class="app-d-b">Progress: {{ progressPercentage * 100 }}%</span>
+    <div [ngSwitch]="progressPercentage">
+        <span *ngSwitchDefault class="app-d-b"
+            >Expected completion: {{ periodEndDate | momentDate }}</span
+        >
+        <span *ngSwitchCase="'1'" class="app-d-b">
+            Completed: {{ periodEndDate | momentDate }}</span
+        >
+    </div>
+</app-tooltip>

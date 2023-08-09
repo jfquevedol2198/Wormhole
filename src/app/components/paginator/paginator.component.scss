@@ -1,0 +1,41 @@
+@import '../../../styles/colors/colors';
+@import '../../../styles/variables/variables';
+
+::ng-deep {
+    .app-paginator {
+        .mat-paginator-outer-container {
+            padding: 0.5 * $spacer $spacer;
+            justify-content: space-between;
+            white-space: nowrap;
+
+            .mat-paginator-range-label {
+                margin: (0.2 * $spacer) $spacer 0 $spacer;
+            }
+
+            .app-paginator-offset {
+                min-width: 9.375 * $spacer;
+                visibility: hidden;
+            }
+        }
+
+        .mat-paginator-container {
+            width: unset;
+
+            .app-paginator-page-numbers {
+                margin-top: 0.2 * $spacer;
+
+                button.active {
+                    color: $light-03;
+                    background-color: rgb($light-03, 0.15);
+                }
+            }
+        }
+    }
+
+    .app-paginator-page-menu {
+        .mat-menu-content:not(:empty) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}

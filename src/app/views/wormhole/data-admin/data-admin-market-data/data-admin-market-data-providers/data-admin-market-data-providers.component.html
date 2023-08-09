@@ -1,0 +1,168 @@
+<div class="app-data-admin-market-data-providers">
+    <div class="app-pl-1 app-data-admin-market-data-providers__new-report-form app-mt-15 app-mb-15 app-d-f app-jc-sb app-pr-1 app-bg-c-e02-lg app-ai-c">
+        <p class="app-f-s-14 app-mb-0 app-important">Providers</p>
+
+        <div class="app-d-f app-ai-c">
+            <div class="app-d-f app-ai-c">
+                <span class="app-mr-05 app-important">Most recent runs only</span>
+                <mat-slide-toggle [checked]="'true'"></mat-slide-toggle>
+            </div>
+            <mat-icon
+                class="material-icons-outlined btn-filter cursor-pointer"
+                [class]="{'active': isFilterOpen}"
+                (click)="isFilterOpen = !isFilterOpen"
+            >filter_alt</mat-icon>
+            <div class="app-d-f app-platform__toolbar__search">
+                <input
+                    *ngIf="isSearchInputOpen"
+                    matInput
+                    placeholder="Preset Name"
+                    class="
+                        app-platform__toolbar__search__input
+                        app-mat-input
+                        app-fw-400
+                        app-w-100
+                        app-bs-bx
+                        app-important
+                        app-p-0-05
+                    "
+                    name="searching"
+                    [(ngModel)]="searchQuery"
+                    (keyup)="handleKeyUp($event)"
+                />
+
+                <button
+                    mat-icon-button
+                    class="app-button app-button--small app-d-f"
+                    (click)="onSearchButtonClick()"
+                >
+                    <mat-icon>{{
+                        isSearchInputOpen ? 'close' : 'search'
+                    }}</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isFilterOpen" class="app-pl-1 app-pr-1 app-mb-15 app-data-admin-address-labels__filter-container">
+        <p class="app-f-s-14 app-mb-2 app-important">Filters</p>
+        <form [formGroup]="filtersForm">
+            <div class="app-d-f">
+                <div class="app-mr-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Provider (multi select)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-9
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="providers"
+                            multiple
+                        >
+                            <mat-option
+                                value="curve"
+                            >Curve</mat-option>
+                            <mat-option
+                                value="curve_1"
+                            >Curve 1</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Parameters</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--longest
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="parameters"
+                        />
+                        <mat-icon
+                            (click)="filtersForm.controls.parameters.setValue('')"
+                            *ngIf="filtersForm.controls.parameters.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="buttons">
+                        <button mat-button class=" app-mr-05 app-important" matTooltip="Filter" color="accent" mat-raised-button>
+                            Search
+                        </button>
+            
+                        <button
+                            mat-button
+                            class="mat-stroked-button app-mr-05 app-important"
+                            matTooltip="Reset"
+                            (click)="initForm()"
+                        >
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table mat-table [dataSource]="providerData.data"
+        class="app-table app-table__striped app-table__expand-column app-w-100">
+
+        <ng-container matColumnDef="provider">
+            <th mat-header-cell *matHeaderCellDef>
+                Provider
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.provider }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pairCount">
+            <th mat-header-cell *matHeaderCellDef>
+                Pair count
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.pairCount }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="parameters">
+            <th mat-header-cell *matHeaderCellDef>Parameters</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.parameters }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Active</th>
+            <td mat-cell *matCellDef="let row">
+                <mat-slide-toggle [checked]="row.active"></mat-slide-toggle>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+    <app-paginator
+        [length]="providerData.total"
+        [pageSize]="providerData.pageSize"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]"
+        [pageIndex]="providerData.pageIndex"
+        (page)="page($event.pageIndex, $event.pageSize)"
+    ></app-paginator>
+</div>

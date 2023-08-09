@@ -1,0 +1,44 @@
+@import '../../../../../styles/variables/variables.scss';
+
+.app-pnl-asset-positions {
+    &__toolbar {
+        height: 2.5rem !important;
+        border: 0.1rem solid $dark-03;
+
+        &__title {
+            color: $disabledDarkEmphasis;
+            letter-spacing: 0.75px;
+            font-size: $font-size-11;
+        }
+    }
+
+    &__expansion-panel {
+        &__header {
+            border: 0.1rem solid $dark-03;
+            border-top: none;
+            background-color: $dark-00;
+            &__platform {
+                width: 10 * $spacer;
+                &__balance {
+                    color: $disabledDarkEmphasis;
+                }
+            }
+            &__bar-chart {
+                flex-grow: 1;
+            }
+        }
+        &__body {
+            max-height: 40 * $spacer;
+        }
+    }
+}
+
+::ng-deep {
+    .app-pnl-asset-positions {
+        .mat-expansion-panel-header.mat-expansion-toggle-indicator-before
+            .mat-expansion-indicator {
+            margin-bottom: 4px;
+            margin-left: 12px;
+        }
+    }
+}

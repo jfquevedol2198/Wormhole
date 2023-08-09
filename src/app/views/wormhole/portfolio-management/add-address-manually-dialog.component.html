@@ -1,0 +1,78 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Add Address</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <form [formGroup]="accountForm">
+            <mat-form-field
+                appearance="fill"
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+            >
+                <mat-label>Address</mat-label>
+                <input
+                    matInput
+                    required
+                    type="text"
+                    formControlName="ledgerAddress"
+                />
+                <button
+                    (click)="
+                        accountForm.controls['ledgerAddress'].setValue(null)
+                    "
+                    *ngIf="accountForm.controls['ledgerAddress'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error>{{ getErrorMessage() }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                appearance="fill"
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+            >
+                <mat-label>Description</mat-label>
+                <input matInput type="text" formControlName="description" />
+                <button
+                    (click)="accountForm.controls['description'].setValue(null)"
+                    *ngIf="accountForm.controls['description'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button
+            mat-flat-button
+            color="accent"
+            (click)="onAddAddressClick()"
+            [disabled]="!accountForm.valid"
+        >
+            Add
+        </button>
+    </div>
+</div>

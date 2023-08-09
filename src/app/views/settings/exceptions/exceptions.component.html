@@ -1,0 +1,60 @@
+<mat-card class="app-configuration-exceptions app-d-f app-fd-c">
+    <mat-card-title class="app-configuration-exceptions__title">
+        Exceptions
+    </mat-card-title>
+
+    <mat-card-content class="app-configuration-exceptions__content">
+        <table class="app-configuration-exceptions__table app-ml-a app-mr-a">
+            <thead>
+                <tr>
+                    <th class="app-configuration-exceptions__th">Timestamp</th>
+                    <th class="app-configuration-exceptions__th">
+                        Message Template
+                    </th>
+                    <th class="app-configuration-exceptions__th">Log Level</th>
+                    <th class="app-configuration-exceptions__th">Event Id</th>
+                    <th class="app-configuration-exceptions__th">Event Name</th>
+                    <th class="app-configuration-exceptions__th">Exception</th>
+                    <th class="app-configuration-exceptions__th">Stats</th>
+                    <th class="app-configuration-exceptions__th">Occurances</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let logEvent of logEvents$ | async">
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.timestamp | date }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.messageTemplate }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.logLevel }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.eventId }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.eventName }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.exception }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.stats.join(', ') }}
+                    </td>
+
+                    <td class="app-configuration-exceptions__td">
+                        {{ logEvent.occurances }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,7 @@
+@import '../../../../../../styles/colors/colors.scss';
+@import '../../../../../../styles/variables/variables.scss';
+
+.app-form-select-date.mat-form-field-invalid {
+    border: 0.063 * $spacer solid $errorRed !important;
+    border-radius: 0.25 * $spacer;
+}

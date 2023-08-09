@@ -1,0 +1,32 @@
+<app-paginator-extend class="app-paginator" (openIndexPageInput)="openPageIndexInput(myDialog)" [pageIndex]="pageIndex"
+    [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [length]="length" hidePageSize="true"
+    (page)="emitPageEvent($event.pageIndex, $event.pageSize)"></app-paginator-extend>
+
+<ng-template #myDialog>
+    <div class="app-dialog app-dialog--unset-min-width">
+        <div mat-dialog-title>
+            <h3>Page Number</h3>
+        </div>
+        <div mat-dialog-content [formGroup]="formGroup">
+            <div class="app-important app-p-2">
+                <mat-form-field appearance="fill" class="
+                        app-form-select
+                        app-form-select--small
+                        app-form-select--medium
+                    ">
+                    <mat-label>Page Number</mat-label>
+                    <input matInput type="text" formControlName="page" (keyup)="handleKeyUp($event)"
+                        name="prevent-autocomplete"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                    <mat-error>Invalid value</mat-error>
+                    <button matSuffix mat-icon-button (click)="save()">
+                        <mat-icon>done</mat-icon>
+                    </button>
+                    <button matSuffix mat-icon-button (click)="cancel()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</ng-template>

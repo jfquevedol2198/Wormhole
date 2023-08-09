@@ -1,0 +1,597 @@
+<div class="app-data-admin-address-labels">
+    <div class="app-pl-1 app-data-admin-address-labels__new-report-form app-bg-c-e02-lg app-ai-c app-mt-15 app-mb-15 app-d-f app-jc-sb app-pr-1">
+        <div class="buttons">
+            <button mat-button class=" app-mr-05 app-important" matTooltip="Add Address" color="accent" mat-raised-button>
+                Add Address
+            </button>
+
+            <button
+                mat-button
+                class="mat-stroked-button app-mr-05 app-important"
+                matTooltip="Import Addresses"
+                (click)="onImportAddress()"
+            >
+                Import addresses
+            </button>
+
+            <button mat-button class="mat-stroked-button app-mr-05 app-important" matTooltip="Re run">
+                Re run
+            </button>
+
+            <button mat-button class="mat-stroked-button app-mr-05 app-important" matTooltip="Run master task">
+                Run master task
+            </button>
+        </div>
+
+        <div class="app-d-f app-ai-c">
+            <div class="app-d-f app-ai-c">
+                <span class="app-mr-05 app-important">Edit Mode</span>
+                <mat-slide-toggle [checked]="'true'"></mat-slide-toggle>
+            </div>
+            <!-- <button
+                class="
+                    app-platform-toolbar__filter
+                    app-c-hde app-important
+                "
+                mat-icon-button
+                aria-label="Filter button"
+                matTooltip="Filter reports (TBD)"
+                matBadgeSize="medium"
+                disabled
+            >
+                <mat-icon class="material-icons-outlined"
+                    >filter_alt</mat-icon
+                >
+            </button> -->
+            <mat-icon
+                class="material-icons-outlined btn-filter cursor-pointer"
+                [class]="{'active': isFilterOpen}"
+                (click)="isFilterOpen = !isFilterOpen"
+            >filter_alt</mat-icon>
+            <div class="app-d-f app-platform__toolbar__search">
+                <input
+                    *ngIf="isSearchInputOpen"
+                    matInput
+                    placeholder="Preset Name"
+                    class="
+                        app-platform__toolbar__search__input
+                        app-mat-input
+                        app-fw-400
+                        app-w-100
+                        app-bs-bx
+                        app-important
+                        app-p-0-05
+                    "
+                    name="searching"
+                    [(ngModel)]="searchQuery"
+                    (keyup)="handleKeyUp($event)"
+                />
+
+                <button
+                    mat-icon-button
+                    class="app-button app-button--small app-d-f"
+                    (click)="onSearchButtonClick()"
+                >
+                    <mat-icon>{{
+                        isSearchInputOpen ? 'close' : 'search'
+                    }}</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isFilterOpen" class="app-pl-1 app-pr-1 app-mb-15 app-data-admin-address-labels__filter-container">
+        <p class="app-f-s-14 app-mb-2 app-important">Filters</p>
+        <form [formGroup]="filtersForm">
+            <div class="app-d-f">
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">From account (multi input)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="fromAccounts"
+                            multiple
+                        >
+                            <mat-option
+                                *ngFor="let account of accountsDemo"
+                                [value]="account"
+                            >{{ account }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">To account (multi input)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="toAccounts"
+                            multiple
+                        >
+                            <mat-option
+                                *ngFor="let account of accountsDemo"
+                                [value]="account"
+                            >{{ account }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-2">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Select by</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="selectby"
+                        >
+                            <mat-option
+                                value="date"
+                            >Date</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">First seen date</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input matInput [matDatepicker]="picker" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">First seen time</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input matInput [disableClick]="true" readonly [ngxTimepicker]="timePicker" formControlName="time">
+                        <ngx-material-timepicker #timePicker [theme]="timePickerTheme"></ngx-material-timepicker>
+                        <mat-icon class="cursor-pointer" matSuffix (click)="timePicker.open()">timer</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-1">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="app-d-f app-ai-c app-pt-05">
+                        <span class="app-mr-05 app-important">Unknown only</span>
+                        <mat-slide-toggle formControlName="unknown"></mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+            <div class="app-d-f app-mt-1">
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Platform</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="platform"
+                        >
+                            <mat-option
+                                *ngFor="let p of platforms"
+                                [value]="p.name"
+                            >{{p.name}}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Address</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="address"
+                        />
+                        <mat-icon
+                            (click)="filtersForm.controls.address.setValue('')"
+                            *ngIf="filtersForm.controls.address.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Chain (multi select)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="chains"
+                            multiple
+                        >
+                            <mat-option
+                                *ngFor="let sl of supportedLedgers"
+                                [value]="sl"
+                            >{{sl}}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Type</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="types"
+                            multiple
+                        >
+                            <mat-option
+                                *ngFor="let type of currencyType"
+                                [value]="type.value"
+                            >{{ type.label }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Reward token (multi select)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--medium
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="rewardsTokens"
+                            multiple
+                        >
+                            <mat-option
+                                value="curve"
+                            >Curve</mat-option>
+                            <mat-option
+                                value="harvest"
+                            >Harvest</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Text search (Name,symbol, etc.)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="text"
+                        />
+                        <mat-icon
+                            (click)="filtersForm.controls.text.setValue('')"
+                            *ngIf="filtersForm.controls.text.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Decimals</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small app-form-select--short
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="decimals"
+                        >
+                            <mat-option value="">All</mat-option>
+                            <mat-option
+                            *ngFor="let decimal of decimals"
+                                [value]="decimal"
+                            >{{ decimal }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-ml-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="buttons">
+                        <button
+                            mat-button
+                            class=" app-mr-05 app-important"
+                            matTooltip="Filter"
+                            color="accent"
+                            mat-raised-button
+                            (click)="handleFilter()"
+                        >
+                            Filter
+                        </button>
+            
+                        <button
+                            mat-button
+                            class="mat-stroked-button app-mr-05 app-important"
+                            matTooltip="Reset"
+                            (click)="handleReset()"
+                        >
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="transaction-info">
+        <div class="transaction-info__text app-d-f app-ai-c">
+            <mat-icon class="material-icons-outlined">info</mat-icon>
+            <span>This action will schedule transaction categorisation and will require PnL recalculation</span>
+        </div>
+        <div>
+            <button class="app-mr-05 app-important" mat-stroked-button>
+                Cancel
+            </button>
+
+            <button mat-button class="app-mr-05 app-important" mat-raised-button color="accent">
+                Confirm
+            </button>
+        </div>
+    </div>
+    <div
+        class="app-d-f app-jc-c"
+        *ngIf="isLoading"
+    >
+        <mat-progress-spinner class="app-m-3-a" color="accent" mode="indeterminate">
+        </mat-progress-spinner>
+    </div>
+    <table
+        mat-table
+        [dataSource]="addressLabelData.data"
+        class="app-table app-table__striped app-table__expand-column app-w-100"
+        *ngIf="!isLoading"
+    >
+        <ng-container matColumnDef="platformIcon">
+            <th mat-header-cell *matHeaderCellDef>PlatforAsset logo</th>
+            <td mat-cell *matCellDef="let row">
+                <mat-icon
+                    class="material-icons material-icon-13_81 edit-icon cursor-pointer"
+                    (click)="handleUpdateLogo(row)"
+                >create</mat-icon>
+                <span [class.app-c-yellow]="!row.platformIcon">
+                    {{ row.platformIcon ? row.platformIcon : "Missing" }}
+                </span>
+            </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let row">
+                <span
+                    [class.app-c-green]="row.status"
+                    [class.app-c-yellow]="!row.status"
+                    >
+                    {{ row.status ? 'OK' : 'Undefined' }}
+                </span>
+            </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="platformName">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>Platform
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.platformName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>Address
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.address }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tokenId">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>TokenId
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.tokenId }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="displayName">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>Display name
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.assetName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>Name
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.name }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>Symbol
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.assetSymbol }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="decimal">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon class="th-icon">search</mat-icon>Decimals
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.assetDecimals }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="scope">
+            <th mat-header-cell *matHeaderCellDef>Scope</th>
+            <td mat-cell *matCellDef="let row">
+                <span class="app-d-f">
+                    <mat-icon class="cursor-pointer" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+                    {{ row.scope }}
+                </span>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <span>Scope 1</span>
+                    </button>
+                    <button mat-menu-item>
+                        <span>Scope 2</span>
+                    </button>
+                </mat-menu>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="scam">
+            <th mat-header-cell *matHeaderCellDef>Scam</th>
+            <td mat-cell *matCellDef="let row">
+                <div class="app-d-f app-fw-w">
+                    <mat-slide-toggle [checked]="row.scam" (change)="handleChangeScam($event, row)"></mat-slide-toggle>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="chain">
+            <th mat-header-cell *matHeaderCellDef>Chain</th>
+            <td mat-cell *matCellDef="let row">
+                <span class="app-d-f">
+                    <mat-icon class="cursor-pointer" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+                    {{ row.ledgerName }}
+                </span>
+
+                <mat-menu #menu="matMenu" (closed)="handleCloseChainMenu(row)">
+                    <mat-selection-list [(ngModel)]="selectedChain" multiple="false">
+                        <mat-list-option *ngFor="let c of supportedLedgers" [value]="c">
+                          {{c}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                </mat-menu>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let row">
+                <span class="app-d-f">
+                    <mat-icon class="cursor-pointer" [matMenuTriggerFor]="menu" (click)="handleOpenTypeMenu(row)">expand_more</mat-icon>
+                    {{ row.addressType }}
+                </span>
+
+                <mat-menu #menu="matMenu" (closed)="handleCloseMenu(row)">
+                    <mat-selection-list [(ngModel)]="selectedAddressType">
+                        <mat-list-option *ngFor="let type of currencyType" [value]="type.label" (click)="$event.stopPropagation()">
+                          {{type.label}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                </mat-menu>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+    <app-paginator
+        [length]="addressLabelData.total"
+        [pageSize]="addressLabelData.PageSize"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]"
+        [pageIndex]="addressLabelData.PageIndex"
+        (page)="page($event.pageIndex, $event.pageSize)"
+    >
+    </app-paginator>
+</div>

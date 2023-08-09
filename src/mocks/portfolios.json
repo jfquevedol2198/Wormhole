@@ -1,0 +1,62 @@
+{
+    "portfoliosWithParams": {
+        "responseTimestamp": "2021-03-10T11:16:40.8593328+00:00",
+        "recordCount": 1,
+        "records": [
+            {
+                "portfolioId": 1,
+                "name": "Celsius",
+                "description": null,
+                "ledgerAccounts": [
+                    {
+                        "ledgerAccountId": 0,
+                        "portfolioId": 1,
+                        "ledgerAddress": "string",
+                        "syncedPoint": 1,
+                        "ledgerName": "string"
+                    }
+                ]
+            }
+        ]
+    },
+    "portfoliosWithoutParams": {
+        "responseTimestamp": "2021-03-10T11:16:40.8593328+00:00",
+        "recordCount": 2,
+        "records": [
+            {
+                "portfolioId": 1,
+                "name": "Celsius",
+                "description": null,
+                "ledgerAccounts": [
+                    {
+                        "ledgerAccountId": 0,
+                        "portfolioId": 1,
+                        "ledgerAddress": "string",
+                        "syncedPoint": 1,
+                        "ledgerName": "string"
+                    }
+                ],
+                "isSelected": false,
+                "addressesCount": 1,
+                "ledgersCount": 1
+            },
+            {
+                "portfolioId": 2,
+                "name": "Test",
+                "description": null,
+                "ledgerAccounts": [
+                    {
+                        "ledgerAccountId": 0,
+                        "portfolioId": 2,
+                        "ledgerAddress": "string",
+                        "syncedPoint": 2,
+                        "ledgerName": "string"
+                    }
+                ],
+                "isSelected": false,
+                "addressesCount": 1,
+                "ledgersCount": 1
+            }
+        ]
+    }
+}

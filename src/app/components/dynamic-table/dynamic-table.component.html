@@ -1,0 +1,153 @@
+<ng-container>
+    <table mat-table [dataSource]="dataSource" class="app-dynamic-table mat-elevation-z8 app-w-100"
+        multiTemplateDataRows matSort [matSortActive]="defaultSortingColumn" [matSortDirection]="defaultSortingOrder"
+        (matSortChange)="sort.emit($event)">
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+            <th mat-header-cell *matHeaderCellDef>
+                <span *ngIf="column.isSortable; else notSortableTitle" mat-sort-header disableClear>{{ column.header
+                    }}</span>
+                <ng-template #notSortableTitle>
+                    <span>{{ column.header }}</span>
+                </ng-template>
+            </th>
+
+            <td mat-cell *matCellDef="let row" [class.app-c-p]="column.tooltip" [class.app-ta-r]="column.actions"
+                [class.app-important]="column.actions" [ngSwitch]="column.columnType">
+                <ng-container *ngSwitchCase="'is-selected-icon'">
+                    <div class="app-d-f app-ai-c">
+                        <mat-icon class="app-c-p" (click)="onRowClick.emit(row)">{{
+                            isRowSelected(row, selectedRows)
+                            ? 'keyboard_arrow_down'
+                            : 'keyboard_arrow_right'
+                            }}</mat-icon>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'icon'">
+                    <div class="app-d-f app-ai-c" [matTooltip]="
+                            column.tooltip ? column.tooltip(row, column.columnDef) : undefined
+                        " [matTooltipPosition]="'above'">
+                        <mat-icon class="{{ column.textColor(row) }}">{{
+                            column.cell(row)
+                            }}</mat-icon>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'chip'">
+                    <div class="app-d-f app-fw-w">
+                        <app-chip class="app-m-025" *ngFor="let chip of row.chips" [type]="chip.type" [text]="chip.text"
+                            [tooltipText]="chip.tooltipText" [size]="'small'"></app-chip>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'slideToggle'">
+                    <div class="app-d-f app-fw-w">
+                        <mat-slide-toggle [checked]="row.isToggled" (change)="onToggleClick.emit(row)"
+                            [disabled]="!row.isToggleDisabled"></mat-slide-toggle>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'button'">
+                    <div class="app-d-f app-fw-w">
+                        <button class="
+                                app-button--table
+                                app-button
+                                mat-stroked-button
+                            " color="accent" mat-button>
+                            {{ row.action }}
+                        </button>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'progress-bar'">
+                    <div>
+                        <div #tippyTemplate>
+                            <app-progress-tooltip [progressPercentage]="row.progressPercentage"
+                                [periodEndDate]="row.periodEndDate"></app-progress-tooltip>
+                        </div>
+                        <div class="app-d-f app-fw-w">
+                            <mat-progress-bar [ngxTippy]="tippyTemplate" [tippyProps]="tippyProps"
+                                class="app-progress-bar" [class.app-progress-bar--success]="
+                                    row.syncPercentage == 1
+                                " [value]="row.syncPercentage * 100"></mat-progress-bar>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'button-dialog'">
+                    <div class="app-d-f app-fw-w">
+                        <button class="
+                                mat-stroked-button
+                                app-button--table
+                                app-button
+                            " color="accent" mat-button (click)="
+                                openDialog(
+                                    row.profitAndLossDefinitionId,
+                                    row.priority
+                                )
+                            " [disabled]="!row.isSpeedUpEnabled">
+                            Speed Up
+                        </button>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'checkbox'">
+                    <div class="app-d-f app-fw-w">
+                        <mat-checkbox (click)="onCheckboxClick.emit(row)" [checked]="row.isChecked"></mat-checkbox>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+                    <span [matTooltip]="
+                            column.tooltip ? column.tooltip(row, column.columnDef) : undefined
+                        " [matTooltipPosition]="'above'">
+                        {{ column.cell(row, column.columnDef) }}
+
+                        <small *ngIf="column.subCell" class="app-d-b app-f-s-8">
+                            {{ column.subCell(row) }}
+                        </small>
+                    </span>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container *ngFor="let innerColumn of innerColumns" [matColumnDef]="innerColumn.columnDef">
+            <td class="app-dynamic-table__inner-row__cell app-p-0" mat-cell *matCellDef="let row"
+                [attr.colspan]="displayedColumns.length">
+                <div [@detailExpand]="
+                        isRowSelected(row, selectedRows)
+                            ? 'expanded'
+                            : 'collapsed'
+                    ">
+                    <div *ngIf="isRowSelected(row, selectedRows)">
+                        <app-dynamic-table class="app-dynamic-table__inner-dynamic-table" *ngIf="
+                                getInnerData(row).length;
+                                else noInnerDataAvailable
+                            " [dataSource]="getInnerData(row)" [columns]="innerTableColumns"
+                            [isPaginatedTable]="false"></app-dynamic-table>
+                        <ng-template #noInnerDataAvailable>
+                            <div class="
+                                    app-dynamic-table--empty-inner-data
+                                    app-d-f app-ai-c
+                                ">
+                                No Inner Data Available
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="app-dynamic-table__row__header">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = dataIndex" [ngClass]="
+                i % 2 === 0
+                    ? 'app-dynamic-table__row__odd'
+                    : 'app-dynamic-table__row__even'
+            "></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedInnerColumns" class="app-dynamic-table__inner-row"></tr>
+    </table>
+
+    <app-paginator *ngIf="isPaginatedTable" [length]="length" [pageSize]="pageSize"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]" [pageIndex]="pageIndex"
+        (page)="page($event.pageIndex, $event.pageSize)">
+    </app-paginator>
+</ng-container>

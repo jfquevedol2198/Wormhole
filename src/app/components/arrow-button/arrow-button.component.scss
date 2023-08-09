@@ -1,0 +1,92 @@
+@import "../../../styles/variables/variables";
+@import "../../../styles/colors/colors";
+
+.item-outer,
+.item-inner {
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 20px solid transparent;
+  position: relative;
+  width: 137px;
+  &::after {
+    content: "";
+    border-left: 20px solid $green-2;
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    transform: translateY(-50%);
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+  }
+  & > .item-content {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $spacer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: break-spaces;
+  }
+}
+.item-outer {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+  &.current {
+    border-top-color: $chipColorError;
+    border-bottom-color: $chipColorError;
+    &::after {
+      border-left-color: $chipColorError;
+    }
+    .item-inner {
+      border-top-color: #0b5680;
+      border-bottom-color: #0b5680;
+      &::after {
+        border-left-color: #0b5680;
+      }
+    }
+  }
+  &.completed {
+    border-top-color: $green-2;
+    border-bottom-color: $green-2;
+    &::after {
+      border-left-color: $green-2;
+    }
+  }
+  &.running {
+    border-top-color: $chipColorError;
+    border-bottom-color: $chipColorError;
+    &::after {
+      border-left-color: $chipColorError;
+    }
+  }
+  &.not-started {
+    border-top-color: white;
+    border-bottom-color: white;
+    &::after {
+      border-left-color: white;
+    }
+  }
+  .item-inner {
+    position: absolute;
+    top: 0px;
+    left: -17px;
+    transform: translateY(-50%);
+    border-top-width: 58px;
+    border-bottom-width: 58px;
+    border-left-width: 20px;
+    border-color: #2c2c2c;
+    border-left-color: transparent;
+    z-index: 1;
+    width: calc(100% - 5px);
+    &::after {
+      border-left: 19px solid #2c2c2c;
+      border-top-width: 58px;
+      border-bottom-width: 58px;
+    }
+  }
+}

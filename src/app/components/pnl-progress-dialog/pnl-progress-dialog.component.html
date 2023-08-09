@@ -1,0 +1,22 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Profit and loss calculation in progress</h3>
+
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div mat-dialog-content>
+        <app-pnl-progress
+            *ngIf="portfolioId$ | async"
+            [portfolioId]="portfolioId$ | async"
+        ></app-pnl-progress>
+        <span *ngIf="!(portfolioId$ | async)"
+            >Please select the portfolio for which the PNL is calculated to see
+            the progress</span
+        >
+    </div>
+    <div mat-dialog-actions>
+        <button mat-flat-button color="accent" mat-dialog-close>Close</button>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Speed Up</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div class="app-d-f app-ai-c app-jc-c">
+            <table mat-table [dataSource]="priorityTableData" class="app-priority-table mat-elevation-z8 app-w-100"
+                multiTemplateDataRows>
+                <ng-container *ngFor="let column of priorityTableColumns" [matColumnDef]="column.columnDef">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <span>{{ column.header }}</span>
+                    </th>
+
+                    <td mat-cell *matCellDef="let row" [ngSwitch]="column.columnType">
+                        <ng-container *ngSwitchCase="'checkbox'">
+                            <div>
+                                <mat-checkbox (change)="selectPriority(row.priority)" [checked]="row.isChecked">
+                                </mat-checkbox>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngSwitchDefault>
+                            <span>
+                                {{ column.cell(row) }}
+                            </span>
+                        </ng-container>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"
+                    class="app-priority-table__row__header"></tr>
+                <tr mat-row *matRowDef="
+                        let row;
+                        columns: displayedColumns;
+                        let i = dataIndex
+                    " [ngClass]="
+                        i % 2 === 0
+                            ? 'app-priority-table__row__odd'
+                            : 'app-priority-table__row__even'
+                    "></tr>
+            </table>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-dialog-close mat-stroked-button>Cancel</button>
+        <button mat-flat-button color="accent" (click)="updatePriority()">
+            Speed Up
+        </button>
+    </div>
+</div>

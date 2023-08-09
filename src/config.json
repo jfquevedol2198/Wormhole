@@ -1,0 +1,10 @@
+{
+    "build": "development",
+    "wormholeUrl": "http://localhost:3000",
+    "oktaIssuer": "",
+    "oktaClientId": "0oaaz2dnizUnFJcoQ5d6",
+    "anodeUrl": "https://anode.redkite.app",
+    "sentryDsn": "",
+    "defaultRoute": "wormhole",
+    "minimumPerformanceData": "3"
+}

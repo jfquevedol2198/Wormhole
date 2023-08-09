@@ -1,0 +1,7 @@
+@import '../colors/colors';
+
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    width: auto;
+    height: auto;
+}

@@ -1,0 +1,50 @@
+@import '../variables/variables';
+
+.app-form-select-date {
+    .mat-form-field-label {
+        color: $disabledDarkEmphasis !important;
+    }
+
+    .mat-form-field-underline {
+        display: none;
+    }
+
+    .mat-form-field-suffix {
+        top: 5px;
+    }
+
+    .mat-form-field-wrapper {
+        border: 1px solid $dark-04 !important;
+        border-radius: 4px;
+        max-width: 13rem;
+        padding-bottom: 0;
+    }
+
+    .mat-select-arrow-wrapper {
+        opacity: 0;
+    }
+
+    button.mat-focus-indicator.mat-icon-button.mat-button-base {
+        color: rgba($white, 0.8);
+    }
+
+    &--small {
+        font-size: $font-size-10 !important;
+
+        .mat-form-field-suffix {
+            top: 0;
+        }
+
+        .mat-form-field-flex {
+            padding: 0.5em 0.5em 0 0.5em !important;
+        }
+
+        .mat-form-field-infix {
+            padding-bottom: 0.5em !important;
+        }
+    }
+
+    &--medium {
+        width: 160px;
+    }
+}

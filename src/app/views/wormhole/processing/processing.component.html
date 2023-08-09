@@ -1,0 +1,16 @@
+<ng-container>
+    <mat-tab-group
+        class="app-sub-ledgers"
+        color="accent"
+        animationDuration="0ms"
+        (selectedTabChange)="onViewChange($event.index)"
+        [selectedIndex]="tableView === 'profitAndLoss' ? 0 : 1"
+    >
+        <mat-tab label="Profit And Loss" [tabIndex]="0"> </mat-tab>
+        <mat-tab label="Jobs" [tabIndex]="1"> </mat-tab>
+    </mat-tab-group>
+    <app-processing-profit-and-loss
+        *ngIf="tableView === 'profitAndLoss'"
+    ></app-processing-profit-and-loss>
+    <app-processing-jobs *ngIf="tableView === 'jobs'"></app-processing-jobs>
+</ng-container>

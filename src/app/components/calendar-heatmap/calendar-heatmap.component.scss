@@ -1,0 +1,7 @@
+@import "../../../styles/variables/variables";
+
+.app-calendar-heatmap {
+    &__spinner {
+        margin: 2 * $spacer auto;
+    }
+}

@@ -1,0 +1,255 @@
+<div class="app-dialog add-method-definition-dialog">
+    <div mat-dialog-title class="app-d-f app-ai-c app-jc-sb">
+        <h3 class="app-mb-0 app-important">Add new method definition</h3>
+        <button [disabled]="isSubmitting" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div mat-dialog-content class="app-custom-scroll">
+        <form [formGroup]="form">
+            <div class="app-d-f app-ai-fe">
+                <div class="app-mr-05 add-method-definition-dialog__transaction">
+                    <p class="app-f-s-11 app-c-white-54">Address</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--full-width
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            readonly
+                            data-lpignore="true"
+                            formControlName="transactionHash"
+                        />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-button type="button" class="mat-stroked-button app-important app-m-h-40px" matTooltip="Import">
+                        Import
+                    </button>
+                </div>
+            </div>
+            <div class="app-d-f app-mt-15">
+                <div class="app-mr-075 app-mb-075 app-mr-15">
+                    <p class="app-f-s-11 app-c-white-54 app-mb-05 app-important">Platform</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-77
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="platformId"
+                        >
+                            <mat-option
+                                *ngFor="let p of data.platforms"
+                                [value]="p.platformId"
+                            >{{ p.name }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="cursor-pointer">keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-075 app-mb-075 app-mr-15">
+                    <p class="app-f-s-11 app-c-white-54 app-mb-05 app-important">Contract group</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-77
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="contractGroup"
+                        />
+                        <mat-icon
+                            (click)="form.controls.contractGroup.setValue('')"
+                            *ngIf="form.controls.contractGroup.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-075 app-mb-075 app-mr-15">
+                    <p class="app-f-s-11 app-c-white-54 app-mb-05 app-important">Type</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-77
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="transactionType"
+                        >
+                            <mat-option
+                                *ngFor="let t of data.types"
+                                [value]="t"
+                            >{{ t }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="cursor-pointer">keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-075 app-mb-075 app-mr-15">
+                    <p class="app-f-s-11 app-c-white-54 app-mb-05 app-important">Method ID</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-77
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="methodId"
+                        />
+                        <mat-icon
+                            (click)="form.controls.methodId.setValue('')"
+                            *ngIf="form.controls.methodId.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="app-d-f app-ai-fe app-mt-15">
+                <div class="app-mr-05 app-f-1">
+                    <p class="app-f-s-11 app-c-white-54">Description</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--full-width
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="description"
+                        />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="app-d-f app-ai-fe app-mt-15">
+                <div class="app-mr-05 app-f-1">
+                    <p class="app-f-s-11 app-c-white-54">Signature</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--full-width
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <textarea
+                            matInput
+                            rows="2"
+                            data-lpignore="true"
+                            formControlName="signature"
+                        ></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="app-d-f app-ai-fe app-mt-15">
+                <div class="app-mr-05 app-f-1">
+                    <p class="app-f-s-11 app-c-white-54">Treatment preset</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--long
+                            app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="treatmentPreset"
+                        >
+                            <mat-option
+                                value="deposit_with_collateral"
+                            >Deposit with collateral</mat-option>
+                            <mat-option
+                                value="deposit_with_collateral_1"
+                            >Deposit with collateral 1</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="cursor-pointer">keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="app-d-f app-mt-15">
+                <div class="app-mr-05">
+                    <mat-icon class="cursor-pointer app-mr-05">keyboard_arrow_up</mat-icon>
+                </div>
+                <div class="app-f-1">
+                    <p class="app-f-s-11 app-c-white-54 app-mb-15 app-important"> Treatment</p>
+                    <div>
+                        <div
+                            fxLayout="row"
+                            fxLayout.xs="column"
+                            fxLayout="row wrap"
+                            formArrayName="treatments"
+                        >
+                            <div
+                                *ngFor="let treatment of listTreatments"
+                                fxFlex="33.3333333333333333"
+                                class="app-mb-1"
+                            >
+                                <mat-slide-toggle
+                                    [checked]="form.controls.treatments.value.indexOf(treatment.value) > -1"
+                                    (change)="onChangeTreatment(treatment.value)"
+                                >
+                                    <span class="app-ml-025">{{ treatment.label }}</span>
+                                </mat-slide-toggle>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions class="app-jc-sb app-important action-content app-b-t-elevation-03">
+        <button mat-stroked-button [disabled]="isSubmitting" (click)="initForm()">Reset</button>
+        <div>
+            <button class="app-mr-075" [disabled]="isSubmitting" mat-stroked-button mat-dialog-close>Cancel</button>
+            <!-- <button class="app-m-0" mat-button color="accent" mat-raised-button (click)="onAdd()">Add definition</button> -->
+            <mat-spinner-button 
+                [options]="addButtonOptions"
+                [active]="isSubmitting"
+                (btnClick)="onAdd()">
+            </mat-spinner-button>
+        </div>
+    </mat-dialog-actions>
+</div>

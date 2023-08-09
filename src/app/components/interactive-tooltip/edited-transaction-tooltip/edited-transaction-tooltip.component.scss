@@ -1,0 +1,19 @@
+@import '../../../../styles/variables/variables';
+@import '../../../../styles/colors/colors';
+
+.tippy-form {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+            font-size: $font-size-16;
+            margin-bottom: 0;
+        }
+    }
+
+    &__table {
+        width: 47.5 * $spacer;
+    }
+}

@@ -1,0 +1,21 @@
+<mat-progress-spinner
+    *ngIf="isWorkerTasksLoading"
+    class="app-m-10-a"
+    color="accent"
+    mode="indeterminate"
+>
+</mat-progress-spinner>
+
+<mat-card class="app-d-f" *ngIf="!isWorkerTasksLoading">
+    <mat-card-title class="app-ta-c app-m-1 app-important">
+        Worker Tasks
+    </mat-card-title>
+
+    <mat-card-content>
+        <app-basic-dynamic-table
+            [dataSource]="workerTasksData"
+            [columns]="workerTasksDataColumns"
+            *ngIf="workerTasksData.length > 0"
+        ></app-basic-dynamic-table>
+    </mat-card-content>
+</mat-card>

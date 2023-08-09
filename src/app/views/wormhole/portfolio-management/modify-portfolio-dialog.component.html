@@ -1,0 +1,68 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Modify Portfolio</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <form [formGroup]="portfolioForm">
+            <mat-form-field
+                appearance="fill"
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+            >
+                <mat-label>Name</mat-label>
+                <input matInput required type="text" formControlName="name" />
+                <button
+                    (click)="portfolioForm.controls['name'].setValue(null)"
+                    *ngIf="portfolioForm.controls['name'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error>Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field
+                appearance="fill"
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-2 app-mb-2
+                "
+            >
+                <mat-label>Description</mat-label>
+                <input matInput type="text" formControlName="description" />
+                <button
+                    (click)="
+                        portfolioForm.controls['description'].setValue(null)
+                    "
+                    *ngIf="portfolioForm.controls['description'].value"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="accent" (click)="onModifyClick()">
+            Modify
+        </button>
+    </div>
+</div>

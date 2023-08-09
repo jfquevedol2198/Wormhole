@@ -1,0 +1,37 @@
+@import '../../../styles/variables/variables.scss';
+
+:host {
+    max-width: 40 * $spacer;
+    width: 100%;
+
+    .app-gas-price {
+        background-color: $dark-02;
+
+        &--title {
+            font-size: $font-size-12;
+            color: $highDarkEmphasis;
+        }
+
+        h2 {
+            font-size: $font-size-14;
+            letter-spacing: 1px;
+        }
+
+        &--footer {
+            font-size: $font-size-12;
+            color: $mediumDarkEmphasis;
+        }
+
+        &--success {
+            color: $primarySuccess;
+        }
+
+        &--info {
+            color: $primaryInfo;
+        }
+
+        &--error {
+            color: $primaryError;
+        }
+    }
+}

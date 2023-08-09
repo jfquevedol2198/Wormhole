@@ -1,0 +1,27 @@
+@import '../../../../../styles/colors/colors.scss';
+
+.mat-calendar-body-cell.selected {
+    background-color: $white !important;
+
+    border-radius: 50%;
+    cursor: pointer !important;
+    .mat-calendar-body-cell-content {
+        color: $dark !important;
+    }
+}
+
+.app-report-history-calendar {
+    width: 17rem !important;
+    .mat-calendar-header {
+        display: none;
+    }
+    .mat-calendar-body-cell {
+        cursor: default;
+        .mat-calendar-body-selected {
+            background-color: transparent !important;
+        }
+        .mat-calendar-body-cell-content {
+            background-color: transparent !important;
+        }
+    }
+}

@@ -1,0 +1,98 @@
+<ng-container [formGroup]="filtersForm">
+    <mat-form-field
+        class="
+            app-form-select-date
+            app-form-select-date--small
+            app-form-select-date--medium
+            app-mr-05
+        "
+        appearance="fill"
+    >
+        <mat-label>From Date</mat-label>
+        <input
+            matInput
+            [ngxMatDatetimePicker]="fromDatePicker"
+            [max]="fromDateMax"
+            formControlName="fromDate"
+            data-lpignore="true"
+        />
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="fromDatePicker"
+        ></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+            #fromDatePicker
+            [showSpinners]="showSpinners"
+            [showSeconds]="showSeconds"
+            [stepHour]="stepHour"
+            [stepMinute]="stepMinute"
+            [color]="color"
+            [disabled]="false"
+        >
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field
+        class="
+            app-form-select-date
+            app-form-select-date--small
+            app-form-select-date--medium
+            app-mr-05
+        "
+        appearance="fill"
+    >
+        <mat-label>To Date</mat-label>
+        <input
+            matInput
+            [ngxMatDatetimePicker]="toDatePicker"
+            [min]="toDateMin"
+            formControlName="toDate"
+            data-lpignore="true"
+        />
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="toDatePicker"
+        ></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+            #toDatePicker
+            [showSpinners]="showSpinners"
+            [showSeconds]="showSeconds"
+            [stepHour]="stepHour"
+            [stepMinute]="stepMinute"
+            [color]="color"
+            [disabled]="false"
+        >
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field
+        class="
+            app-form-select app-form-select--small app-form-select--medium
+            app-mr-05
+        "
+        appearance="fill"
+    >
+        <mat-label>Severity</mat-label>
+        <mat-select formControlName="severity">
+            <mat-option
+                *ngFor="let option of severityOptions"
+                [value]="option"
+                >{{ option }}</mat-option
+            >
+        </mat-select>
+        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+    </mat-form-field>
+    <mat-form-field
+        class="
+            app-form-select app-form-select--small app-form-select--medium
+            app-mr-05
+        "
+        appearance="fill"
+    >
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let option of typeOptions" [value]="option">{{
+                addSpaceAfterCapitalLetter(option)
+            }}</mat-option>
+        </mat-select>
+        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+    </mat-form-field>
+</ng-container>

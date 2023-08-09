@@ -1,0 +1,69 @@
+<ng-container>
+    <table
+        mat-table
+        [dataSource]="dataSource"
+        class="app-basic-dynamic-table mat-elevation-z8 app-w-100"
+        multiTemplateDataRows
+    >
+        <ng-container
+            *ngFor="let column of columns"
+            [matColumnDef]="column.columnDef"
+        >
+            <th mat-header-cell *matHeaderCellDef>
+                <app-table-header-component
+                    *ngIf="sortColumns; else noSortableHeader"
+                    [column]="column"
+                    [sortColumns]="sortColumns"
+                    (sort)="sortTable($event.isButtonPressed, $event.columnDef)"
+                ></app-table-header-component>
+                <ng-template #noSortableHeader>
+                    <span>{{ column.header }}</span>
+                </ng-template>
+            </th>
+
+            <td
+                mat-cell
+                *matCellDef="let row"
+                [class.app-c-p]="column.tooltip"
+                [class.app-ta-r]="column.actions"
+                [class.app-important]="column.actions"
+            >
+                <span
+                    [matTooltip]="
+                        column.tooltip ? column.tooltip(row) : undefined
+                    "
+                    [matTooltipPosition]="'above'"
+                >
+                    {{ column.cell(row) }}
+                </span>
+                <span *ngIf="column.subCell" class="app-c-dde">
+                    {{ column.subCell(row) }}
+                </span>
+            </td>
+        </ng-container>
+
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+            class="app-basic-dynamic-table__row__header"
+        ></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = dataIndex"
+            [ngClass]="
+                i % 2 === 0
+                    ? 'app-basic-dynamic-table__row__odd'
+                    : 'app-basic-dynamic-table__row__even'
+            "
+        ></tr>
+    </table>
+    <app-paginator
+        *ngIf="isPaginatedTable"
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]"
+        [pageIndex]="pageIndex"
+        (page)="page($event.pageIndex, $event.pageSize)"
+    >
+    </app-paginator>
+</ng-container>

@@ -1,0 +1,126 @@
+@import "../../../../../styles/variables/variables.scss";
+@import "../../../../../styles/mixins/scrollbar.scss";
+
+.app-processing-profit-and-loss {
+    &__toolbar {
+        margin: $spacer 0;
+    }
+    &__period {
+        margin: $spacer 0;
+        ::ng-deep.mat-button-toggle-group {
+            border: none;
+            .mat-button-toggle {
+                background-color: transparent;
+                border: none;
+                color: rgba(255, 255, 255, 0.42);
+                font-weight: normal;
+                &.mat-button-toggle-checked {
+                    color: rgba(255, 255, 255, 0.87);
+                    font-weight: 500;
+                }
+                .mat-button-toggle-label-content {
+                    line-height: $spacer;
+                }
+            }
+        }
+        .timeline-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .btn-prev,
+            .btn-next {
+                flex: 0 0 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                &:active {
+                    opacity: 0.5;
+                }
+                img {
+                    height: 45px;
+                }
+            }
+        }
+        .select-timeline {
+            margin-top: 1.5 * $spacer;
+            margin-bottom: 1.5 * $spacer;
+            height: 140px;
+            position: relative;
+            .fade-effect {
+                position: absolute;
+                top: 0;
+                width: 30%;
+                height: calc(100% - 20px);
+                pointer-events: none;
+                &.left {
+                    left: 0;
+                    background: linear-gradient(to right, #0000008f, transparent);
+                }
+                &.right {
+                    right: 0;
+                    background: linear-gradient(to left, #0000008f, transparent);
+                }
+            }
+
+            cdk-virtual-scroll-viewport {
+                height: 100%;
+                overflow-y: hidden;
+                @include scrollbar;
+
+                ::ng-deep .cdk-virtual-scroll-content-wrapper {
+                    display: flex;
+                    gap: 5px;
+                    height: 140px !important;
+                    min-width: 80%;
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+    &__progress {
+        margin: $spacer 0;
+        padding: 0 $spacer;
+        .progress-bar {
+            ::ng-deep {
+                .mat-progress-bar-fill::after {
+                    background-color: $chipColorError;
+                }
+                .mat-progress-bar-buffer {
+                    background: linear-gradient(0deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.11)), #121212;
+                }
+            }
+        }
+    }
+    &__content {
+        margin: $spacer 0;
+        padding: 0 $spacer;
+        ::ng-deep {
+            mat-horizontal-stepper {
+                background-color: transparent;
+                margin-left: -$spacer;
+                margin-right: -$spacer;
+            }
+            .mat-horizontal-stepper-header-container {
+                background: linear-gradient(0deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07)), #121212;
+                padding: 0 $spacer;
+            }
+            mat-step-header[aria-selected="true"] {
+                border-bottom: 3px solid rgba(255, 255, 255, 0.87);
+            }
+            .mat-step-icon {
+                background: transparent;
+                mat-icon {
+                    font-size: 24px;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+    &__table {
+        overflow: auto;
+        @include scrollbar;
+    }
+}

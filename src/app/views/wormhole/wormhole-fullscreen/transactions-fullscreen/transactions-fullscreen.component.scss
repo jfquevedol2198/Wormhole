@@ -1,0 +1,8 @@
+@import '../../../../../styles/colors/colors';
+
+.app-transactions-fullscreen {
+    &__buttons {
+        font-weight: 400 !important;
+        color: $disabledDarkEmphasis !important;
+    }
+}

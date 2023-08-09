@@ -1,0 +1,42 @@
+@import '../../../styles/colors/colors.scss';
+
+.search-platform-dialog {
+    .btn-filter-apply {
+        padding-top: 5px!important;
+        padding-bottom: 5px!important;
+        border-radius: 100px;
+    }
+    &__content {
+        flex: 1;
+        &__list {
+            height: 410px;
+            &__coin {
+                border-radius: 4px;
+                &:hover {
+                    background: linear-gradient(0deg, $elevation-04, $elevation-04), $dark;
+                }
+                &.selected {
+                    background-color: $chipColor-012;
+                    border: 1px solid $primaryProcess;
+                }
+                img {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    margin-right: 11px;
+                }
+                .left {
+                    flex: 1;
+                }
+            }
+        }
+    }
+    &__alphabet-filter {
+        span {
+            color: $disabledDarkEmphasis;
+            &.active {
+                color: $white;
+            }
+        }
+    }
+}

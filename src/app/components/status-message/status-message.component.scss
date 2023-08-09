@@ -1,0 +1,18 @@
+@import '../../../styles/colors/colors';
+@import '../../../styles/variables/variables';
+
+.app-status-message {
+    color: $disabledEmphasis;
+
+    &--successful {
+        background-color: $green;
+    }
+
+    &--warning {
+        background-color: $yellow;
+    }
+
+    &--error {
+        background-color: $errorRed;
+    }
+}

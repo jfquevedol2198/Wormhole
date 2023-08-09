@@ -1,0 +1,231 @@
+<div class="app-portfolio">
+    <mat-progress-spinner
+        *ngIf="isPortfolioListLoading"
+        class="app-m-3-a"
+        color="accent"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+    <div
+        *ngIf="!isPortfolioListLoading"
+        class="app-portfolio__container app-m-0-a"
+    >
+        <div
+            class="
+                app-portfolio__container__portfolio-list
+                app-d-f app-mt-3 app-fw-w
+            "
+        >
+            <div
+                *ngFor="let portfolio of portfolios"
+                class="
+                    app-portfolio__container__portfolio-list__element
+                    app-m-1 app-c-p
+                    {{
+                    portfolio.portfolioId === selectedPortfolioId$.getValue()
+                        ? 'app-portfolio__container__portfolio-list__element--selected'
+                        : undefined
+                }} "
+                (click)="onPortfolioClick(portfolio)"
+            >
+                <div
+                    class="
+                        app-portfolio__container__portfolio-list__element__header
+                        app-c-hde app-d-f app-jc-sb
+                    "
+                >
+                    <div
+                        class="
+                            app-portfolio__container__portfolio-list__element__header__text
+                            app-ta-c
+                        "
+                    >
+                        <div
+                            class="
+                                app-portfolio__container__portfolio-list__element__header__text__title
+                                app-f-s-14 app-mb-05
+                            "
+                            [matTooltip]="
+                                portfolio.name.length > 17
+                                    ? portfolio.name
+                                    : undefined
+                            "
+                            [matTooltipPosition]="'above'"
+                        >
+                            {{ portfolio.name }}
+                        </div>
+
+                        <div
+                            class="
+                                app-portfolio__container__portfolio-list__element__header__text__subtitle
+                                app-f-s-10 app-mb-05
+                            "
+                            [matTooltip]="
+                                portfolio.description &&
+                                portfolio.description.length > 15
+                                    ? portfolio.description
+                                    : undefined
+                            "
+                            [matTooltipPosition]="'above'"
+                        >
+                            {{ portfolio.description }}
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            [matMenuTriggerFor]="menu"
+                            color="accent"
+                            mat-icon-button
+                            (click)="$event.stopPropagation()"
+                        >
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu>
+                            <div class="app-d-f app-fd-c app-p-1">
+                                <button
+                                    class="mat-raised-button mat-accent"
+                                    (click)="onModifyPortfolioClick(portfolio)"
+                                    mat-button
+                                >
+                                    Modify Portfolio
+                                </button>
+                                <button
+                                    class="
+                                        mat-stroked-button
+                                        app-mt-1 app-important
+                                    "
+                                    mat-button
+                                    (click)="onRemovePortfolioClick(portfolio)"
+                                >
+                                    Remove Portfolio
+                                </button>
+                            </div>
+                        </mat-menu>
+                    </div>
+                </div>
+                <div class="app-f-s-12">
+                    <div class="app-c-hde app-p-05">
+                        Ledgers: {{ portfolio.ledgersCount }}
+                    </div>
+                    <div class="app-c-hde app-p-05">
+                        Addresses: {{ portfolio.addressesCount }}
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="
+                    app-portfolio__container__portfolio-list__element
+                    app-m-1 app-d-f app-jc-c app-ai-c
+                "
+            >
+                <button
+                    mat-icon-button
+                    class="app-portfolio__container__portfolio-list__add-button"
+                    (click)="onAddPortfolioClick()"
+                >
+                    <mat-icon
+                        class="
+                            app-portfolio__container__portfolio-list__add-button__icon
+                        "
+                        >add</mat-icon
+                    >
+                </button>
+            </div>
+        </div>
+
+        <mat-progress-spinner
+            *ngIf="isLedgersLoading"
+            class="app-m-3-a"
+            color="accent"
+            mode="indeterminate"
+        >
+        </mat-progress-spinner>
+
+        <div *ngIf="!isLedgersLoading" class="app-ml-1 app-mr-1">
+            <mat-accordion displayMode="flat" multi hideToggle>
+                <mat-expansion-panel
+                    *ngFor="let ledger of ledgerData"
+                    [expanded]="ledger.isExpanded"
+                    class="mat-elevation-z0 app-mb-1 app-important"
+                >
+                    <mat-expansion-panel-header
+                        class="
+                            app-portfolio__container__ledger-list__element__header
+                            app-pl-05 app-important
+                        "
+                        (click)="expandLedger(ledger)"
+                    >
+                        <div class="app-d-f app-jc-sb app-w-100">
+                            <div class="app-d-f">
+                                <div
+                                    class="app-d-f app-ai-c app-p-05 app-mr-05"
+                                >
+                                    <mat-icon>{{
+                                        ledger.isExpanded
+                                            ? 'keyboard_arrow_down'
+                                            : 'keyboard_arrow_right'
+                                    }}</mat-icon>
+                                </div>
+                                <div
+                                    class="app-d-f app-jc-sb app-w-100 app-ai-c"
+                                >
+                                    {{ ledger.title }}
+                                </div>
+                            </div>
+
+                            <button
+                                *ngIf="selectedPortfolioId$.getValue()"
+                                [matMenuTriggerFor]="menu"
+                                class="mat-stroked-button"
+                                mat-button
+                                (click)="$event.stopPropagation()"
+                                [disabled]="ledger.name !== 'Ethereum'"
+                            >
+                                Add Address
+                            </button>
+                            <mat-menu #menu>
+                                <div class="app-d-f app-fd-c app-p-1">
+                                    <button
+                                        class="
+                                            mat-raised-button mat-accent
+                                            app-mb-1 app-important
+                                        "
+                                        mat-button
+                                        (click)="
+                                            onAddAddressManuallyClick(ledger)
+                                        "
+                                    >
+                                        Manually
+                                    </button>
+                                    <button
+                                        class="mat-raised-button mat-accent"
+                                        mat-button
+                                        (click)="
+                                            onAddAddressFromExistingClick(
+                                                ledger
+                                            )
+                                        "
+                                    >
+                                        From Existing
+                                    </button>
+                                </div>
+                            </mat-menu>
+                        </div>
+                    </mat-expansion-panel-header>
+                    <div class="app-p-0-2 app-ov-a">
+                        <app-addresses-table
+                            [ledgerName]="ledger.name"
+                            [accounts]="ledger.ledgerAccounts"
+                            [selectedPortfolioId]="
+                                selectedPortfolioId$.getValue()
+                            "
+                            (refreshPortfolioData)="refreshPortfolioData()"
+                            (refreshAccountsData)="updateAccounts($event)"
+                        ></app-addresses-table>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@import "../../../styles/variables/variables";
+
+.app-pnl-progress {
+    &__spinner {
+        margin: 3 * $spacer auto;
+    }
+    &__category {
+        height: 3 * $spacer;
+    }
+}

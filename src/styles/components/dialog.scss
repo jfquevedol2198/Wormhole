@@ -1,0 +1,37 @@
+@import '../variables/variables';
+
+.app-dialog {
+    min-width: 18.75 * $spacer;
+
+    .mat-dialog-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            font-size: $font-size-16;
+            margin-bottom: 0;
+        }
+    }
+
+    .mat-dialog-content {
+        font-size: $font-size-12;
+        margin-bottom: $spacer;
+    }
+
+    .mat-dialog-actions {
+        justify-content: flex-end;
+
+        button:not(:last-child) {
+            margin-right: $spacer;
+        }
+    }
+
+    &--unset-min-width {
+        min-width: unset;
+    }
+
+    &--prompt-max-width {
+        max-width: 31.25 * $spacer;
+    }
+}

@@ -1,0 +1,24 @@
+@import "../../../styles/colors/colors";
+@import "../../../styles/variables/variables";
+
+.app-dynamic-table {
+    &__inner-row {
+        height: 0 !important;
+        &__cell {
+            padding: 0 !important;
+        }
+    }
+
+    &--empty-inner-data {
+        height: 3 * $spacer;
+    }
+
+    &__inner-dynamic-table {
+        table {
+            width: auto;
+        }
+    }
+    .dismissed {
+        opacity: 0.5 !important;
+    }
+}

@@ -1,0 +1,8 @@
+<app-line-chart
+    class="app-mr-1 app-mt-1 app-d-b"
+    [fields]="lineChartFields"
+    [data$]="generalLedgerService.pnlEssentialData$"
+    [loading$]="generalLedgerService.pnlEssentialDataLoading$"
+    [selectedRange$]="generalLedgerService.selectedRange$"
+    [fullscreenMode]="true"
+></app-line-chart>

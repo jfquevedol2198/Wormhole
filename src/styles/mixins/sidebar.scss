@@ -1,0 +1,31 @@
+@mixin sidebar {
+    min-height: 95vh;
+
+    &__header {
+        font-size: 20pt;
+        font-weight: bolder;
+        margin-left: 0.5rem;
+    }
+
+    &__header-spacer {
+        flex: 1 1 auto;
+    }
+
+    &__version-info {
+        font-size: 8pt;
+        float: right;
+        margin: 1rem;
+    }
+
+    &__sidebar {
+        width: 16rem;
+    }
+
+    &__sidebar-navigation {
+        display: block;
+    }
+
+    &__sidebar-element {
+        display: block;
+    }
+}

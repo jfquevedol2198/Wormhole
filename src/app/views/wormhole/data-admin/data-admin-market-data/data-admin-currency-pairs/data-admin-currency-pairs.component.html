@@ -1,0 +1,554 @@
+<div class="data-admin-market-data-currency-pairs">
+    <div
+        class="app-pl-1 data-admin-market-data-currency-pairs__new-report-form app-mt-15 app-mb-15 app-d-f app-jc-sb app-pr-1 app-ai-c app-bg-c-e02-lg">
+        <p class="app-f-s-14 app-mb-0 app-important">Table name</p>
+
+        <div class="app-d-f app-ai-c">
+            <mat-icon
+                class="material-icons-outlined btn-filter cursor-pointer"
+                [class]="{'active': isFilterOpen}"
+                (click)="isFilterOpen = !isFilterOpen"
+            >filter_alt</mat-icon>
+            <div class="app-d-f app-platform__toolbar__search">
+                <input *ngIf="isSearchInputOpen" matInput placeholder="Preset Name" class="
+                        app-platform__toolbar__search__input
+                        app-mat-input
+                        app-fw-400
+                        app-w-100
+                        app-bs-bx
+                        app-important
+                        app-p-0-05
+                    " name="searching" [(ngModel)]="searchQuery" (keyup)="handleKeyUp($event)" />
+
+                <button mat-icon-button class="app-button app-button--small app-d-f" (click)="onSearchButtonClick()">
+                    <mat-icon>{{
+                        isSearchInputOpen ? 'close' : 'search'
+                        }}</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isFilterOpen" class="app-pl-1 app-pr-1 app-mb-15 app-data-admin-address-labels__filter-container">
+        <p class="app-f-s-14 app-mb-2 app-important">Filters</p>
+        <form [formGroup]="filtersForm">
+            <div class="app-d-f app-fw-w app-mb-1">
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">From account (multi input)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-117
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="fromAccounts"
+                            multiple
+                        >
+                            <mat-option
+                                *ngFor="let account of accountsDemo"
+                                [value]="account"
+                            >{{ account }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Status</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-178
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="status"
+                            multiple
+                        >
+                            <mat-option
+                                value="zero_rates"
+                            >Zero Rates</mat-option>
+                            <mat-option
+                                value="data_gaps"
+                            >Data Gaps</mat-option>
+                            <mat-option
+                                value="orphan_pairs"
+                            >Orphan pairs</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Provider (multi select)</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-9
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="providers"
+                            multiple
+                        >
+                            <mat-option
+                                value="uniswap"
+                            >Uniswap</mat-option>
+                            <mat-option
+                                value="uniswap1"
+                            >Uniswap 1</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Pair name</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-9
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="pairName"
+                        >
+                            <mat-option
+                                value="chi/usd"
+                            >CHI/USD</mat-option>
+                            <mat-option
+                                value="usd/chi"
+                            >USD/CHI</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Base token</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-12
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="baseToken"
+                        >
+                        <mat-option
+                            *ngFor="let account of accountsDemo"
+                            [value]="account"
+                        >{{ account }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Quote token</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-12
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="quoteToken"
+                        >
+                        <mat-option
+                            *ngFor="let account of accountsDemo"
+                            [value]="account"
+                        >{{ account }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <div class="app-d-f">
+                        <div class="app-mr-05">
+                            <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Select by</p>
+                            <mat-form-field
+                                class="
+                                    app-form-select
+                                    app-form-select--no-label
+                                    app-form-select--small
+                                    app-form-select--w-57
+                                "
+                                appearance="fill"
+                            >
+                                <mat-select
+                                    color="accent"
+                                    formControlName="firstSelectBy"
+                                >
+                                <mat-option
+                                    value="date"
+                                >Date</mat-option>
+                                <mat-option
+                                    value="time"
+                                >Time</mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="app-mr-05">
+                            <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">First seen date</p>
+                            <mat-form-field
+                                class="
+                                    app-form-select
+                                    app-form-select--no-label
+                                    app-form-select--small
+                                    app-form-select--w-95
+                                "
+                                appearance="fill"
+                            >
+                                <input matInput [matDatepicker]="picker" formControlName="firstDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">First seen time</p>
+                            <mat-form-field
+                                class="
+                                    app-form-select
+                                    app-form-select--no-label
+                                    app-form-select--small
+                                    app-form-select--w-64
+                                "
+                                appearance="fill"
+                            >
+                                <input matInput [disableClick]="true" readonly [ngxTimepicker]="timePicker" formControlName="firstTime">
+                                <ngx-material-timepicker #timePicker [theme]="timePickerTheme"></ngx-material-timepicker>
+                                <mat-icon class="cursor-pointer" matSuffix (click)="timePicker.open()">timer</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <div class="app-d-f">
+                        <div class="app-mr-05">
+                            <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Select by</p>
+                            <mat-form-field
+                                class="
+                                    app-form-select
+                                    app-form-select--no-label
+                                    app-form-select--small
+                                    app-form-select--w-57
+                                "
+                                appearance="fill"
+                            >
+                                <mat-select
+                                    color="accent"
+                                    formControlName="lastSelectBy"
+                                >
+                                <mat-option
+                                    value="date"
+                                >Date</mat-option>
+                                <mat-option
+                                    value="time"
+                                >Time</mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="app-mr-05">
+                            <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Last seen date</p>
+                            <mat-form-field
+                                class="
+                                    app-form-select
+                                    app-form-select--no-label
+                                    app-form-select--small
+                                    app-form-select--w-95
+                                "
+                                appearance="fill"
+                            >
+                                <input matInput [matDatepicker]="lastpicker" formControlName="lastDate">
+                                <mat-datepicker-toggle matSuffix [for]="lastpicker"></mat-datepicker-toggle>
+                                <mat-datepicker #lastpicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Last seen time</p>
+                            <mat-form-field
+                                class="
+                                    app-form-select
+                                    app-form-select--no-label
+                                    app-form-select--small
+                                    app-form-select--w-64
+                                "
+                                appearance="fill"
+                            >
+                                <input matInput [disableClick]="true" readonly [ngxTimepicker]="lastTimePicker" formControlName="lastTime">
+                                <ngx-material-timepicker #lastTimePicker [theme]="timePickerTheme"></ngx-material-timepicker>
+                                <mat-icon class="cursor-pointer" matSuffix (click)="lastTimePicker.open()">timer</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="app-d-f app-ai-c app-pt-05">
+                        <span class="app-mr-05 app-important">Active</span>
+                        <mat-slide-toggle formControlName="active"></mat-slide-toggle>
+                    </div>
+                </div>
+                <div class="app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="app-d-f app-ai-c app-pt-05">
+                        <span class="app-mr-05 app-important">Requested</span>
+                        <mat-slide-toggle formControlName="requested"></mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+            <div class="app-d-f">
+                <button mat-button class=" app-mr-05 app-important" matTooltip="Filter" color="accent" mat-raised-button>
+                    Filter
+                </button>
+    
+                <button
+                    mat-button
+                    class="mat-stroked-button app-mr-05 app-important"
+                    matTooltip="Reset"
+                    (click)="initForm()"
+                >
+                    Reset
+                </button>
+            </div>
+        </form>
+    </div>
+    <div
+        class="app-d-f app-jc-c"
+        *ngIf="isLoading"
+    >
+        <mat-progress-spinner class="app-m-3-a" color="accent" mode="indeterminate">
+        </mat-progress-spinner>
+    </div>
+    <table *ngIf="!isLoading" mat-table [dataSource]="currencyPairData.data"
+        class="app-table app-table__striped app-table__expand-column app-w-100">
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>
+                Status
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.status }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pairName">
+            <th mat-header-cell *matHeaderCellDef>
+                Pair Name
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.pairName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rateCount">
+            <th mat-header-cell *matHeaderCellDef>
+                Rate Count
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.rateCount }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="baseTokenContractAddress">
+            <th mat-header-cell *matHeaderCellDef>
+                Base Token Contract
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.baseTokenContractAddress }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tokenContractAddress">
+            <th mat-header-cell *matHeaderCellDef>
+                Token Contract
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.tokenContractAddress }}
+            </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="tokenDependency">
+            <th mat-header-cell *matHeaderCellDef>
+                Token Dependency
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.tokenDependency }}
+            </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="firstSeenBlockNumber">
+            <th mat-header-cell *matHeaderCellDef>
+                First Seen Block
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.firstSeenBlockNumber }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstSeenTimestamp">
+            <th mat-header-cell *matHeaderCellDef>
+                First Seen Time
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.firstSeenTimestamp | date:"dd/MM/yy h:mm a" }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastSeenBlockNumber">
+            <th mat-header-cell *matHeaderCellDef>
+                Last Seen Block
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.lastSeenBlockNumber }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastSeenTimestamp">
+            <th mat-header-cell *matHeaderCellDef>
+                Last Seen Time
+            </th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.lastSeenTimestamp | date:"dd/MM/yy h:mm a" }}
+            </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="dataQuality">
+            <th mat-header-cell *matHeaderCellDef>
+                Data quality
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <div [class.app-c-green]="row.dataQuality==='Completed'" [class.app-c-yellow]="row.dataQuality==='Scheduled'"
+                    [class.app-c-blue]="row.dataQuality==='Running'" [class.app-c-red]="row.dataQuality==='Failed'">
+                    <mat-icon>{{ currencyIcon[row.dataQuality] }}</mat-icon>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dataProvider">
+            <th mat-header-cell *matHeaderCellDef>
+                Data provider
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <div [class.app-c-green]="row.dataProvider==='Completed'" [class.app-c-yellow]="row.dataProvider==='Scheduled'"
+                    [class.app-c-blue]="row.dataProvider==='Running'" [class.app-c-red]="row.dataProvider==='Failed'">
+                    <mat-icon>{{ currencyIcon[row.dataProvider] }}</mat-icon>
+                </div>
+            </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="syncedBlockNumber">
+            <th mat-header-cell *matHeaderCellDef>Synced Block Number</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.syncedBlockNumber }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="syncedTimestamp">
+            <th mat-header-cell *matHeaderCellDef>Synced Time</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.syncedTimestamp | date:"dd/MM/yy h:mm a" }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="verifiedBlockNumber">
+            <th mat-header-cell *matHeaderCellDef>Verified Block Number</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.verifiedBlockNumber }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="verifiedTimestamp">
+            <th mat-header-cell *matHeaderCellDef>Verified Time</th>
+            <td mat-cell *matCellDef="let row">
+                {{ row.verifiedTimestamp | date:"dd/MM/yy h:mm a" }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="active">
+            <th mat-header-cell *matHeaderCellDef>Active</th>
+            <td mat-cell *matCellDef="let row">
+                <div class="app-d-f app-fw-w">
+                    <mat-slide-toggle [checked]="row.active"></mat-slide-toggle>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="requested">
+            <th mat-header-cell *matHeaderCellDef>Requested</th>
+            <td mat-cell *matCellDef="let row">
+                <div class="app-d-f app-fw-w">
+                    <mat-slide-toggle [checked]="row.requested"></mat-slide-toggle>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: columnsToDisplay"
+            class="cursor-pointer"
+            [ngClass]="{
+                'app-bg-c-p1-012': selectedRow?.exchangeRatePairId === row.exchangeRatePairId
+            }"
+            (click)="clickedRow(row)"
+        ></tr>
+    </table>
+    <app-paginator
+        [length]="currencyPairData.total"
+        [pageSize]="currencyPairData.PageSize"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]"
+        [pageIndex]="currencyPairData.PageIndex"
+        (page)="page($event.pageIndex, $event.pageSize)"
+    >
+    </app-paginator>
+</div>
+
+<div class="app-mt-1" *ngIf="selectedRow">
+    <ng-container>
+        <mat-tab-group color="accent" animationDuration="0ms" (selectedTabChange)="setActiveTab($event.index)">
+            <mat-tab *ngFor="let tab of currencyPairsTabs; let index = index" [label]="tab" [tabIndex]="index">
+                <ng-template mat-tab-label><span class="app-data-admin__label app-fw-400">
+                        {{ tab.label }}
+                    </span></ng-template>
+            </mat-tab>
+        </mat-tab-group>
+
+        <app-data-admin-currency-pairs-pair-summary *ngIf="selectedTab.label === 'Pair Summary'">
+        </app-data-admin-currency-pairs-pair-summary>
+
+        <app-data-admin-currency-pairs-dependencies [currency]="selectedRow" *ngIf="selectedTab.label === 'Dependencies'">
+        </app-data-admin-currency-pairs-dependencies>
+
+        <app-data-admin-currency-pairs-usage [currency]="selectedRow" *ngIf="selectedTab.label === 'Usage'">
+        </app-data-admin-currency-pairs-usage>
+
+        <app-data-admin-currency-pairs-jobs *ngIf="selectedTab.label === 'Jobs'">
+        </app-data-admin-currency-pairs-jobs>
+
+        <app-data-admin-currency-pairs-processing-jobs *ngIf="selectedTab.label === 'Processing Log'">
+        </app-data-admin-currency-pairs-processing-jobs>
+    </ng-container>
+</div>

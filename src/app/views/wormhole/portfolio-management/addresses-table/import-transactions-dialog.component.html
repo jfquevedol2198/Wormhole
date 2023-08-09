@@ -1,0 +1,37 @@
+<div class="app-dialog">
+    <div mat-dialog-title>
+        <h3>Import Transactions</h3>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <input
+            hidden
+            type="file"
+            #uploader
+            (change)="onSelectFileClick($event)"
+            accept=".csv"
+        />
+        <div
+            class="
+                app-import-transactions__import-button
+                app-d-f app-ai-c app-c-p
+            "
+            (click)="uploader.click()"
+        >
+            {{ transactionsFile ? transactionsFile.name : 'Select file...' }}
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-stroked-button (click)="downloadFileTemplate()">
+            Download Template
+        </button>
+
+        <button mat-flat-button color="accent" (click)="onImportClick()">
+            Import
+        </button>
+    </div>
+</div>

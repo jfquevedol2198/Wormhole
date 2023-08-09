@@ -1,0 +1,22 @@
+<form [formGroup]="portfolioControls">
+    <mat-form-field
+        class="
+            app-form-select app-form-select--small app-form-select--medium
+            app-ml-05 app-mr-05
+        "
+        appearance="fill"
+    >
+        <mat-label>Portfolio</mat-label>
+        <mat-select formControlName="portfolioId">
+            <mat-option
+                *ngFor="
+                    let portfolio of generalLedgerService.portfolios$ | async
+                "
+                [value]="portfolio.portfolioId"
+            >
+                {{ portfolio.name }}
+            </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+    </mat-form-field>
+</form>

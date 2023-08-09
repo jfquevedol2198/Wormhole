@@ -1,0 +1,18 @@
+@import '../../../styles/variables/variables.scss';
+
+.app-dialog {
+    .action-content {
+        border-top: 1px solid $elevation-03;
+    }
+}
+
+.import-address-dialog {
+    &__form {
+        &__text-input {
+            width: 100%;
+        }
+        &__title {
+            margin-bottom: 7px;
+        }
+    }
+}

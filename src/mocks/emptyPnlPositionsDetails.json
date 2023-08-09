@@ -1,0 +1,30 @@
+[
+    {
+        "ledgerAddress": "string",
+        "timestamp": "2021-03-01T20:54:48.989Z",
+        "platformName": "platform 1",
+        "platformLogoUri": "platform logo",
+        "assetName": "asset 1",
+        "assetSymbol": "string",
+        "assetAddress": "string",
+        "tokenId": "string",
+        "assetLogoUri": "asset logo",
+        "fundingToken": 0,
+        "floatingFundingUsd": 0,
+        "fixedFundingUsd": 0,
+        "netWorth": 0,
+        "tokenBasedPnL": 0,
+        "dollarBasedPnL": 0,
+        "walletToken": 0,
+        "walletUsd": 0,
+        "supplyToken": 0,
+        "supplyUsd": 0,
+        "stakeToken": 0,
+        "stakeUsd": 0,
+        "collateralToken": 0,
+        "collateralUsd": 0,
+        "borrowToken": 0,
+        "borrowUsd": 0,
+        "portfolioId": 5
+    }
+]

@@ -1,0 +1,42 @@
+{
+    "responseTimestamp": "2021-07-05T08:48:05.666Z",
+    "recordCount": 0,
+    "records": [
+        {
+            "isIntegrated": "true",
+            "createdDate": "2021-07-05T08:48:05.666Z",
+            "startDate": "2021-07-05T08:48:05.666Z",
+            "endDate": "2021-02-17T11:50:59+00:00",
+            "reference": "With Binance transfer amendments",
+            "issues": "Missing platform information",
+            "syncPercentage": "0.71",
+            "status": "running",
+            "isPublished": "true",
+            "priority": ""
+        },
+        {
+            "isIntegrated": "true",
+            "createdDate": "2021-07-05T08:48:05.666Z",
+            "startDate": "2021-07-05T08:48:05.666Z",
+            "endDate": "2021-02-17T11:50:59+00:00",
+            "reference": "Auto-Generated",
+            "issues": "Missing exchange rates",
+            "syncPercentage": "0.61",
+            "status": "running",
+            "isPublished": "false",
+            "priority": ""
+        },
+        {
+            "isIntegrated": "false",
+            "createdDate": "2021-07-05T08:48:05.666Z",
+            "startDate": "2021-07-05T08:48:05.666Z",
+            "endDate": "2021-02-17T11:50:59+00:00",
+            "reference": "Auto-Generated",
+            "issues": "Missing exchange rates",
+            "syncPercentage": "1",
+            "status": "completed",
+            "isPublished": "false",
+            "priority": ""
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+<div
+    *ngIf="isMessageShowing"
+    class="app-status-message app-status-message--{{
+        message.status
+    }} app-w-100 app-d-f app-ai-c app-jc-sb"
+>
+    <div class="app-d-f app-m-a">
+        <mat-icon class="material-icons-outlined app-m-05">{{
+            getIconName(message.status)
+        }}</mat-icon>
+        <div class="app-m-0 app-f-s-12 app-p-05 app-d-f app-ai-c app-p-05-0">
+            {{ message.messageText }}
+        </div>
+    </div>
+    <mat-icon class="app-w-10 app-m-05 app-c-p" (click)="closeMessage()"
+        >clear</mat-icon
+    >
+</div>

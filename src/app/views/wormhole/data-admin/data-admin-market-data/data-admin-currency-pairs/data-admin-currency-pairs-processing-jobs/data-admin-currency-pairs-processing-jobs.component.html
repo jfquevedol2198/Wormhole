@@ -1,0 +1,306 @@
+<div class="data-admin-currency-pairs-processing-jobs">
+    <div
+        class="app-pl-1 data-admin-currency-pairs-processing-jobs__new-report-form app-mt-15 app-mb-15 app-d-f app-jc-sb app-pr-1 app-ai-c app-bg-c-e02-lg">
+        <div class="buttons">
+            <button mat-button class="mat-stroked-button app-mr-05 app-important" matTooltip="Re run">
+                Re run
+            </button>
+
+            <button mat-button class="mat-stroked-button app-mr-05 app-important" matTooltip="Run master task">
+                Run data quality checks
+            </button>
+        </div>
+
+        <div class="app-d-f app-ai-c">
+            <mat-icon
+                class="material-icons-outlined btn-filter cursor-pointer"
+                [class]="{'active': isFilterOpen}"
+                (click)="isFilterOpen = !isFilterOpen"
+            >filter_alt</mat-icon>
+            <div class="app-d-f app-platform__toolbar__search">
+                <input *ngIf="isSearchInputOpen" matInput placeholder="Preset Name" class="
+                        app-platform__toolbar__search__input
+                        app-mat-input
+                        app-fw-400
+                        app-w-100
+                        app-bs-bx
+                        app-important
+                        app-p-0-05
+                    " name="searching" [(ngModel)]="searchQuery" (keyup)="handleKeyUp($event)" />
+
+                <button mat-icon-button class="app-button app-button--small app-d-f" (click)="onSearchButtonClick()">
+                    <mat-icon>{{
+                        isSearchInputOpen ? 'close' : 'search'
+                        }}</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isFilterOpen" class="app-pl-1 app-pr-1 app-mb-15 app-data-admin-address-labels__filter-container">
+        <p class="app-f-s-14 app-mb-2 app-important">Filters</p>
+        <form [formGroup]="filtersForm">
+            <div class="app-d-f app-fw-w app-mb-1">
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Severity</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-77
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="severity"
+                        >
+                            <mat-option
+                                *ngFor="let i of severities"
+                                [value]="i.value"
+                            >{{ i.label }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Name</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-100
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="name"
+                        >
+                            <mat-option
+                                *ngFor="let i of names"
+                                [value]="i.value"
+                            >{{ i.label }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Select by</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-62
+                        "
+                        appearance="fill"
+                    >
+                        <mat-select
+                            color="accent"
+                            formControlName="selectBy"
+                        >
+                            <mat-option
+                                *ngFor="let name of selectBys"
+                                [value]="name.value"
+                            >{{ name.label }}</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">Start height</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-64
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="startHeight"
+                        />
+                        <mat-icon
+                            (click)="filtersForm.controls.startHeight.setValue('')"
+                            *ngIf="filtersForm.controls.startHeight.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">End height</p>
+                    <mat-form-field
+                        class="
+                            app-form-select
+                            app-form-select--no-label
+                            app-form-select--small
+                            app-form-select--w-64
+                            app-mr-05 app-d-f app-fd-c app-mr-05
+                        "
+                        appearance="fill"
+                    >
+                        <input
+                            matInput
+                            type="text"
+                            data-lpignore="true"
+                            formControlName="endHeight"
+                        />
+                        <mat-icon
+                            (click)="filtersForm.controls.endHeight.setValue('')"
+                            *ngIf="filtersForm.controls.endHeight.value"
+                            matSuffix
+                            class="cursor-pointer"
+                        >close</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="app-mr-1 app-mb-075">
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="app-d-f app-ai-c app-pt-05">
+                        <span class="app-mr-05 app-important">Dismissed</span>
+                        <mat-slide-toggle formControlName="dismissed"></mat-slide-toggle>
+                    </div>
+                </div>
+                <div>
+                    <p class="app-f-s-11 app-c-white-54 app-data-admin-address-labels__filter-container__title">&nbsp;</p>
+                    <div class="buttons">
+                        <button mat-button class=" app-mr-05 app-important" matTooltip="Filter" color="accent" mat-raised-button>
+                            Filter
+                        </button>
+            
+                        <button
+                            mat-button
+                            class="mat-stroked-button app-mr-05 app-important"
+                            matTooltip="Reset"
+                            (click)="initForm()"
+                        >
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="app-pl-1 app-pr-1">
+        <table mat-table [dataSource]="currencyPairProcessingJobData.data"
+            class="app-table app-table__striped app-table__expand-column app-w-100">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>
+                    Worker task ID
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.id }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>
+                    Name
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.name }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="severity">
+                <th mat-header-cell *matHeaderCellDef>
+                    Severity
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <span [class.app-c-yellow]="row.severity === 'Information'"
+                        [class.app-c-red]="row.severity === 'Warning'">
+                        {{ row.severity }}
+                    </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="message">
+                <th mat-header-cell *matHeaderCellDef>
+                    Message
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.message }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="startHeight">
+                <th mat-header-cell *matHeaderCellDef>
+                    Start height
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.startHeight }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="endHeight">
+                <th mat-header-cell *matHeaderCellDef>
+                    End height
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.endHeight }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="note">
+                <th mat-header-cell *matHeaderCellDef>
+                    Note
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.note }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dismiss">
+                <th mat-header-cell *matHeaderCellDef>Dismiss</th>
+                <td mat-cell *matCellDef="let row">
+                    <div class="app-d-f app-fw-w">
+                        <mat-slide-toggle [checked]="row.dismiss" (change)="onChangeDismiss($event, row)"></mat-slide-toggle>
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="isSelected">
+                <th mat-header-cell *matHeaderCellDef>Select</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let row">
+                    <span class="app-d-f">
+                        <mat-icon class=" cursor-pointer" [matMenuTriggerFor]="menu">more_horiz</mat-icon>
+                        {{ row.type }}
+                    </span>
+
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <span>Processing logs</span>
+                        </button>
+                        <button mat-menu-item>
+                            <span>Run now</span>
+                        </button>
+                        <button mat-menu-item>
+                            <span>Remove lock</span>
+                        </button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+        </table>
+        <div class="app-ta-r app-mt-125 app-mb-125">
+            <span class="app-c-white-60"><span>Record count:  </span><span class="app-c-hde">122</span></span>
+        </div>
+    </div>
+</div>

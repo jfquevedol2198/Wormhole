@@ -1,0 +1,11 @@
+@import '../../../../../styles/variables/variables';
+
+.app-import-transactions {
+    &__import-button {
+        padding: 0 0.5 * $spacer;
+        border: 1px solid;
+        border-radius: 0.5 * $spacer;
+        height: 3 * $spacer;
+        width: 25 * $spacer;
+    }
+}

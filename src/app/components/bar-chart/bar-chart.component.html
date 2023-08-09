@@ -1,0 +1,14 @@
+<div class="app-d-f app-jc-sb app-w-100 app-ai-c app-h-100 bar-chart">
+    <span class="app-m-0-05 app-fw-n app-f-s-9 app-mr-05 app-d-f app-ai-c bar-chart--item-left">
+        {{data.name}}
+    </span>
+    <div class="app-w-100 bar-chart--item">
+        <app-stacked-row
+            [data]="data"
+            [namesWithColors]="namesWithColors"
+        ></app-stacked-row>
+    </div>
+    <div class="app-d-f app-ai-c app-f-s-9 bar-chart--item-right app-ml-05">
+        {{ isBarChartForPercentages(data.name) ? formatValue(data.percentage) + '%' : getShortValue(data.totalBalance, 0) }}
+    </div>
+</div>

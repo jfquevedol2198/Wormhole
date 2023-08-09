@@ -1,0 +1,46 @@
+{
+    "records": [
+        {
+            "notificationId": 0,
+            "ledgerAccountId": 0,
+            "scope": "None",
+            "createdDate": "2021-08-25T15:25:18.293Z",
+            "recheckedDate": "2021-08-25T15:25:18.293Z",
+            "severity": "info",
+            "type": "New PNL",
+            "message": "string",
+            "details": "string",
+            "hidden": true,
+            "userNote": "string",
+            "dismissed": true
+        },
+        {
+            "notificationId": 1,
+            "ledgerAccountId": 0,
+            "scope": "None",
+            "createdDate": "2021-08-25T15:25:18.293Z",
+            "recheckedDate": "2021-08-25T15:25:18.293Z",
+            "severity": "warning",
+            "type": "Missing Platform",
+            "message": "string",
+            "details": "string",
+            "hidden": true,
+            "userNote": "string",
+            "dismissed": true
+        },
+        {
+            "notificationId": 2,
+            "ledgerAccountId": 0,
+            "scope": "None",
+            "createdDate": "2021-08-25T15:25:18.293Z",
+            "recheckedDate": "2021-08-25T15:25:18.293Z",
+            "severity": "error",
+            "type": "CategorizationException",
+            "message": "string",
+            "details": "string",
+            "hidden": true,
+            "userNote": "string",
+            "dismissed": true
+        }
+    ]
+}

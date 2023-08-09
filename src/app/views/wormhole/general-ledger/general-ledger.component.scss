@@ -1,0 +1,20 @@
+@import '../../../../styles/variables/variables';
+
+.app-general-ledger {
+    &__spinner {
+        margin: 4 * $spacer auto;
+    }
+
+    &__row {
+        max-height: 42.5 * $spacer;
+    }
+
+    &__container {
+        ::ng-deep {
+            .mat-toolbar-row,
+            .mat-toolbar-multiple-row {
+                height: 4rem !important;
+            }
+        }
+    }
+}

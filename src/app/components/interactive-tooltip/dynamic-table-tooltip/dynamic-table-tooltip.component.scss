@@ -1,0 +1,14 @@
+@import '../../../../styles/variables/variables';
+
+.tippy-form {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+            font-size: $font-size-16;
+            margin-bottom: 0;
+        }
+    }
+}

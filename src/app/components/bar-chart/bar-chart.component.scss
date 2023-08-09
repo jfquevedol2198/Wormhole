@@ -1,0 +1,17 @@
+@import '../../../styles/variables/variables.scss';
+
+.bar-chart {
+    padding: 8px 4px;
+
+    &--item {
+        height: 0.5 * $spacer;
+    }
+
+    &--item-left {
+        min-width: 55px;
+    }
+
+    &--item-right {
+        margin-left: 0.5 * $spacer;
+    }
+}

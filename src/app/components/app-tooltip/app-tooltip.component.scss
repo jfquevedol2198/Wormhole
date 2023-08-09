@@ -1,0 +1,35 @@
+@import '../../../styles/variables/variables.scss';
+@import '../../../styles/colors/colors.scss';
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+::ng-deep {
+    .tippy-box {
+        @include mat-elevation(1);
+        background-color: $dark !important;
+        border-radius: $border-radius;
+
+        .tippy-content {
+            background-color: $dark-03;
+            border-radius: $border-radius;
+
+            .tippy-form {
+                background: $dark-04;
+                border-radius: $border-radius;
+                box-shadow: none !important;
+                @include mat-elevation(1);
+
+                .mat-button-wrapper {
+                    display: flex;
+                    align-items: center;
+                    font-weight: 400 !important;
+                }
+
+                button {
+                    height: 2.8125 * $spacer;
+                }
+            }
+        }
+    }
+}

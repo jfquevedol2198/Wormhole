@@ -1,0 +1,10 @@
+<div class="app-report-history-calendar">
+    <mat-calendar
+        #calendar
+        [selected]="newDate"
+        [dateClass]="isSelected"
+        [startAt]="startAt"
+        (selectedChange)="selectedChange($event)"
+    >
+    </mat-calendar>
+</div>

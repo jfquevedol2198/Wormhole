@@ -1,0 +1,23 @@
+<div
+    class="app-sort-arrow app-d-f app-p-r"
+    [class.app-sort-arrow--selected]="isColumnSelected"
+>
+    <div class="app-sort-arrow__stem app-d-f app-ai-c app-m-a"></div>
+    <div
+        class="app-sort-arrow__indicator app-w-100 app-d-f app-ai-c app-p-a"
+        [class.app-sort-arrow__indicator--asc]="isSortAsc"
+        [class.app-sort-arrow__indicator--desc]="!isSortAsc"
+    >
+        <div
+            class="app-sort-arrow__indicator__left app-p-a"
+            [class.app-sort-arrow__indicator__left--asc]="isSortAsc"
+            [class.app-sort-arrow__indicator__left--desc]="!isSortAsc"
+        ></div>
+        <div
+            class="app-sort-arrow__indicator__right app-p-a"
+            [class.app-sort-arrow__indicator__right--asc]="isSortAsc"
+            [class.app-sort-arrow__indicator__right--desc]="!isSortAsc"
+        ></div>
+        <div class="app-sort-arrow__indicator__middle app-m-a"></div>
+    </div>
+</div>

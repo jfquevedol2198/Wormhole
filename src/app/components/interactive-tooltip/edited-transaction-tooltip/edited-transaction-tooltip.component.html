@@ -1,0 +1,79 @@
+<app-tooltip>
+    <div class="tippy-form__header app-mb-1">
+        <h3 class="tippy-form__header__title">{{ title }}</h3>
+        <button mat-icon-button (click)="closeTooltip()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="isLoading">
+        <mat-progress-spinner
+            class="app-m-3"
+            color="accent"
+            mode="indeterminate"
+        >
+        </mat-progress-spinner>
+    </div>
+
+    <div *ngIf="!isLoading" class="tippy-form__table">
+        <table
+            mat-table
+            [dataSource]="paginatedData"
+            class="app-change-table mat-elevation-z8 app-w-100"
+            multiTemplateDataRows
+        >
+            <ng-container
+                *ngFor="let column of columns"
+                [matColumnDef]="column.columnDef"
+            >
+                <th mat-header-cell *matHeaderCellDef>
+                    <span>{{ column.header }}</span>
+                </th>
+
+                <td
+                    mat-cell
+                    *matCellDef="let row"
+                    [class.app-c-p]="column.tooltip"
+                    [ngSwitch]="column.columnType"
+                >
+                    <ng-container *ngSwitchCase="'icon'">
+                        <div
+                            class="app-d-f app-ai-c"
+                            [matTooltip]="column.tooltip(row)"
+                            [matTooltipPosition]="'above'"
+                        >
+                            <mat-icon class="{{ column.textColor(row) }}">{{
+                                column.cell(row)
+                            }}</mat-icon>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngSwitchDefault>
+                        <span>
+                            {{ column.cell(row) }}
+                        </span>
+                        <span *ngIf="column.subCell" class="app-c-dde">
+                            {{ column.subCell(row) }}
+                        </span>
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns"
+                class="app-change-table__row__header"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <app-paginator
+            [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="[3, 5, 10]"
+            [pageIndex]="pageIndex"
+            (page)="page($event.pageIndex, $event.pageSize)"
+        >
+        </app-paginator>
+    </div>
+</app-tooltip>

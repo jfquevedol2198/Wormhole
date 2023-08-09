@@ -1,0 +1,455 @@
+<ng-container [formGroup]="form">
+    <div class="app-d-f app-important app-fd-r app-ai-fe app-mb-125">
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--longest
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+                app-report-history__new-report-form__field
+            "
+            appearance="fill"
+        >
+            <mat-label>Preset Name</mat-label>
+            <input
+                matInput
+                data-lpignore="true"
+                type="text"
+                formControlName="presetName"
+            />
+            <button
+                (click)="form.controls.presetName.setValue('')"
+                *ngIf="form.controls.presetName.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+            <mat-error>Preset name is required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="app-d-f app-important app-fd-r app-ai-fe app-mb-125">
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Start By</mat-label>
+            <mat-select formControlName="startBy">
+                <mat-option
+                    *ngFor="let option of bySelectOptions"
+                    [value]="option.value"
+                    >{{ option.label }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--long
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+            "
+            *ngIf="form.value.startBy == 'block'"
+            appearance="fill"
+        >
+            <mat-label>Start Block Height</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="blockStartHeight"
+            />
+            <button
+                (click)="form.controls.blockStartHeight.setValue('')"
+                *ngIf="form.controls.blockStartHeight.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select-date
+                app-form-select-date--small
+                app-form-select-date--medium
+                app-mr-1
+            "
+            *ngIf="form.value.startBy == 'date'"
+            appearance="fill"
+        >
+            <mat-label>Start Date</mat-label>
+            <input
+                matInput
+                [ngxMatDatetimePicker]="picker"
+                [min]="minDate"
+                [max]="maxDate"
+                formControlName="fromDate"
+                data-lpignore="true"
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+            ></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker
+                #picker
+                [showSpinners]="showSpinners"
+                [showSeconds]="showSeconds"
+                [stepHour]="stepHour"
+                [stepMinute]="stepMinute"
+                [color]="color"
+            >
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>End By</mat-label>
+            <mat-select formControlName="endBy">
+                <mat-option
+                    *ngFor="let option of bySelectOptions"
+                    [value]="option.value"
+                    >{{ option.label }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--long
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+            "
+            *ngIf="form.value.endBy == 'block'"
+            appearance="fill"
+        >
+            <mat-label>End Block Height</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="blockEndHeight"
+            />
+            <button
+                (click)="form.controls.blockEndHeight.setValue('')"
+                *ngIf="form.controls.blockEndHeight.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select-date
+                app-form-select-date--small
+                app-form-select-date--medium
+            "
+            *ngIf="form.value.endBy == 'date'"
+            appearance="fill"
+        >
+            <mat-label>End Date</mat-label>
+            <input
+                matInput
+                [ngxMatDatetimePicker]="picker"
+                [min]="minDate"
+                [max]="maxDate"
+                formControlName="toDate"
+                data-lpignore="true"
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+            ></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker
+                #picker
+                [showSpinners]="showSpinners"
+                [showSeconds]="showSeconds"
+                [stepHour]="stepHour"
+                [stepMinute]="stepMinute"
+                [color]="color"
+            >
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+    </div>
+    <div class="app-d-f app-important app-fd-r app-ai-c app-mb-125 app-fw-w">
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Source</mat-label>
+            <mat-select formControlName="source">
+                <mat-option
+                    *ngFor="let option of transactionSources"
+                    [value]="option"
+                    >{{ option }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Platform</mat-label>
+            <input
+                type="text"
+                matInput
+                formControlName="platform"
+                [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                    *ngFor="let option of filteredPlatforms | async"
+                    [value]="option"
+                >
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--short
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Token</mat-label>
+            <mat-select formControlName="currency">
+                <mat-option
+                    *ngFor="let option of currencyOptions"
+                    [value]="option.value"
+                    >{{ option.label }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+                app-report-history__new-report-form__field
+            "
+            appearance="fill"
+        >
+            <mat-label>From Value</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="fromValue"
+            />
+            <button
+                (click)="form.controls.fromValue.setValue('')"
+                *ngIf="form.controls.fromValue.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+                app-report-history__new-report-form__field
+            "
+            appearance="fill"
+        >
+            <mat-label>To Value</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="toValue"
+            />
+            <button
+                (click)="form.controls.toValue.setValue('')"
+                *ngIf="form.controls.toValue.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <div
+            class="
+                mat-input-wrapper
+                app-important
+                mat-form-field
+                app-d-f app-fd-c
+            "
+        >
+            <mat-slide-toggle formControlName="isEdited" color="accent"
+                >Edited</mat-slide-toggle
+            >
+        </div>
+        <div
+            class="
+                mat-input-wrapper
+                app-important
+                mat-form-field
+                app-d-f app-fd-c
+            "
+        >
+            <mat-slide-toggle formControlName="isDisabled" color="accent"
+                >Disabled</mat-slide-toggle
+            >
+        </div>
+    </div>
+    <div class="app-d-f app-important app-fd-r app-ai-fe app-mb-125">
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--longest
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+                app-report-history__new-report-form__field
+            "
+            appearance="fill"
+        >
+            <mat-label>Asset Address</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="asset"
+            />
+            <button
+                (click)="form.controls.asset.setValue('')"
+                *ngIf="form.controls.asset.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--medium
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="isError">
+                <mat-option
+                    *ngFor="let option of statusOptions"
+                    [value]="option.value"
+                    >{{ option.label }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="app-d-f app-important app-fd-r app-ai-fe app-mb-125">
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+                app-report-history__new-report-form__field
+            "
+            appearance="fill"
+        >
+            <mat-label>Method ID</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="methodId"
+            />
+            <button
+                (click)="form.controls.methodId.setValue('')"
+                *ngIf="form.controls.methodId.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field
+            class="
+                app-form-select
+                app-form-select--small
+                app-form-select--medium
+                app-form-select--close
+                app-mr-05 app-d-f app-fd-c app-mr-05
+                app-report-history__new-report-form__field
+            "
+            appearance="fill"
+        >
+            <mat-label>Method Type</mat-label>
+            <input
+                matInput
+                type="text"
+                data-lpignore="true"
+                formControlName="methodDescription"
+            />
+            <button
+                (click)="form.controls.methodDescription.setValue('')"
+                *ngIf="form.controls.methodDescription.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field
+            class="
+                app-form-select app-form-select--small app-form-select--long
+                app-mr-05
+            "
+            appearance="fill"
+        >
+            <mat-label>Treatment</mat-label>
+            <mat-select formControlName="methodProcessing" multiple>
+                <mat-option
+                    *ngFor="let key of methodProcessingKeys"
+                    [value]="key"
+                    >{{ methodProcessingOptions[key] }}</mat-option
+                >
+            </mat-select>
+            <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+    </div>
+</ng-container>

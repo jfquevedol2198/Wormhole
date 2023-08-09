@@ -1,0 +1,52 @@
+<app-tooltip>
+    <div class="tippy-form__header app-mb-1">
+        <h3 class="tippy-form__header__title">{{ title }}</h3>
+        <button mat-icon-button (click)="closeTooltip()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div class="tippy-form app-mb-1" *ngIf="!isEdit">
+        <button
+            mat-button
+            class="app-d-f app-ai-c app-w-100"
+            (click)="toggleEdit()"
+        >
+            {{ label }}
+            <span class="app-fg-1"></span>
+
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="isEdit" class="app-w-100 app-mb-1">
+        <mat-form-field
+            class="app-form-select app-form-select--close app-w-100"
+            appearance="fill"
+        >
+            <mat-label>Name</mat-label>
+            <input
+                matInput
+                type="text"
+                [(ngModel)]="label"
+                data-lpignore="true"
+                [ngModelOptions]="{ standalone: true }"
+                (keyup)="handleKeyUp($event)"
+            />
+            <button (click)="save()" matSuffix mat-icon-button>
+                <mat-icon>done</mat-icon>
+            </button>
+            <button (click)="cancel()" matSuffix mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="tippy-form cursor-pointer" [cdkCopyToClipboard]="address">
+        <button mat-button class="app-d-f app-ai-c">
+            {{ address }}
+            <span class="app-fg-1"></span>
+            <mat-icon class="app-ml-1">content_copy</mat-icon>
+        </button>
+    </div>
+</app-tooltip>

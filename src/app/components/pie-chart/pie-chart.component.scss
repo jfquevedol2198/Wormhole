@@ -1,0 +1,16 @@
+@import '../../../styles/colors/colors.scss';
+@import '../../../styles/variables/variables.scss';
+
+.app-pie-chart {
+    &__bar-chart-container {
+        background-color: $light-01;
+    }
+
+    &--smaller {
+        max-width: 300px;
+    }
+
+    &__chart {
+        max-width: 295px;
+    }
+}

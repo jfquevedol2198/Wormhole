@@ -1,0 +1,14 @@
+@import '../../../../../styles/variables/variables.scss';
+
+.app-platform__toolbar {
+    margin: 2 * $spacer 3.375 * $spacer;
+}
+
+.mat-column-action {
+    width: 40px;
+    text-align: center;
+}
+
+.edit-icon {
+    margin-right: 10px;
+}

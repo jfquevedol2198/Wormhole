@@ -1,0 +1,41 @@
+<mat-card class="app-d-f">
+    <mat-card-title class="app-ta-c app-m-1 app-important">
+        Shared Settings
+    </mat-card-title>
+
+    <mat-card-content
+        *ngIf="sharedSettings.length > 0; else emptySharedSettings"
+    >
+        <div
+            class="app-d-f app-important app-fd-r app-ai-fe app-mb-125"
+            *ngFor="let setting of sharedSettings"
+        >
+            <mat-form-field
+                class="
+                    app-form-select
+                    app-form-select--small
+                    app-form-select--longest
+                    app-form-select--close
+                    app-mr-05 app-d-f app-fd-c app-mr-05
+                "
+                appearance="fill"
+            >
+                <mat-label>{{
+                    separateStringIntoWords(setting.key)
+                }}</mat-label>
+                <input
+                    matInput
+                    data-lpignore="true"
+                    type="text"
+                    [value]="setting.value"
+                    (change)="updateSharedSetting($event, setting)"
+                />
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+
+    <ng-template #emptySharedSettings>
+        <app-no-data-communicate [data]="'shared settings'">
+        </app-no-data-communicate>
+    </ng-template>
+</mat-card>

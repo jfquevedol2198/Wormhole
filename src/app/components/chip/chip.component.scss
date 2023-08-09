@@ -1,0 +1,36 @@
+@import '../../../styles/colors/colors';
+@import '../../../styles/variables/variables';
+
+mat-chip {
+    &.app-chip {
+        &--error {
+            background-color: $chipColorErrorBg !important;
+            color: $chipColorError !important;
+        }
+
+        &--info {
+            background-color: $chipColorInfoBg !important;
+            color: $chipColorInfo !important;
+        }
+
+        &--warning {
+            background-color: $chipColorWarningBg !important;
+            color: $chipColorWarning !important;
+        }
+
+        &--success {
+            background-color: $chipColorSuccessBg !important;
+            color: $chipColorSuccess !important;
+        }
+
+        &--process {
+            background-color: $chipColorProcessBg !important;
+            color: $chipColorProcess !important;
+        }
+
+        &--small {
+            font-size: $font-size-8 !important;
+            min-height: 1.5 * $spacer !important;
+        }
+    }
+}

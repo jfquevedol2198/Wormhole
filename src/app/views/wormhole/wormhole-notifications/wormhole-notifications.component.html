@@ -1,0 +1,237 @@
+<div class="app-mt-1 app-pl-1 app-pr-1 wormhole-notifications app-container">
+    <h1 class="app-d-f app-ai-c">
+        Notifications
+        <mat-icon class="app-op-06 app-ml-1">settings</mat-icon>
+    </h1>
+    <div class="app-d-f app-jc-sb">
+        <div class="app-d-f app-important app-ai-c app-mb-1">
+            <form [formGroup]="filtersForm">
+                <app-notifications-filters
+                    [filtersForm]="filtersForm"
+                ></app-notifications-filters>
+            </form>
+            <button
+                class="mat-stroked-button app-mr-05 app-important"
+                mat-button
+                (click)="onResetFiltersClick()"
+                *ngIf="areFiltersSelected()"
+            >
+                Reset
+            </button>
+            <button
+                class="app-mr-05 app-important"
+                mat-button
+                (click)="filterNotifications()"
+                mat-flat-button
+                color="accent"
+            >
+                Filter
+            </button>
+        </div>
+        <div class="app-mr-15">
+            <button
+                class="app-mr-05 app-important"
+                mat-button
+                mat-stroked-button
+                color="accent"
+                (click)="onSelectAllClick()"
+            >
+                Select All
+            </button>
+            <button
+                class="app-mr-05 app-important"
+                mat-button
+                mat-stroked-button
+                color="accent"
+                (click)="markSelectedNotificationAsRead()"
+                [disabled]="!areSelectedNotifications()"
+            >
+                Mark Selected as Read
+            </button>
+
+            <button
+                class="app-mr-05 app-important"
+                mat-button
+                mat-stroked-button
+                color="accent"
+                (click)="removeSelectedNotifications()"
+                [disabled]="!areSelectedNotifications()"
+            >
+                Delete Selected
+            </button>
+        </div>
+    </div>
+
+    <mat-progress-spinner
+        *ngIf="isNotificationsLoading"
+        class="app-m-3-a"
+        color="accent"
+        mode="indeterminate"
+    >
+    </mat-progress-spinner>
+
+    <div *ngIf="!isNotificationsLoading && notificationsData.total > 0">
+        <table
+            mat-table
+            [dataSource]="notificationsData.data"
+            class="app-notifications-table mat-elevation-z8 app-w-100"
+            multiTemplateDataRows
+        >
+            <ng-container
+                *ngFor="let column of columns"
+                [matColumnDef]="column.columnDef"
+            >
+                <th mat-header-cell *matHeaderCellDef>
+                    <app-table-header-component
+                        [column]="column"
+                        [sortColumns]="sortColumns"
+                        (sort)="sort($event.isButtonPressed, $event.columnDef)"
+                    ></app-table-header-component>
+                </th>
+
+                <td
+                    mat-cell
+                    *matCellDef="let notification"
+                    [ngSwitch]="column.columnType"
+                >
+                    <ng-container *ngSwitchCase="'chip'">
+                        <div class="app-d-f app-fw-w">
+                            <app-chip
+                                class="app-m-025"
+                                *ngFor="let chip of notification.chips"
+                                [type]="chip.type"
+                                [text]="chip.text"
+                                [size]="'small'"
+                            ></app-chip>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'checkbox'">
+                        <div>
+                            <mat-checkbox
+                                [(ngModel)]="
+                                    notification.isNotificationSelected
+                                "
+                            ></mat-checkbox>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'toggle'">
+                        <div class="app-d-f app-fw-w">
+                            <mat-slide-toggle
+                                [checked]="!notification.dismissed"
+                                (change)="
+                                    onReadNotificationClick(
+                                        notification,
+                                        $event.checked
+                                    )
+                                "
+                            ></mat-slide-toggle>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'icon'">
+                        <button
+                            matSuffix
+                            mat-icon-button
+                            (click)="
+                                onDeleteNotificationClick(
+                                    notification.notificationId
+                                )
+                            "
+                        >
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'redirect-button'">
+                        <button
+                            matSuffix
+                            mat-icon-button
+                            (click)="redirect(notification)"
+                            [disabled]="notification.type !== 'WorkerTasks'"
+                        >
+                            <mat-icon class="material-icons-outlined"
+                                >open_in_new
+                            </mat-icon>
+                        </button>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'message'">
+                        <div
+                            class="app-d-f app-ai-c"
+                            *ngIf="
+                                notification.message.length > 55;
+                                else shortMessage
+                            "
+                        >
+                            <div class="app-ov-h app-t-ov-e app-w-s-n">
+                                {{ notification.message }}
+                            </div>
+                            <div #tippyTemplate>
+                                <app-notification-message-tooltip
+                                    [title]="column.header"
+                                    [message]="notification.message"
+                                ></app-notification-message-tooltip>
+                            </div>
+                            <button
+                                matSuffix
+                                mat-icon-button
+                                [ngxTippy]="tippyTemplate"
+                                [tippyProps]="tippyProps"
+                            >
+                                <mat-icon class="material-icons-outlined"
+                                    >textsms
+                                </mat-icon>
+                            </button>
+                        </div>
+                        <ng-template #shortMessage>
+                            <span>
+                                {{ notification.message }}
+                            </span>
+                        </ng-template>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <span>
+                            {{ column.cell(notification) }}
+                        </span>
+                        <span *ngIf="column.subCell" class="app-c-dde">
+                            {{ column.subCell(notification) }}
+                        </span>
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+                class="app-notifications-table__row__header"
+            ></tr>
+            <tr
+                mat-row
+                *matRowDef="
+                    let notification;
+                    columns: displayedColumns;
+                    let i = dataIndex
+                "
+                [ngClass]="
+                    i % 2 === 0
+                        ? 'app-notifications-table__row__odd'
+                        : 'app-notifications-table__row__even'
+                "
+                [class.app-notifications-table--dismissed]="
+                    notification.dismissed
+                "
+            ></tr>
+        </table>
+
+        <app-paginator
+            [length]="notificationsData.total"
+            [pageSize]="notificationsData.pageSize"
+            [pageSizeOptions]="[10, 25, 50, 100, 250]"
+            [pageIndex]="notificationsData.pageIndex"
+            (page)="page($event.pageIndex, $event.pageSize)"
+        >
+        </app-paginator>
+    </div>
+    <app-no-data-communicate
+        *ngIf="!isNotificationsLoading && notificationsData.total === 0"
+        [data]="'notifications'"
+    >
+    </app-no-data-communicate>
+</div>

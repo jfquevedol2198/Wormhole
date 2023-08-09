@@ -1,0 +1,30 @@
+<ng-container>
+    <mat-tab-group
+        class="app-sub-ledgers"
+        color="accent"
+        animationDuration="0ms"
+        (selectedTabChange)="setActiveTab($event.index)"
+        [selectedIndex]="activeTabIndex"
+    >
+        <mat-tab
+            *ngFor="let tab of subLedgersTabs; let index = index"
+            [label]="tab"
+            [tabIndex]="index"
+        >
+            <ng-template mat-tab-label
+                ><span class="app-sub-ledgers__label app-fw-400">
+                    {{ tab.label }}
+                </span></ng-template
+            >
+        </mat-tab>
+    </mat-tab-group>
+
+    <app-sub-ledgers-messages
+        *ngIf="selectedTab.label === 'Messages'; else subLedgersTable"
+    ></app-sub-ledgers-messages>
+
+    <ng-template #subLedgersTable>
+        <app-sub-ledgers-table [name]="subLedgersTabs[activeTabIndex].label">
+        </app-sub-ledgers-table>
+    </ng-template>
+</ng-container>

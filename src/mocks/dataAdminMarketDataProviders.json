@@ -1,0 +1,27 @@
+[
+    {
+        "provider": 1070,
+        "pairCount": 2985,
+        "parameters": "{name: John, age: 30, car: null}"
+    },
+    {
+        "provider": 2145,
+        "pairCount": 1153,
+        "parameters": "{name: John, age: 30, car: null}"
+    },
+    {
+        "provider": 1273,
+        "pairCount": 716,
+        "parameters": "{name: John, age: 30, car: null}"
+    },
+    {
+        "provider": 1471,
+        "pairCount": 750,
+        "parameters": "{name: John, age: 30, car: null}"
+    },
+    {
+        "provider": 792,
+        "pairCount": 2953,
+        "parameters": "{name: John, age: 30, car: null}"
+    }
+]

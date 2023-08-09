@@ -1,0 +1,7 @@
+@import '../../../../styles/variables/variables';
+
+.app-notifications-table {
+    &--dismissed {
+        opacity: 0.5 !important;
+    }
+}

@@ -1,0 +1,22 @@
+@import '../../../styles/colors/colors';
+@import '../../../styles/variables/variables';
+
+.app-footer {
+    padding: 3.125 * $spacer 0 4.6875 * $spacer;
+    background: $elevation-dark-02;
+    border-top: 0.0625 * $spacer solid $white-12-opacity;
+
+    &__container {
+        &__title {
+            color: $highEmphasis;
+        }
+
+        &__link {
+            color: $mediumEmphasis;
+
+            &--disable {
+                pointer-events: none;
+            }
+        }
+    }
+}

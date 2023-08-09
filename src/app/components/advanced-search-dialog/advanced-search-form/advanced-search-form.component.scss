@@ -1,0 +1,41 @@
+@import '../../../../styles/variables/variables';
+@import '../../../../styles/colors/colors';
+.close-button {
+    position: absolute;
+    right: -0.313 * $spacer;
+    top: 1 * $spacer;
+}
+.form-field {
+    .app-mat-input {
+        margin-top: 0.5 * $spacer;
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+.form-field.wider {
+    width: 14 * $spacer;
+}
+
+.form-field.narrower {
+    width: 4.5 * $spacer;
+}
+
+.app-mat-date-input-wrapper {
+    top: 0.125 * $spacer;
+    right: -0.25 * $spacer;
+}
+.form-field.date-time {
+    width: 9.4 * $spacer;
+}
+
+.mat-datepicker-toggle .mat-button-wrapper {
+    .mat-datepicker-toggle-default-icon {
+        transform: scale(0.85) !important;
+        color: $light-01;
+    }
+}
+
+.error-message {
+    color: $errorRed;
+}

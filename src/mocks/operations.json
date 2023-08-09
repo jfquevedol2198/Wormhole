@@ -1,0 +1,374 @@
+[
+    {
+        "transactionId": 1,
+        "operationId": 0,
+        "ledgerName": "None",
+        "sequenceNumber": 0,
+        "value": 0,
+        "usdValue": 0,
+        "assetAddress": "string",
+        "assetName": "string",
+        "assetTokenId": "string",
+        "assetLogoUri": "string",
+        "fromAddress": "string",
+        "fromAddressLabel": "string",
+        "toAddress": "string",
+        "toAddressLabel": "string",
+        "sent": true,
+        "received": true,
+        "supply": true,
+        "stake": true,
+        "collateral": true,
+        "borrow": true,
+        "liquidation": true,
+        "funding": true,
+        "reward": true,
+        "internalTransfer": true,
+        "fee": true,
+        "change": true,
+        "swap": true,
+        "enabled": true,
+        "isLatest": false,
+        "manual": false,
+        "previousVersion": 1,
+        "treatmentWithIcons": [
+            {
+                "name": "Sent",
+                "icon": "call_made"
+            },
+            {
+                "name": "Received",
+                "icon": "call_received"
+            },
+            {
+                "name": "Collateral",
+                "icon": "lock"
+            },
+            {
+                "name": "Stake",
+                "icon": "add_circle_outline"
+            },
+            {
+                "name": "Supply",
+                "icon": "login"
+            },
+            {
+                "name": "Borrow",
+                "icon": "logout"
+            },
+            {
+                "name": "Liquidation",
+                "icon": "money_off"
+            },
+            {
+                "name": "Funding",
+                "icon": "savings"
+            },
+            {
+                "name": "Reward",
+                "icon": "payments"
+            },
+            {
+                "name": "Swap",
+                "icon": "swap_horizontal_circle"
+            },
+            {
+                "name": "Change",
+                "icon": "swap_vertical_circle"
+            },
+            {
+                "name": "Internal Transfer",
+                "icon": "change_circle"
+            },
+            {
+                "name": "Fee",
+                "icon": "local_atm"
+            }
+        ],
+        "isOperationSelected": false,
+        "expandOverlay": false,
+        "statusWithIcon": {
+            "status": "Overlay",
+            "icon": "auto_fix_high"
+        }
+    },
+    {
+        "transactionId": 1,
+        "operationId": 0,
+        "ledgerName": "None",
+        "sequenceNumber": 0,
+        "value": 0,
+        "usdValue": 0,
+        "assetAddress": "string",
+        "assetName": "string",
+        "assetTokenId": "string",
+        "assetLogoUri": "string",
+        "fromAddress": "string",
+        "fromAddressLabel": "string",
+        "toAddress": "string",
+        "toAddressLabel": "string",
+        "sent": true,
+        "received": true,
+        "supply": true,
+        "stake": true,
+        "collateral": true,
+        "borrow": true,
+        "liquidation": true,
+        "funding": true,
+        "reward": true,
+        "internalTransfer": true,
+        "fee": true,
+        "change": true,
+        "swap": true,
+        "enabled": true,
+        "isLatest": true,
+        "manual": false,
+        "previousVersion": null,
+        "treatmentWithIcons": [
+            {
+                "name": "Sent",
+                "icon": "call_made"
+            },
+            {
+                "name": "Received",
+                "icon": "call_received"
+            },
+            {
+                "name": "Collateral",
+                "icon": "lock"
+            },
+            {
+                "name": "Stake",
+                "icon": "add_circle_outline"
+            },
+            {
+                "name": "Supply",
+                "icon": "login"
+            },
+            {
+                "name": "Borrow",
+                "icon": "logout"
+            },
+            {
+                "name": "Liquidation",
+                "icon": "money_off"
+            },
+            {
+                "name": "Funding",
+                "icon": "savings"
+            },
+            {
+                "name": "Reward",
+                "icon": "payments"
+            },
+            {
+                "name": "Swap",
+                "icon": "swap_horizontal_circle"
+            },
+            {
+                "name": "Change",
+                "icon": "swap_vertical_circle"
+            },
+            {
+                "name": "Internal Transfer",
+                "icon": "change_circle"
+            },
+            {
+                "name": "Fee",
+                "icon": "local_atm"
+            }
+        ],
+        "isOperationSelected": false,
+        "expandOverlay": false,
+        "statusWithIcon": {
+            "status": "Original",
+            "icon": "source"
+        }
+    },
+    {
+        "transactionId": 1,
+        "operationId": 0,
+        "ledgerName": "None",
+        "sequenceNumber": 0,
+        "value": 0,
+        "usdValue": 0,
+        "assetAddress": "string",
+        "assetName": "string",
+        "assetTokenId": "string",
+        "assetLogoUri": "string",
+        "fromAddress": "string",
+        "fromAddressLabel": "string",
+        "toAddress": "string",
+        "toAddressLabel": "string",
+        "sent": true,
+        "received": true,
+        "supply": true,
+        "stake": true,
+        "collateral": true,
+        "borrow": true,
+        "liquidation": true,
+        "funding": true,
+        "reward": true,
+        "internalTransfer": true,
+        "fee": true,
+        "change": true,
+        "swap": true,
+        "enabled": true,
+        "isLatest": false,
+        "manual": true,
+        "previousVersion": 1,
+        "treatmentWithIcons": [
+            {
+                "name": "Sent",
+                "icon": "call_made"
+            },
+            {
+                "name": "Received",
+                "icon": "call_received"
+            },
+            {
+                "name": "Collateral",
+                "icon": "lock"
+            },
+            {
+                "name": "Stake",
+                "icon": "add_circle_outline"
+            },
+            {
+                "name": "Supply",
+                "icon": "login"
+            },
+            {
+                "name": "Borrow",
+                "icon": "logout"
+            },
+            {
+                "name": "Liquidation",
+                "icon": "money_off"
+            },
+            {
+                "name": "Funding",
+                "icon": "savings"
+            },
+            {
+                "name": "Reward",
+                "icon": "payments"
+            },
+            {
+                "name": "Swap",
+                "icon": "swap_horizontal_circle"
+            },
+            {
+                "name": "Change",
+                "icon": "swap_vertical_circle"
+            },
+            {
+                "name": "Internal Transfer",
+                "icon": "change_circle"
+            },
+            {
+                "name": "Fee",
+                "icon": "local_atm"
+            }
+        ],
+        "isOperationSelected": false,
+        "expandOverlay": false,
+        "statusWithIcon": {
+            "status": "Overlay",
+            "icon": "auto_fix_high"
+        }
+    },
+    {
+        "transactionId": 1,
+        "operationId": 0,
+        "ledgerName": "None",
+        "sequenceNumber": 0,
+        "value": 0,
+        "usdValue": 0,
+        "assetAddress": "string",
+        "assetName": "string",
+        "assetTokenId": "string",
+        "assetLogoUri": "string",
+        "fromAddress": "string",
+        "fromAddressLabel": "string",
+        "toAddress": "string",
+        "toAddressLabel": "string",
+        "sent": true,
+        "received": true,
+        "supply": true,
+        "stake": true,
+        "collateral": true,
+        "borrow": true,
+        "liquidation": true,
+        "funding": true,
+        "reward": true,
+        "internalTransfer": true,
+        "fee": true,
+        "change": true,
+        "swap": true,
+        "enabled": true,
+        "isLatest": true,
+        "manual": true,
+        "previousVersion": null,
+        "treatmentWithIcons": [
+            {
+                "name": "Sent",
+                "icon": "call_made"
+            },
+            {
+                "name": "Received",
+                "icon": "call_received"
+            },
+            {
+                "name": "Collateral",
+                "icon": "lock"
+            },
+            {
+                "name": "Stake",
+                "icon": "add_circle_outline"
+            },
+            {
+                "name": "Supply",
+                "icon": "login"
+            },
+            {
+                "name": "Borrow",
+                "icon": "logout"
+            },
+            {
+                "name": "Liquidation",
+                "icon": "money_off"
+            },
+            {
+                "name": "Funding",
+                "icon": "savings"
+            },
+            {
+                "name": "Reward",
+                "icon": "payments"
+            },
+            {
+                "name": "Swap",
+                "icon": "swap_horizontal_circle"
+            },
+            {
+                "name": "Change",
+                "icon": "swap_vertical_circle"
+            },
+            {
+                "name": "Internal Transfer",
+                "icon": "change_circle"
+            },
+            {
+                "name": "Fee",
+                "icon": "local_atm"
+            }
+        ],
+        "isOperationSelected": false,
+        "expandOverlay": false,
+        "statusWithIcon": {
+            "status": "Manual",
+            "icon": "back_hand"
+        }
+    }
+]

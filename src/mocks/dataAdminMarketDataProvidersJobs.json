@@ -1,0 +1,62 @@
+[
+    {
+        "id": 58,
+        "agent": "Cookley",
+        "runCount": 73,
+        "sessionID": "13vkJLqYPGZJswrE8qAAo1PbKAjfTUGHn9",
+        "scheduled": "10/7/2020",
+        "started": "3/13/2021",
+        "completed": "7/1/2021",
+        "provider": "Viva",
+        "active": true,
+        "isSelected": true
+    },
+    {
+        "id": 9,
+        "agent": "Flowdesk",
+        "runCount": 38,
+        "sessionID": "1HpanjrCfrKxfwVgVwTPvGUgCgPmKsJ5yt",
+        "scheduled": "8/15/2020",
+        "started": "10/17/2020",
+        "completed": "9/15/2020",
+        "provider": "Bitchip",
+        "active": false,
+        "isSelected": false
+    },
+    {
+        "id": 29,
+        "agent": "Konklab",
+        "runCount": 47,
+        "sessionID": "1GGBdFQ8gxvzoL2hT16NNPfWvYFC9AZQW3",
+        "scheduled": "3/29/2021",
+        "started": "3/2/2021",
+        "completed": "11/23/2020",
+        "provider": "Quo Lux",
+        "active": false,
+        "isSelected": false
+    },
+    {
+        "id": 47,
+        "agent": "Zaam-Dox",
+        "runCount": 71,
+        "sessionID": "1Br7zBvEGAbojR4rZKFJ8GuChi7dfxnCRC",
+        "scheduled": "7/24/2020",
+        "started": "6/25/2021",
+        "completed": "4/26/2021",
+        "provider": "Voltsillam",
+        "active": false,
+        "isSelected": false
+    },
+    {
+        "id": 52,
+        "agent": "Veribet",
+        "runCount": 24,
+        "sessionID": "1Hjv4SHeD5HrPXyeMSGnYXrtFidMqyASG8",
+        "scheduled": "9/26/2020",
+        "started": "10/18/2020",
+        "completed": "4/5/2021",
+        "provider": "Alphazap",
+        "active": true,
+        "isSelected": true
+    }
+]

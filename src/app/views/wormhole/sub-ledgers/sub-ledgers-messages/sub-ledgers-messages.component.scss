@@ -1,0 +1,44 @@
+@import '../../../../../styles/variables/variables.scss';
+
+.app-sub-ledgers-table {
+    tr.mat-header-row {
+        height: 2.5 * $spacer !important;
+    }
+    tr {
+        height: 2.5 * $spacer !important;
+    }
+    th,
+    td {
+        font-size: 9pt;
+    }
+    th.mat-header-cell.recipient,
+    td.mat-cell.recipient {
+        padding-left: 1.4 * $spacer;
+    }
+    th.mat-header-cell.transactionHash,
+    td.mat-cell.transactionHash {
+        max-width: 12 * $spacer;
+    }
+    th.mat-header-cell.date,
+    td.mat-cell.date {
+        min-width: 7.5 * $spacer;
+    }
+
+    th.mat-header-cell.blockNumber,
+    td.mat-cell.blockNumber {
+        min-width: 5.5 * $spacer;
+    }
+
+    th.mat-header-cell,
+    td.mat-cell {
+        padding: 0 0.625 * $spacer;
+        font-weight: 400;
+    }
+
+    .ellipsis {
+        display: block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}

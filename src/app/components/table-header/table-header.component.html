@@ -1,0 +1,25 @@
+<div
+    *ngIf="column.isSortable; else notSortableTitle"
+    (click)="onHeaderClick($event, column.columnDef)"
+    class="table-header__container app-d-f app-c-p app-ai-c app-p-r"
+>
+    <div class="app-ta-c app-d-f app-ai-c">
+        {{ column.header }}
+    </div>
+
+    <app-sort-arrow-component
+        [isColumnSelected]="isColumnSelected"
+        [isSortAsc]="isSortAsc"
+    >
+    </app-sort-arrow-component>
+
+    <div
+        *ngIf="sortColumns.length > 1 && isColumnSelected"
+        class="table-header__container__column-order app-f-s-7"
+    >
+        {{ getColumnIndex(column.columnDef) }}
+    </div>
+</div>
+<ng-template #notSortableTitle>
+    <span>{{ column.header }}</span>
+</ng-template>

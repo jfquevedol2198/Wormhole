@@ -1,0 +1,156 @@
+{
+    "responseTimestamp": "2021-07-02T03:55:49.4828018+00:00",
+    "recordCount": null,
+    "records": [
+        {
+            "reportId": 0,
+            "reportDefinitionId": 0,
+            "reportDefinition": {
+                "reportDefinitionId": 0,
+                "reportPresetId": 0,
+                "reportPreset": {
+                    "reportPresetId": 0,
+                    "userAccountId": 0,
+                    "userAccount": {
+                        "userAccountId": 0,
+                        "name": "string",
+                        "apiKey": "string",
+                        "lastAccess": "2021-08-25T15:44:10.333Z",
+                        "disabled": true,
+                        "locked": true,
+                        "userAccountRoles": [
+                            {
+                                "userAccountRoleId": 0,
+                                "userAccountId": 0,
+                                "userRoleId": 0,
+                                "userRole": {
+                                    "userRoleId": 0,
+                                    "userRoleName": "string",
+                                    "userAccountRoles": [null]
+                                }
+                            }
+                        ]
+                    },
+                    "name": "string",
+                    "scope": "None",
+                    "definition": {
+                        "startBlock": 0,
+                        "endBlock": 0,
+                        "source": "string",
+                        "platform": "string",
+                        "fromValue": 0,
+                        "toValue": 0,
+                        "isUsdValue": true,
+                        "isEdited": true,
+                        "isDisabled": true,
+                        "asset": "string",
+                        "isError": true,
+                        "methodId": "string",
+                        "methodDescription": "string",
+                        "transactionTreatment": 0
+                    },
+                    "persistence": "Single",
+                    "createdDate": "2021-08-25T15:44:10.333Z"
+                },
+                "name": "string",
+                "description": "string",
+                "schedule": "Disabled"
+            },
+            "reportDate": "2021-08-25T15:44:10.333Z",
+            "createdDate": "2021-08-25T15:44:10.333Z",
+            "searchPreset": {
+                "startBlock": 0,
+                "endBlock": 0,
+                "source": "string",
+                "platform": "string",
+                "fromValue": 0,
+                "toValue": 0,
+                "isUsdValue": true,
+                "isEdited": true,
+                "isDisabled": true,
+                "asset": "string",
+                "isError": true,
+                "methodId": "string",
+                "methodDescription": "string",
+                "transactionTreatment": 0
+            },
+            "location": "string",
+            "uri": "string"
+        },
+        {
+            "reportId": 0,
+            "reportDefinitionId": 0,
+            "reportDefinition": {
+                "reportDefinitionId": 0,
+                "reportPresetId": 0,
+                "reportPreset": {
+                    "reportPresetId": 0,
+                    "userAccountId": 0,
+                    "userAccount": {
+                        "userAccountId": 0,
+                        "name": "string",
+                        "apiKey": "string",
+                        "lastAccess": "2021-08-25T15:44:10.333Z",
+                        "disabled": true,
+                        "locked": true,
+                        "userAccountRoles": [
+                            {
+                                "userAccountRoleId": 0,
+                                "userAccountId": 0,
+                                "userRoleId": 0,
+                                "userRole": {
+                                    "userRoleId": 0,
+                                    "userRoleName": "string",
+                                    "userAccountRoles": [null]
+                                }
+                            }
+                        ]
+                    },
+                    "name": "string",
+                    "scope": "None",
+                    "definition": {
+                        "startBlock": 0,
+                        "endBlock": 0,
+                        "source": "string",
+                        "platform": "string",
+                        "fromValue": 0,
+                        "toValue": 0,
+                        "isUsdValue": true,
+                        "isEdited": true,
+                        "isDisabled": true,
+                        "asset": "string",
+                        "isError": true,
+                        "methodId": "string",
+                        "methodDescription": "string",
+                        "transactionTreatment": 0
+                    },
+                    "persistence": "Single",
+                    "createdDate": "2021-08-25T15:44:10.333Z"
+                },
+                "name": "string",
+                "description": "string",
+                "schedule": "Disabled"
+            },
+            "reportDate": "2021-08-25T15:44:10.333Z",
+            "createdDate": "2021-08-25T15:44:10.333Z",
+            "searchPreset": {
+                "startBlock": 0,
+                "endBlock": 0,
+                "source": "string",
+                "platform": "string",
+                "fromValue": 0,
+                "toValue": 0,
+                "isUsdValue": true,
+                "isEdited": true,
+                "isDisabled": true,
+                "asset": "string",
+                "isError": true,
+                "methodId": "string",
+                "methodDescription": "string",
+                "transactionTreatment": 0
+            },
+            "location": "string",
+            "uri": "string"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "/0.1/PublicBlade/api/SmartContract/*": {
+        "target": "https://localhost:8081",
+        "secure": false
+    },
+    "/price": {
+        "target": "http://135.181.36.94:8080",
+        "secure": false
+    }
+}

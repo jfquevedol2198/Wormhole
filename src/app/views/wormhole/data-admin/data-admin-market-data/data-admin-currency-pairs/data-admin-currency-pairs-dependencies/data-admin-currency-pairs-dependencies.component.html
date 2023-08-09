@@ -1,0 +1,125 @@
+<div class="dependencies-container app-pl-1 app-pr-1">
+    <p class="app-f-s-12 app-c-white-60 app-ta-c app-mb-1.5 app-mt-2 app-important">Modyfing currency pair mapping for the pair at the bottom</p>
+    <app-dependency-diagram [dependency]="diagrams"></app-dependency-diagram>
+</div>
+<div class="app-pl-1 app-pr-1 dependencies-table app-bg-c-ed03-lg">
+    <div class="dependencies-table__content">
+        <div class="app-d-f app-fw-w app-pl-15">
+            <div class="app-mb-1 app-mr-2">
+                <span class="app-c-white-60"><span>Pair name: </span><span class="app-c-purple-300">{{ currency?.pairName }}</span></span>
+            </div>
+            <div class="app-mb-1 app-mr-15">
+                <span class="app-c-white-60"><span>Base:  </span><span class="app-c-hde">{{ currency?.baseTokenContractAddress }}</span></span>
+            </div>
+            <div class="app-mb-1">
+                <span class="app-c-white-60"><span>Quote:  </span><span class="app-c-hde">{{ currency?.tokenContractAddress }}</span></span>
+            </div>
+        </div>
+        <div
+            class="app-d-f app-jc-c"
+            *ngIf="isLoading"
+        >
+            <mat-progress-spinner class="app-m-3-a" color="accent" mode="indeterminate">
+            </mat-progress-spinner>
+        </div>
+        <table
+            *ngIf="!isLoading"
+            mat-table
+            [dataSource]="dataTable"
+            class="app-table app-table__striped app-table__expand-column app-w-100"
+        >
+            <ng-container matColumnDef="provider">
+                <th mat-header-cell *matHeaderCellDef>
+                    Provider
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.provider }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="rateSource">
+                <th mat-header-cell *matHeaderCellDef>
+                    Rate Source
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.rateSource }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lastRate">
+                <th mat-header-cell *matHeaderCellDef>
+                    Last rate
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.lastRate }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="highestRate">
+                <th mat-header-cell *matHeaderCellDef>
+                    Highest rate
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.highestRate }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lowestRate">
+                <th mat-header-cell *matHeaderCellDef>
+                    Lowest rate
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    {{ row.lowestRate }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dataQuality">
+                <th mat-header-cell *matHeaderCellDef>
+                    Data quality
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <div [class.app-c-green]="row.dataQuality==='Completed'" [class.app-c-yellow]="row.dataQuality==='Scheduled'"
+                        [class.app-c-blue]="row.dataQuality==='Running'" [class.app-c-red]="row.dataQuality==='Failed'">
+                        <mat-icon>{{ currencyIcon[row.dataQuality] }}</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dataProvider">
+                <th mat-header-cell *matHeaderCellDef>
+                    Data provider
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <div [class.app-c-green]="row.dataProvider==='Completed'" [class.app-c-yellow]="row.dataProvider==='Scheduled'"
+                        [class.app-c-blue]="row.dataProvider==='Running'" [class.app-c-red]="row.dataProvider==='Failed'">
+                        <mat-icon>{{ currencyIcon[row.dataProvider] }}</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="active">
+                <th mat-header-cell *matHeaderCellDef>Active</th>
+                <td mat-cell *matCellDef="let row">
+                    <div class="app-d-f app-fw-w">
+                        <mat-slide-toggle [checked]="row.active"></mat-slide-toggle>
+                    </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="requested">
+                <th mat-header-cell *matHeaderCellDef>Requested</th>
+                <td mat-cell *matCellDef="let row">
+                    <div class="app-d-f app-fw-w">
+                        <mat-slide-toggle [checked]="row.requested"></mat-slide-toggle>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+        </table>
+        <div *ngIf="!isLoading" class="app-ta-r app-mt-125">
+            <span class="app-c-white-60"><span>Record count:  </span><span class="app-c-hde">122</span></span>
+        </div>
+    </div>
+</div>

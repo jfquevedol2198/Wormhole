@@ -1,0 +1,12 @@
+@import '../variables/variables';
+
+.app-form-field-controls {
+    position: absolute;
+    top: -0.75 * $spacer;
+    right: 0;
+    font-size: $font-size-8;
+
+    b {
+        cursor: pointer;
+    }
+}

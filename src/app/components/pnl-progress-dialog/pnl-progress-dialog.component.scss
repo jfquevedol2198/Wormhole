@@ -1,0 +1,9 @@
+@import '../../../styles/variables/variables';
+
+.app-pnl-progress-dialog {
+    &__close {
+        position: absolute;
+        top: 0;
+        right: 1.33 * $spacer;
+    }
+}

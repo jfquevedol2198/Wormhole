@@ -1,0 +1,54 @@
+{
+    "responseTimestamp": "2021-06-28T15:05:46.0991048+00:00",
+    "recordCount": null,
+    "records": [
+        {
+            "reportPresetId": 790,
+            "userAccountId": 1,
+            "name": "test1",
+            "scope": "User",
+            "definition": {
+                "startBlock": 0,
+                "endBlock": 0,
+                "source": "string",
+                "platform": "string",
+                "fromValue": 0,
+                "toValue": 0,
+                "isUsdValue": true,
+                "isEdited": true,
+                "isDisabled": true,
+                "asset": "string",
+                "isError": true,
+                "methodId": "string",
+                "methodDescription": "string",
+                "transactionTreatment": 0
+            },
+            "persistence": "Transient",
+            "createdDate": "2021-06-28T14:43:04.505055+00:00"
+        },
+        {
+            "reportPresetId": 791,
+            "userAccountId": 1,
+            "name": "test2",
+            "scope": "User",
+            "definition": {
+                "blockStartHeight": null,
+                "blockEndHeight": null,
+                "source": null,
+                "platform": null,
+                "fromValue": null,
+                "toValue": null,
+                "isUsdValue": null,
+                "isEdited": null,
+                "isDisabled": null,
+                "asset": null,
+                "isError": null,
+                "methodId": null,
+                "methodDescription": null,
+                "methodProcessing": null
+            },
+            "persistence": "Transient",
+            "createdDate": "2021-06-28T14:46:35.00398+00:00"
+        }
+    ]
+}

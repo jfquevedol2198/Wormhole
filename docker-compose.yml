@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=pw
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@keyfi.dev
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    ports:
+      - 8080:80
+  wormhole:
+    image: quay.io/keyfi/api:c700547d7c08dc7a950ffbc81e7622314b14dadb # commit from 7.05.2021
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASEHOST=postgres
+    depends_on:
+      - postgres
+  redkite:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 4200:4200
+    environment:
+      - WORMHOLE=wormhole
+    depends_on:
+      - wormhole

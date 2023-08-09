@@ -1,0 +1,22 @@
+<nav mat-tab-nav-bar *ngIf="navigation" class="app-menu app-bb-n">
+    <a
+        *ngFor="let route of navigation"
+        mat-tab-link
+        [active]="linkActive(routerLinkActive)"
+        [routerLink]="route.path"
+        #routerLinkActive="routerLinkActive"
+        queryParamsHandling="preserve"
+        routerLinkActive
+        class="app-menu__button app-tt-u app-fw-n app-f-s-10 app-important"
+        [disabled]="route.disabled"
+        [class.app-menu__button--disabled]="route.disabled"
+    >
+        <mat-icon
+            *ngIf="route.icon"
+            class="app-mr-05 app-f-s-14 app-ai-c app-d-f app-important"
+            >{{ route.icon }}</mat-icon
+        >
+
+        {{ route.title }}
+    </a>
+</nav>

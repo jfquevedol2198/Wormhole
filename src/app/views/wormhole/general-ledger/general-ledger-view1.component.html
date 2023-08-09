@@ -1,0 +1,40 @@
+<mat-progress-spinner
+    *ngIf="generalLedgerService.pnlEssentialDataLoading$ | async"
+    class="app-general-ledger__spinner"
+    color="accent"
+    mode="indeterminate"
+>
+</mat-progress-spinner>
+
+<div
+    *ngIf="!(generalLedgerService.pnlEssentialDataLoading$ | async)"
+    class="app-container"
+>
+    <div class="app-d-f app-fw-w">
+        <div
+            class="
+                app-pt-1 app-pl-1 app-pr-1 app-w-100
+                app-general-ledger__row
+                app-mb-2
+            "
+        >
+            <app-line-chart
+                hideDisplay="1"
+                svgHeight="100%"
+                navigationHeight="130"
+                [fields]="lineChartFields"
+                [data$]="generalLedgerService.pnlEssentialData$"
+                [loading$]="generalLedgerService.pnlEssentialDataLoading$"
+                [selectedDate$]="generalLedgerService.selectedDate$"
+                [selectedRange$]="generalLedgerService.selectedRange$"
+                (fullscreen)="
+                    router.navigate(['/app/fullscreen/chart'], {
+                        queryParamsHandling: 'merge'
+                    })
+                "
+            ></app-line-chart>
+        </div>
+    </div>
+
+    <app-general-ledger-table></app-general-ledger-table>
+</div>
